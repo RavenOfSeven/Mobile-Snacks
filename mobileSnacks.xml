@@ -1,5 +1,5 @@
 <Ui>
-	<Script file="Mobile-Snacks.lua"/>
+	<Script file="mobileSnacks.lua"/>
 	<Frame name="tDItemTemp" inherits="TradeItemTemplate" virtual="true">
 		<Frames>
 			<Button name="$parentItemButton" inherits="ItemButtonTemplate">
@@ -8,13 +8,13 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						tradeDispenserClick(this:GetParent():GetID());
+						mobileSnacksClick(this:GetParent():GetID());
 					</OnClick>
 					<OnDragStart>
-						tradeDispenserClick(this:GetParent():GetID());
+						mobileSnacksClick(this:GetParent():GetID());
 					</OnDragStart>
 					<OnReceiveDrag>
-						tradeDispenserClick(this:GetParent():GetID());
+						mobileSnacksClick(this:GetParent():GetID());
 					</OnReceiveDrag>
 					<OnLoad>
 						this:RegisterForDrag("LeftButton");
@@ -47,14 +47,14 @@
 				this:SetText(tD_Loc.profile[this:GetID()]);
 			</OnLoad>
 			<OnClick>
-				tradeDispenserPlaySound(this)
+				mobileSnacksPlaySound(this)
 				local f=getglobal(this:GetParent():GetParent():GetName().."DDTitleLbL");
-				local col = tradeDispenserProfileColors[this:GetID()];
+				local col = mobileSnacksProfileColors[this:GetID()];
 				f:SetText(this:GetText())
 				f:SetTextColor(col.r,col.g,col.b)
 				this:GetParent():Hide()
 				tD_CharDatas.ActualProfile=this:GetID()
-				tradeDispenserUpdate()
+				mobileSnacksUpdate()
 			</OnClick>			
 		</Scripts>
 	</Button>
@@ -96,7 +96,7 @@
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",200,0);	
-						tradeDispenserDrawTooltip(tD_Loc.settings.Hint)
+						mobileSnacksDrawTooltip(tD_Loc.settings.Hint)
 					</OnEnter>
 					<OnLeave>	GameTooltip:Hide();	</OnLeave>
 				</Scripts>
@@ -139,7 +139,7 @@
 						if (tD_CharDatas.ActualProfile) then
 							s = tD_CharDatas.ActualProfile
 						end
-						local col = tradeDispenserProfileColors[s];
+						local col = mobileSnacksProfileColors[s];
 						local f = getglobal(this:GetName().."LbL")
 						f:SetTextColor(col.r, col.g, col.b);
 						f:SetText(tD_Loc.profile[s]);
@@ -272,7 +272,7 @@
 					<OnShow>
 						local i;
 						for i=1,14 do 
-							local col = tradeDispenserProfileColors[i];
+							local col = mobileSnacksProfileColors[i];
 							local f=getglobal(this:GetName().."Sub"..i);
 							f:SetTextColor(col.r, col.g, col.b);
 						end 
@@ -298,16 +298,16 @@
 		<Scripts>
 			<OnLoad>
 				this:SetFrameLevel(this:GetParent():GetParent():GetFrameLevel()+4);
-				this:SetText(tradeDispenserRackColor[this:GetID()].text..tD_Loc.rack..this:GetID());
+				this:SetText(mobileSnacksRackColor[this:GetID()].text..tD_Loc.rack..this:GetID());
 			</OnLoad>
 			<OnClick>
-				tradeDispenserPlaySound(this)
+				mobileSnacksPlaySound(this)
 				local f=getglobal(this:GetParent():GetParent():GetName().."DDTitleLbL");
-				f:SetText(tradeDispenserRackColor[this:GetID()].text..this:GetText())
+				f:SetText(mobileSnacksRackColor[this:GetID()].text..this:GetText())
 				this:GetParent():Hide()
 				tD_CharDatas.ActualRack=this:GetID()
-				tradeDispenserVerbose(3,"Rack set to "..tD_CharDatas.ActualRack);
-				tradeDispenserUpdate()
+				mobileSnacksVerbose(3,"Rack set to "..tD_CharDatas.ActualRack);
+				mobileSnacksUpdate()
 			</OnClick>			
 		</Scripts>
 	</Button>	
@@ -385,7 +385,7 @@
 					<OnShow>
 						local s = 1
 						if (tD_CharDatas.ActualRack) then	s = tD_CharDatas.ActualRack 	end
-						getglobal(this:GetName().."LbL"):SetText(tradeDispenserRackColor[s].text..tD_Loc.rack..s);
+						getglobal(this:GetName().."LbL"):SetText(mobileSnacksRackColor[s].text..tD_Loc.rack..s);
 					</OnShow>
 				</Scripts>
 			</Frame>
@@ -461,7 +461,7 @@
 	
 	
 	
-	<Frame name="tradeDispenser" parent="UIParent"  hidden="true" enableMouse="true" movable="true">	
+	<Frame name="mobileSnacks" parent="UIParent"  hidden="true" enableMouse="true" movable="true">	
 		<Size>	<AbsDimension x="300" y="384"/>	</Size>
 		<Anchors>
 			<Anchor point="CENTER">
@@ -477,7 +477,7 @@
 		</Backdrop>
 		<Layers> 
 			<Layer level="BACKGROUND">
-				<Texture name="$parentBkg1" file="Interface\AddOns\tradeDispenser\artwork\MainFrame_Background">
+				<Texture name="$parentBkg1" file="Interface\AddOns\mobileSnacks\artwork\MainFrame_Background">
 					<Size><AbsDimension x="286" y="125"/></Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -485,7 +485,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>		
-				<Texture name="$parentBkg2" file="Interface\AddOns\tradeDispenser\artwork\MainFrame_Background">
+				<Texture name="$parentBkg2" file="Interface\AddOns\mobileSnacks\artwork\MainFrame_Background">
 					<Size><AbsDimension x="286" y="125"/></Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -493,7 +493,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>	
-				<Texture name="$parentBkg3" file="Interface\AddOns\tradeDispenser\artwork\MainFrame_Background">
+				<Texture name="$parentBkg3" file="Interface\AddOns\mobileSnacks\artwork\MainFrame_Background">
 					<Size><AbsDimension x="286" y="120"/></Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -511,7 +511,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<FontString name="$parentLbL" inherits="GameFontNormal" text="tradeDispenser title">
+				<FontString name="$parentLbL" inherits="GameFontNormal" text="mobileSnacks title">
 					<Anchors>
 						<Anchor point="TOP" relativeTo="$parentHeader">
 							<Offset> <AbsDimension x="0" y="-14"/> </Offset>
@@ -539,7 +539,7 @@
 				<Scripts>
 					<OnLoad>
 						MoneyInputFrame_SetMode(this, "compact");
-						MoneyInputFrame_SetOnvalueChangedFunc(this, tradeDispenserUpdateMoney);
+						MoneyInputFrame_SetOnvalueChangedFunc(this, mobileSnacksUpdateMoney);
 					</OnLoad>
 				</Scripts>
 			</Frame>
@@ -567,12 +567,12 @@
 						this:SetChecked(tD_CharDatas.Free4Guild);
 					</OnShow>
 					<OnClick>
-						tradeDispenserPlaySound(this);
+						mobileSnacksPlaySound(this);
 						tD_CharDatas.Free4Guild = not tD_CharDatas.Free4Guild;
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",0,10);
-						tradeDispenserDrawTooltip(tD_Loc.control.Free4Guild)			
+						mobileSnacksDrawTooltip(tD_Loc.control.Free4Guild)			
 					</OnEnter>
 					<OnLeave>		GameTooltip:Hide();		</OnLeave>
 				</Scripts>
@@ -643,12 +643,12 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						tradeDispenserPlaySound(this)
+						mobileSnacksPlaySound(this)
 						tD_Temp.isEnabled = not tD_Temp.isEnabled
 						tD_Temp.broadcastSlice = 2
-						tradeDispenser_Eventhandler()
-						tradeDispenserUpdate()
-						tradeDispenser_OSD_buttons()
+						mobileSnacks_Eventhandler()
+						mobileSnacksUpdate()
+						mobileSnacks_OSD_buttons()
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -667,11 +667,11 @@
 						this:SetText(tD_Loc.buttons.hide);
 					</OnLoad>
 					<OnClick>
-						tradeDispenserPlaySound(this)
-						tradeDispenserMessages:Hide();
+						mobileSnacksPlaySound(this)
+						mobileSnacksMessages:Hide();
 						tD_Temp.isVisible = false;
-						tradeDispenserUpdate();
-						tradeDispenserOSD_OnUpdate()
+						mobileSnacksUpdate();
+						mobileSnacksOSD_OnUpdate()
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -690,13 +690,13 @@
 				<Scripts>
 					<OnLoad>this:SetText(tD_Loc.buttons.whispers)</OnLoad>
 					<OnClick>
-						tradeDispenserPlaySound(this)
-						if (tradeDispenserMessages:IsShown()) then
-							tradeDispenserMessages:Hide();
+						mobileSnacksPlaySound(this)
+						if (mobileSnacksMessages:IsShown()) then
+							mobileSnacksMessages:Hide();
 						else
-							tradeDispenserMessages:Show();
+							mobileSnacksMessages:Show();
 							tD_Temp.isVisible = false;
-							tradeDispenserUpdate();
+							mobileSnacksUpdate();
 						end
 					</OnClick>
 				</Scripts>
@@ -715,15 +715,15 @@
 				<Scripts>
 					<OnLoad>this:SetText(tD_Loc.buttons.settings)</OnLoad>
 					<OnClick>
-						tradeDispenserPlaySound(this)
-						if (tradeDispenserSettings:IsShown()) then
-							tradeDispenserSettings:Hide();
-							tradeDispenserSettingsBtn:UnlockHighlight();
+						mobileSnacksPlaySound(this)
+						if (mobileSnacksSettings:IsShown()) then
+							mobileSnacksSettings:Hide();
+							mobileSnacksSettingsBtn:UnlockHighlight();
 						else
-							tradeDispenserSettings:Show();
-							tradeDispenserSettingsBtn:LockHighlight();
+							mobileSnacksSettings:Show();
+							mobileSnacksSettingsBtn:LockHighlight();
 						end
-						tradeDispenser_Banlist_Update()
+						mobileSnacks_Banlist_Update()
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -741,15 +741,15 @@
 				<Scripts>
 					<OnLoad>this:SetText(tD_Loc.buttons.tradecontrol)</OnLoad>
 					<OnClick>
-						tradeDispenserPlaySound(this)
-						if (tradeDispenserTradeControl:IsShown()) then
-							tradeDispenserTradeControl:Hide();
-							tradeDispenserTradeControlBtn:UnlockHighlight();
+						mobileSnacksPlaySound(this)
+						if (mobileSnacksTradeControl:IsShown()) then
+							mobileSnacksTradeControl:Hide();
+							mobileSnacksTradeControlBtn:UnlockHighlight();
 						else
-							tradeDispenserTradeControl:Show();
-							tradeDispenserTradeControlBtn:LockHighlight();
+							mobileSnacksTradeControl:Show();
+							mobileSnacksTradeControlBtn:LockHighlight();
 						end
-						tradeDispenser_EditBoxUpdate();		<!-- function found in tD_Settings.lua  -->
+						mobileSnacks_EditBoxUpdate();		<!-- function found in tD_Settings.lua  -->
 					</OnClick>
 				</Scripts>
 			</Button>	
@@ -829,14 +829,14 @@
 			<OnLoad>
 				getglobal(this:GetName().."LbL"):SetText(tD_Loc.configtitle)
 				getglobal(this:GetName().."MoneyLbL"):SetText(tD_Loc.configItems)
-				tradeDispenserOnLoad()
+				mobileSnacksOnLoad()
 				this:SetBackdropBorderColor(1, 1, 1,1)
 				this:SetBackdropColor(0, 0, 0.2, 0)
 			</OnLoad>
 			<OnEvent>
-				tradeDispenserOnEvent(event)
+				mobileSnacksOnEvent(event)
 			</OnEvent>
-			<OnShow>if (tD_CharDatas.SoundCheck) then PlaySound("igAbilityOpen") end;  tradeDispenserSetFaction();</OnShow>
+			<OnShow>if (tD_CharDatas.SoundCheck) then PlaySound("igAbilityOpen") end;  mobileSnacksSetFaction();</OnShow>
 			<OnMouseDown> this:StartMoving();  </OnMouseDown>
 			<OnMouseUp>  this:StopMovingOrSizing(); </OnMouseUp>
 			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>			
