@@ -1,7 +1,7 @@
 <Ui>	
 	<Script file="mobileSnacks_TradeControl.lua"/>
 
-	<Frame name="mobileSnacksTradeControl" hidden="true" parent="tradeDispenser" enableMouse="true">
+	<Frame name="mobileSnacksTradeControl" hidden="true" parent="mobileSnacks" enableMouse="true">
 		<Size>	<AbsDimension x="182" y="346"/>	</Size>
 		<Anchors>
 			<Anchor point="BOTTOMLEFT"  relativeTo="$parent" relativePoint="BOTTOMRIGHT">
@@ -57,7 +57,7 @@
 						this:SetWidth(this:GetParent():GetWidth());
 						this:SetBackdropBorderColor(1, 1, 1,1);
 						this:SetBackdropColor(0.2, 0, 0, 1);
-						local f=tradeDispenserTradeControlTitleBkgLbL;
+						local f=mobileSnacksTradeControlTitleBkgLbL;
 						f:SetText(tD_Loc.control.title);
 						f:SetTextColor(1,1,1);
 					</OnLoad>
@@ -84,20 +84,20 @@
 				</Layers>				
 				<Scripts>
 					<OnLoad>
-						tradeDispenserTradeControlRaidLbL:SetText(tD_Loc.control.notraid);
+						mobileSnacksTradeControlRaidLbL:SetText(tD_Loc.control.notraid);
 					</OnLoad>
 					<OnClick>
 						tD_CharDatas.Raid = not tD_CharDatas.Raid;
-						tradeDispenserPlaySound(this)
+						mobileSnacksPlaySound(this)
 						if ( this:GetChecked() ) then
-							tradeDispenserTradeControlGuild:Show();
+							mobileSnacksTradeControlGuild:Show();
 						else
-							tradeDispenserTradeControlGuild:Hide();
+							mobileSnacksTradeControlGuild:Hide();
 						end
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",0,50);
-						tradeDispenserDrawTooltip(tD_Loc.control.notinraid)	
+						mobileSnacksDrawTooltip(tD_Loc.control.notinraid)	
 					</OnEnter>
 					<OnLeave>	GameTooltip:Hide();	</OnLeave>						
 				</Scripts>
@@ -123,15 +123,15 @@
 				</Layers>				
 				<Scripts>
 					<OnLoad>
-						tradeDispenserTradeControlGuildLbL:SetText(tD_Loc.control.acceptguild);
+						mobileSnacksTradeControlGuildLbL:SetText(tD_Loc.control.acceptguild);
 					</OnLoad>
 					<OnClick>
 						tD_CharDatas.Guild = not tD_CharDatas.Guild;
-						tradeDispenserPlaySound(this)
+						mobileSnacksPlaySound(this)
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",0,50);
-						tradeDispenserDrawTooltip(tD_Loc.control.accguild)	
+						mobileSnacksDrawTooltip(tD_Loc.control.accguild)	
 					</OnEnter>
 					<OnLeave>	GameTooltip:Hide();	</OnLeave>						
 				</Scripts>
@@ -158,7 +158,7 @@
 				</Layers>
 				<Scripts>
 					<OnLoad>
-						tradeDispenserTradeControlAcceptLbL:SetText(tD_Loc.control.autoaccept);
+						mobileSnacksTradeControlAcceptLbL:SetText(tD_Loc.control.autoaccept);
 					</OnLoad>				
 					<OnShow>
 						if (tD_CharDatas.AutoAccept) then 
@@ -167,7 +167,7 @@
 					</OnShow>
 					<OnClick>
 						tD_CharDatas.AutoAccept = not tD_CharDatas.AutoAccept;
-						tradeDispenserPlaySound(this)
+						mobileSnacksPlaySound(this)
 					</OnClick>
 				</Scripts>
 			</CheckButton>	
@@ -193,11 +193,11 @@
 				<Scripts>
 					<OnShow>
 						this:SetChecked(tD_CharDatas.ClientInfos);
-						tradeDispenserTradeControlInfosLbL:SetText(tD_Loc.control.ClientInfos);
+						mobileSnacksTradeControlInfosLbL:SetText(tD_Loc.control.ClientInfos);
 					</OnShow>
 					<OnClick>
 						tD_CharDatas.ClientInfos = not tD_CharDatas.ClientInfos;
-						tradeDispenserPlaySound(this)
+						mobileSnacksPlaySound(this)
 					</OnClick>
 				</Scripts>
 			</CheckButton>			
@@ -230,36 +230,36 @@
 						</Anchors>
 						<Scripts>
 							<OnLoad>
-								tradeDispenserTradeControlLevelMinText:SetText("");
-								tradeDispenserTradeControlLevelMinHigh:SetText("60");
+								mobileSnacksTradeControlLevelMinText:SetText("");
+								mobileSnacksTradeControlLevelMinHigh:SetText("60");
 								this:SetMinMaxValues(1,60);
-								if (tradeDispenser_IsBurningCrusade) then
-									tradeDispenserTradeControlLevelMinHigh:SetText("70");
+								if (mobileSnacks_IsBurningCrusade) then
+									mobileSnacksTradeControlLevelMinHigh:SetText("70");
 									this:SetMinMaxValues(1,70);
 								end
-								tradeDispenserTradeControlLevelMinLow:SetText("1");
-								tradeDispenserTradeControlLevelMinHigh:SetTextColor(1,0.9,0);
-								tradeDispenserTradeControlLevelMinLow:SetTextColor(1,0.9,0);
+								mobileSnacksTradeControlLevelMinLow:SetText("1");
+								mobileSnacksTradeControlLevelMinHigh:SetTextColor(1,0.9,0);
+								mobileSnacksTradeControlLevelMinLow:SetTextColor(1,0.9,0);
 								this:SetValueStep(1);
 								this:SetValue(55);
 							</OnLoad>
 							<OnValueChanged>
 								tD_CharDatas.LevelValue = this:GetValue();
-								tradeDispenserTradeControlLevelLbL:SetText(tD_Loc.control.level..this:GetValue());
+								mobileSnacksTradeControlLevelLbL:SetText(tD_Loc.control.level..this:GetValue());
 							</OnValueChanged>
 						</Scripts>
 					</Slider>	
 				</Frames>
 				<Scripts>
 					<OnLoad>
-						local f=tradeDispenserTradeControlLevelLbL;
+						local f=mobileSnacksTradeControlLevelLbL;
 						f:SetText(tD_Loc.control.leveltext);
 						f:SetTextColor(1,1,1);						
 					</OnLoad>
 					<OnClick>
 						tD_CharDatas.LevelCheck = not tD_CharDatas.LevelCheck;
-						tradeDispenserPlaySound(this)
-						local f=tradeDispenserTradeControlLevelMin;
+						mobileSnacksPlaySound(this)
+						local f=mobileSnacksTradeControlLevelMin;
 						if ( this:GetChecked() ) then		f:Show();	else	f:Hide();	end
 					</OnClick>
 				</Scripts>
@@ -279,12 +279,12 @@
 						this:SetText(tD_Loc.buttons.banlist);
 					</OnLoad>
 					<OnClick>
-						tradeDispenserPlaySound(this)
-						if (tradeDispenserBanlist:IsVisible()) then
-							tradeDispenserBanlist:Hide()
+						mobileSnacksPlaySound(this)
+						if (mobileSnacksBanlist:IsVisible()) then
+							mobileSnacksBanlist:Hide()
 							this:UnlockHighlight()
 						else 	
-							tradeDispenserBanlist:Show()
+							mobileSnacksBanlist:Show()
 							this:LockHighlight();
 						end
 					</OnClick>
@@ -301,14 +301,14 @@
 				<Scripts>
 					<OnClick>
 						tD_CharDatas.BanlistActive= not tD_CharDatas.BanlistActive;
-						tradeDispenserPlaySound(this)
-						local f=tradeDispenserTradeControlBanlistBtn;
+						mobileSnacksPlaySound(this)
+						local f=mobileSnacksTradeControlBanlistBtn;
 						if ( this:GetChecked() ) then
 							f:Enable();
 						else
-							if (tradeDispenserBanlist:IsVisible()) then
+							if (mobileSnacksBanlist:IsVisible()) then
 								f:UnlockHighlight();
-								tradeDispenserBanlist:Hide();
+								mobileSnacksBanlist:Hide();
 							end
 							f:Disable();
 						end
@@ -345,16 +345,16 @@
 						</Anchors>
 						<Scripts>
 							<OnLoad>
-								tradeDispenserTradeControlRegisterMaxTradesText:SetText(tD_Loc.control.maxtrades.." 1");
-								tradeDispenserTradeControlRegisterMaxTradesHigh:SetText("5");
-								tradeDispenserTradeControlRegisterMaxTradesLow:SetText("1");
+								mobileSnacksTradeControlRegisterMaxTradesText:SetText(tD_Loc.control.maxtrades.." 1");
+								mobileSnacksTradeControlRegisterMaxTradesHigh:SetText("5");
+								mobileSnacksTradeControlRegisterMaxTradesLow:SetText("1");
 								this:SetMinMaxValues(1,5);
 								this:SetValueStep(1);
 								this:SetValue(1);
 							</OnLoad>
 							<OnValueChanged>
 								tD_CharDatas.RegisterValue = this:GetValue();
-								tradeDispenserTradeControlRegisterMaxTradesText:SetText(tD_Loc.control.maxtrades..this:GetValue());
+								mobileSnacksTradeControlRegisterMaxTradesText:SetText(tD_Loc.control.maxtrades..this:GetValue());
 							</OnValueChanged>
 						</Scripts>
 					</Slider>	
@@ -372,22 +372,22 @@
 								this:SetText(tD_Loc.buttons.reset);
 							</OnLoad>
 							<OnClick>
-								tradeDispenserPlaySound(this)
-								tradeDispenser_ResetRegistratedChars();
+								mobileSnacksPlaySound(this)
+								mobileSnacks_ResetRegistratedChars();
 							</OnClick>
 						</Scripts>
 					</Button>					
 				</Frames>
 				<Scripts>
 					<OnLoad>
-						local f=tradeDispenserTradeControlRegisterLbL;
+						local f=mobileSnacksTradeControlRegisterLbL;
 						f:SetText(tD_Loc.control.register);
 						f:SetTextColor(1,1,1);
 					</OnLoad>
 					<OnClick>
 						tD_CharDatas.RegisterCheck = not tD_CharDatas.RegisterCheck;
-						tradeDispenserPlaySound(this)
-						tradeDispenser_TradeControl_Update();
+						mobileSnacksPlaySound(this)
+						mobileSnacks_TradeControl_Update();
 					</OnClick>
 				</Scripts>
 			</CheckButton>			
@@ -396,8 +396,8 @@
 			<OnLoad>
 				this:SetBackdropBorderColor(1, 1, 1,1);
 				this:SetBackdropColor(0, 0, 0.2, 1);
-				tradeDispenserTradeControlLbL:SetText(tD_Loc.control.ignore);
-				tradeDispenserTradeControlLbL:SetTextColor(1,1,1);
+				mobileSnacksTradeControlLbL:SetText(tD_Loc.control.ignore);
+				mobileSnacksTradeControlLbL:SetTextColor(1,1,1);
 			</OnLoad>
 			<OnMouseDown> this:GetParent():StartMoving();  </OnMouseDown>
 			<OnMouseUp>  this:GetParent():StopMovingOrSizing(); </OnMouseUp>

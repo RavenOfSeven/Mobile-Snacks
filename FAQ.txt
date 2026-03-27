@@ -16,7 +16,7 @@ A: NO! this should be an own addon. i'll never implement this feature to tD, bec
 Q: i just updated - and there were a LOT of errors... what do i made wrong?
 A: may you used RELOADUI to update. this won't work! you HAVE TO RESTART WOW.
 A2: maybe I (me, kaboom) made something wrong... please go to ui.WorldOfWar.net and report your bug
-A3: if everything seems to be right, but you still get errors, try to delete all "tradeDispenser.lua"-files of
+A3: if everything seems to be right, but you still get errors, try to delete all "mobileSnacks.lua"-files of
     your WTF-Directory (and all sub-directories)
 	
 
@@ -32,7 +32,7 @@ A: if you open a trade with the function "rightclick->trade" or by a script "Beg
    
 
 Q: The Authors are "Kaboom and Shag"... who's shag?
-A: Shag just made the core of tradeDispenser. and since then, i made everything else! the gui, all the additional features etc.
+A: Shag just made the core of mobileSnacks. and since then, i made everything else! the gui, all the additional features etc.
    but without the core, i could never get this addon running!
 
    

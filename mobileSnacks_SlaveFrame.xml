@@ -1,0 +1,10 @@
+<Ui>
+	<Script file="mobileSnacks_SlaveFrame.lua"/>	
+	<Frame name="mobileSnacksSlave" parent="UIParent" hidden="false">
+		<Scripts>
+			<OnUpdate>
+				mobileSnacksSlaveOnUpdate()
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</Ui>

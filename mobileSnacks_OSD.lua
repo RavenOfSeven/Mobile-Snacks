@@ -1,0 +1,88 @@
+function mobileSnacks_OSD_OnLoad(obj) 
+	obj:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+	obj:SetWidth(32*obj:GetParent():GetScale());
+	obj:SetHeight(32*obj:GetParent():GetScale());
+end
+
+-- mobileSnacksGFX = path to artwork... defined in mobileSnacks_Initialize.lua
+
+function mobileSnacks_OSD_buttons()
+	local GFX = "Interface\\AddOns\\mobileSnacks\\artwork\\";		-- path to artwork, used for the buttons of the OSD
+	if (tD_Temp.isEnabled) then
+		mobileSnacksOSDActivateBtn:SetNormalTexture(GFX.."OSD_tdToggle_Active_1")
+		mobileSnacksOSDActivateBtn:SetPushedTexture(GFX.."OSD_tdToggle_Active_2")
+		
+		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_tdConfig_Normal_1")
+		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_tdConfig_Normal_2")		
+				
+		if (tD_CharDatas.AutoBroadcast) then
+			mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_tdBroadcast_Active_1")
+			mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_tdBroadcast_Active_2")
+		else
+			mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_tdBroadcast_Normal_1")
+			mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_tdBroadcast_Normal_2")
+		end
+	else
+		mobileSnacksOSDActivateBtn:SetNormalTexture(GFX.."OSD_tdToggle_Inactive_1")
+		mobileSnacksOSDActivateBtn:SetPushedTexture(GFX.."OSD_tdToggle_Inactive_2")
+		mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_tdBroadcast_Inactive_1")
+		mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_tdBroadcast_Inactive_2")
+		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_tdConfig_Inactive_1")
+		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_tdConfig_Inactive_2")
+	end
+
+	if (tD_Temp.isVisible) then
+		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_tdConfig_Active_1")
+		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_tdConfig_Active_2")
+	end	
+end
+
+
+
+function mobileSnacksOSD_OnUpdate()
+	if (not tD_CharDatas.OSD) then return end
+	mobileSnacksVerbose(2,"OSD_OnUpdate")
+	if (not tD_CharDatas.OSD.isEnabled) then
+		mobileSnacksOSD:Hide();
+		return true;
+	end
+	
+	mobileSnacksOSD:Show();
+	
+	if (tD_CharDatas.OSD.border) then
+		mobileSnacksOSD:SetBackdropBorderColor(1, 1, 1, 1);
+	else 
+		mobileSnacksOSD:SetBackdropBorderColor(0,0,0,0);
+	end
+	
+	local col = tD_CharDatas.OSD;
+	mobileSnacksOSD:SetBackdropColor(col.r, col.g, col.b, col.alpha);
+	mobileSnacks_OSD_buttons();
+	
+	local s=1;
+	if (tD_CharDatas.OSD.scale) then
+		s = tD_CharDatas.OSD.scale;
+	end
+	if (tD_CharDatas.OSD.horiz) then
+		mobileSnacksOSD:SetWidth(28+3*32*s);
+		mobileSnacksOSD:SetHeight(32*s+14);
+
+		mobileSnacksOSDBroadcastBtn:ClearAllPoints();		
+		mobileSnacksOSDBroadcastBtn:SetPoint("RIGHT", "mobileSnacksOSDActivateBtn", "LEFT", -5,0);	
+		mobileSnacksOSDConfigBtn:ClearAllPoints();	
+		mobileSnacksOSDConfigBtn:SetPoint("LEFT","mobileSnacksOSDActivateBtn","RIGHT",5,0);
+	else
+		mobileSnacksOSD:SetHeight(28+3*32*s);
+		mobileSnacksOSD:SetWidth(32*s+14);
+		mobileSnacksOSDBroadcastBtn:ClearAllPoints();		
+		mobileSnacksOSDBroadcastBtn:SetPoint("BOTTOM", "mobileSnacksOSDActivateBtn", "TOP", 0,5);		
+		mobileSnacksOSDConfigBtn:ClearAllPoints();	
+		mobileSnacksOSDConfigBtn:SetPoint("TOP","mobileSnacksOSDActivateBtn","BOTTOM",0,-5);
+	end
+	mobileSnacksOSDBroadcastBtn:SetWidth(32*s);
+	mobileSnacksOSDBroadcastBtn:SetHeight(32*s);
+	mobileSnacksOSDActivateBtn:SetWidth(32*s);
+	mobileSnacksOSDActivateBtn:SetHeight(32*s);
+	mobileSnacksOSDConfigBtn:SetWidth(32*s);
+	mobileSnacksOSDConfigBtn:SetHeight(32*s);	
+end

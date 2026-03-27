@@ -10,16 +10,16 @@ Quelle:		http://ui.worldofwar.net/ui.php?id=2203
 BEFEHLE:
 --------
 	Prefix:
-		/tradeDispenser		Zeigt die Hilfe und wird als Prefix für weitere Optionen verwendet.
-		/td					Synonym zu /tradeDispenser
+		/mobileSnacks		Zeigt die Hilfe und wird als Prefix für weitere Optionen verwendet.
+		/td					Synonym zu /mobileSnacks
 		
 	Optionen:  (Benutze Prefix + Option, zB "/td toggle")
 		config				Schalter des ConfigCenters (Zeigen und Ausblenden)
-		toggle				Aktiviert bzw Deaktiviert den tradeDispenser
+		toggle				Aktiviert bzw Deaktiviert den mobileSnacks
 		broadcast			Gibt deine Handelsbereitschaft bekannt
 		OSD				Schalter für das OSD (Shortcut-Buttons)
 		verbose	X			Zeigt je nach Level X einige bis alle Debug-Infos. (0=off, 3=ALLE)
-		about				Zeigt mehr Informationen über tradeDispenser
+		about				Zeigt mehr Informationen über mobileSnacks
 
 
 
@@ -101,7 +101,7 @@ Version 0.91-0.92
 Version 0.90
 ------------
 	*	TOC-Version auf Patch 1.11 geupdated
-	+ 	Wenn ein Handel nun mit "Handeln" eröffnet wird, wird tradeDispenser keine Items mehr verteilen.
+	+ 	Wenn ein Handel nun mit "Handeln" eröffnet wird, wird mobileSnacks keine Items mehr verteilen.
 		Jedoch funktioniert dies noch nicht beim droppen von Gegenständen auf einen andern Spieler.
 	
 	
@@ -219,7 +219,7 @@ Version 0.45		(Von Kaboom)
 Version 0.41		(Von Kaboom)
 ------------
 		nur ein kleines update!
-	o	Error fixed: tradeDispenser_Settings.lua:55: Usage: SetText("text")
+	o	Error fixed: mobileSnacks_Settings.lua:55: Usage: SetText("text")
 	o   Verhalten beim öffnen des Handelsfenster, während der Spieler ein Item im Cursor hat, wurde verändert
 	
 	

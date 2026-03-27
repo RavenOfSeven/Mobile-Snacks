@@ -10,17 +10,17 @@ Downloaded:		http://ui.worldofwar.net/ui.php?id=2203
 COMMANDS:
 ---------
 	Prefix:
-		/tradeDispenser			Shows the Help-Text, and is used as prefix for more options
-		/td				similar to /tradeDispenser
+		/mobileSnacks			Shows the Help-Text, and is used as prefix for more options
+		/td				similar to /mobileSnacks
 		
 	Options:  (use Prefix + Option, e.g. "/td toggle")
 		config				Toggles the ConfigFrame
-		toggle				Activates/Deactivates the tradeDispenser
+		toggle				Activates/Deactivates the mobileSnacks
 		broadcast			Broadcasts your Trade
 		OSD					Toggles the OSD (shortcut-Buttons)
 		verbose	X			Shows some or all DebugInfos. (Level X:  0=off,  3=ALL)
-		resetpos			Resets all frames of tradeDispenser to its default position
-		about				Shows more informations to tradeDispenser
+		resetpos			Resets all frames of mobileSnacks to its default position
+		about				Shows more informations to mobileSnacks
 
 
 
@@ -62,7 +62,7 @@ Symbols:
 	
 Version 0.96
 ------------
-	+	GUI-Option to deactivate the sounds of tradeDispenser
+	+	GUI-Option to deactivate the sounds of mobileSnacks
 	+ 	new profile-type:  "self usage"
 
 	
@@ -212,7 +212,7 @@ Version 0.45		(made by Kaboom)
 Version 0.41		(made by Kaboom)
 ------------
 		Just a small updates, some minor bugs fixed
-	o	Error fixed: tradeDispenser_Settings.lua:55: Usage: SetText("text")
+	o	Error fixed: mobileSnacks_Settings.lua:55: Usage: SetText("text")
 	o   Fixed the tradewindow while the Cursor's got an item. (strange effects before)
 
 	
