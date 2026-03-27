@@ -1,5 +1,5 @@
 <Ui>
-	<Script file="tradeDispenser.lua"/>
+	<Script file="Mobile-Snacks.lua"/>
 	<Frame name="tDItemTemp" inherits="TradeItemTemplate" virtual="true">
 		<Frames>
 			<Button name="$parentItemButton" inherits="ItemButtonTemplate">
