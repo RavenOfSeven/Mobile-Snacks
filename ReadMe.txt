@@ -1,4 +1,4 @@
-﻿TradeDispenser	Version 0.96
+ï»¿MobileSnacks	Version 0.96
 -------------------------------------------------------
 Author:			Silas M.	aka 	Kaboom @ Arthas (EU)
 Core: 			Tom C.  	aka 	Shag @ Arthas (EU)
@@ -44,7 +44,7 @@ Additional Note:
 THX goes to:
 ------------
 - FrozenSolidOne @ Killrog(US)		-	he helped me finding a lot of bugs
-- Mickeey @ � ����ξ�֮�� (CN)	   			-	translatet the whole text to chineese
+- Mickeey @ ¶ þÇøÃÎ¾³Ö®Ê÷ (CN)	   			-	translatet the whole text to chineese
 - Balzebeth @ Conseil des Ombres (EU) - translated the whole text to french
 
 
@@ -226,7 +226,7 @@ Version 0.40		(made by Kaboom)
 Version 0.35		(made by Kaboom)
 ------------
 	*	Modified the ColorPicker of the OSD-Backgroundcolor. its much easier now!
-	+	Added Option to rotate the OSD by 90�
+	+	Added Option to rotate the OSD by 90°
 	*	Set the max of the Autobroadcast to 30 minutes.  (user request - for MC and BWL)
 	o	Already registred player won't be blocked any longer, if the "registrate-customer-option" is deactivated.
 	
