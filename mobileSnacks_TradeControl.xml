@@ -1,7 +1,7 @@
 <Ui>	
-	<Script file="Mobile-Snacks_TradeControl.lua"/>
+	<Script file="mobileSnacks_TradeControl.lua"/>
 
-	<Frame name="tradeDispenserTradeControl" hidden="true" parent="tradeDispenser" enableMouse="true">
+	<Frame name="mobileSnacksTradeControl" hidden="true" parent="tradeDispenser" enableMouse="true">
 		<Size>	<AbsDimension x="182" y="346"/>	</Size>
 		<Anchors>
 			<Anchor point="BOTTOMLEFT"  relativeTo="$parent" relativePoint="BOTTOMRIGHT">
