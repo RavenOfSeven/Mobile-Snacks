@@ -1,10 +1,10 @@
-# Mobile-Snacks
+# Mobile Snacks
 
-Mobile-Snacks is an addon made for lazy mages. It allows to automatically trade any water or food you have in your bags.
+Mobile Snacks is an addon made for lazy mages. It allows to automatically trade any water or food you have in your bags.
 
 You can take this configuration as a basic reference (CTRL-click to have a full size view in a new tab) :
 
-![tradedispenser_configuration](https://user-images.githubusercontent.com/24671466/26872536-2704e430-4b77-11e7-82f3-3dd6279518f5.png)
+![mobileSnacks_configuration](https://user-images.githubusercontent.com/24671466/26872536-2704e430-4b77-11e7-82f3-3dd6279518f5.png)
 
 This is what every class will get from each trade :
 - Rogues / Warriors: 20 x Conjured Cinnamon Roll
@@ -18,26 +18,26 @@ You can set it up differently if it doesn't suit your needs.
 
 - Full preview from the Settings Panel
 
-![tradedispenser](https://user-images.githubusercontent.com/24671466/26871282-f6eefc08-4b72-11e7-941f-e6af5f4bf612.png)
+![mobileSnacks](https://user-images.githubusercontent.com/24671466/26871282-f6eefc08-4b72-11e7-941f-e6af5f4bf612.png)
 
 - The setting "Display Water/Food stock" [enable/disable] will allow you to broadcast your stock besides the broadcast message
 
-![tradedispenser_stock](https://user-images.githubusercontent.com/24671466/26871775-987ccbe4-4b74-11e7-85c6-3343253bb652.png)
+![mobileSnacks_stock](https://user-images.githubusercontent.com/24671466/26871775-987ccbe4-4b74-11e7-85c6-3343253bb652.png)
 
 ## Installation
 1. Close any instance of WoW
-2. Download **[tradeDispenser Zip file](https://github.com/Linae-Kronos/tradeDispenser/archive/master.zip)**
+2. Download **[mobileSnacks Zip file](https://github.com/RavenOfSeven/Mobile-Snacks/archive/refs/heads/main.zip)**
 3. Extract the zip file wherever you want
-4. Copy the folder "tradeDispenser" to Wow_Folder\Interface\AddOns. Your addon folder should look like this :
+4. Copy the folder "mobileSnacks" to Wow_Folder\Interface\AddOns. Your addon folder should look like this :
 ```
 ├── WoW_Folder
     ├── Interface
         ├── Addons
-            ├── tradeDispenser
+            ├── mobileSnacks
 ```
 
 5. This is what you should have on character selection screen :
-![tradedispenser_charselect](https://user-images.githubusercontent.com/24671466/26873077-eda4328e-4b78-11e7-8263-102dfae89e37.png)
+![mobileSnacks_charselect](https://user-images.githubusercontent.com/24671466/26873077-eda4328e-4b78-11e7-8263-102dfae89e37.png)
 
 ## FAQ
 
