@@ -1,5 +1,5 @@
 <Ui>	
-	<Script file="tradeDispenser_TradeControl.lua"/>
+	<Script file="Mobile-Snacks_TradeControl.lua"/>
 
 	<Frame name="tradeDispenserTradeControl" hidden="true" parent="tradeDispenser" enableMouse="true">
 		<Size>	<AbsDimension x="182" y="346"/>	</Size>
