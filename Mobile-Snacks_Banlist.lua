@@ -1,4 +1,4 @@
-﻿function tradeDispenser_Banlist_OnShow()
+﻿function Mobile-Snacks_Banlist_OnShow()
 	tradeDispenser_Banlist_Update()
 	if (UnitIsPlayer("target") and UnitIsFriend("target", "player")) then
 		tradeDispenserBanlistName:SetText(UnitName("target"));
