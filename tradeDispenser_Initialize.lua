@@ -6,9 +6,9 @@ BINDING_NAME_TRADEDISPENSER3=tD_Loc.KeyBindings[3];
 BINDING_NAME_TRADEDISPENSER4=tD_Loc.KeyBindings[4];
 
 
--- these blocks are used to initialize mobileSnacks. 
-if (not mobileSnacksProfileColors) then
-	mobileSnacksProfileColors	= {								-- used to colorize the select-profile-buttons
+-- these blocks are used to initialize tradeDispenser. 
+if (not tradeDispenserProfileColors) then
+	tradeDispenserProfileColors	= {								-- used to colorize the select-profile-buttons
 		[1]		= {		["r"] = 1,	["g"] = 1,	["b"] = 1,  	},		-- all classes = white
 		[2] 	= {		["r"] = 0.5,["g"] = 0.5,["b"] = 1,		},		-- classes  = light blue
 		[3] 	= {		["r"] = 0.5,["g"] = 0.5,["b"] = 1,		},
@@ -26,8 +26,8 @@ if (not mobileSnacksProfileColors) then
 	}
 end
 
-if (not mobileSnacksRackColor) then 
-	mobileSnacksRackColor = {
+if (not tradeDispenserRackColor) then 
+	tradeDispenserRackColor = {
 		[1] =  {
 			["text"] = "|cFF00FF00",
 			["r"] = 0.65,		["g"]= 1,	["b"] = 0.65,
@@ -44,8 +44,8 @@ if (not mobileSnacksRackColor) then
 end
 
 
-if (not mobileSnacksChannelColors) then 
-	mobileSnacksChannelColors = {
+if (not tradeDispenserChannelColors) then 
+	tradeDispenserChannelColors = {
 		[1] = {		["r"] = 1,  	["g"] = 1,		["b"]=1,		["text"]=tD_Loc.channel.say	},
 		[2] = {		["r"] = 1,  	["g"] = 0,		["b"]=0,		["text"]=tD_Loc.channel.yell	},
 		[3] = {		["r"] = 1,  	["g"] = 0.5,	["b"]=0,		["text"]=tD_Loc.channel.raid	},
@@ -54,8 +54,8 @@ if (not mobileSnacksChannelColors) then
 	}
 end
 
-mobileSnacks_MaxBroadcastLength = 30;		-- minutes
-mobileSnacks_IsBurningCrusade = false;
+tradeDispenser_MaxBroadcastLength = 30;		-- minutes
+tradeDispenser_IsBurningCrusade = false;
 
 
 
@@ -80,7 +80,7 @@ end
 
 
 
-function mobileSnacks_OnVariablesLoaded()
+function tradeDispenser_OnVariablesLoaded()
 	local tD_Name=UnitName("player").." of "..GetRealmName();
 	if (tD_Datas~=nil) then
 		if (tD_Datas[tD_Name]~=nil) then
@@ -166,7 +166,7 @@ function mobileSnacks_OnVariablesLoaded()
 		tD_CharDatas.LevelValue=55;
 		tD_CharDatas.RegisterCheck=true;
 		tD_CharDatas.RegisterValue=1;
-		tD_CharDatas.broadcastSlice=math.floor(mobileSnacks_MaxBroadcastLength/2)*60;
+		tD_CharDatas.broadcastSlice=math.floor(tradeDispenser_MaxBroadcastLength/2)*60;
 		tD_CharDatas.Random=1;
 		tD_CharDatas.ActualProfile=1;
 		tD_CharDatas.profile = {};
@@ -196,19 +196,19 @@ function mobileSnacks_OnVariablesLoaded()
 	end
 	if (not tD_CharDatas.ActualRack) then tD_CharDatas.ActualRack=1 end
 	
-	mobileSnacksSettingsOSDscale:SetValue(tD_CharDatas.OSD.scale);
-	mobileSnacksSettingsOSDCheck:SetChecked(tD_CharDatas.OSD.isEnabled);
-	mobileSnacksSettingsOSDborder:SetChecked(tD_CharDatas.OSD.border);
-	mobileSnacksSettingsOSDhoriz:SetChecked(tD_CharDatas.OSD.horiz);
-	mobileSnacksSettingsRandom:SetValue(tD_CharDatas.Random);
+	tradeDispenserSettingsOSDscale:SetValue(tD_CharDatas.OSD.scale);
+	tradeDispenserSettingsOSDCheck:SetChecked(tD_CharDatas.OSD.isEnabled);
+	tradeDispenserSettingsOSDborder:SetChecked(tD_CharDatas.OSD.border);
+	tradeDispenserSettingsOSDhoriz:SetChecked(tD_CharDatas.OSD.horiz);
+	tradeDispenserSettingsRandom:SetValue(tD_CharDatas.Random);
 	tD_CharDatas.OnBroadcastText=nil;
 	
 	tD_Temp.isEnabled = false;
-	mobileSnacksUpdate();
-	mobileSnacksSettings_OnUpdate();
-	mobileSnacksOSD_OnUpdate();
-	mobileSnacks_TradeControl_Update();
-	mobileSnacks_EditBoxUpdate();		
+	tradeDispenserUpdate();
+	tradeDispenserSettings_OnUpdate();
+	tradeDispenserOSD_OnUpdate();
+	tradeDispenser_TradeControl_Update();
+	tradeDispenser_EditBoxUpdate();		
 
 	if (not tD_GlobalDatas.whisper) then
 		tD_GlobalDatas.whisper={};

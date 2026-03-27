@@ -3,9 +3,9 @@ function mobileSnacksOnLoad()
 	--math.randomseed(floor(GetTime()));			-- initialize the randomizer
 	mobileSnacks:RegisterEvent("VARIABLES_LOADED")
 	mobileSnacks:RegisterEvent("TRADE_SHOW")			-- used to activate the automated trade
-	mS_Temp.timeSlice = 0
-	mS_Temp.broadcastSlice = 0
-	mS_Temp.Target = {
+	tD_Temp.timeSlice = 0
+	tD_Temp.broadcastSlice = 0
+	tD_Temp.Target = {
 		["Name"]=nil,
 		["EnglishClass"]=nil,
 		["Class"]=nil,
@@ -15,14 +15,14 @@ end
 
 
 function mobileSnacks_Eventhandler()
-	if (mS_Temp.isEnabled) then
+	if (tD_Temp.isEnabled) then
 		mobileSnacksVerbose(1,"Gonna activate some events");
 		mobileSnacks:RegisterEvent("TRADE_CLOSED")
 		mobileSnacks:RegisterEvent("TRADE_ACCEPT_UPDATE")   -- used, if the opposite player changes the items -> re-accept
 		mobileSnacks:RegisterEvent("UI_ERROR_MESSAGE")
 		mobileSnacks:RegisterEvent("UI_INFO_MESSAGE")
-		mS_Temp.InitiateTrade=nil;
-		mS_Temp.Countdown=-1;		
+		tD_Temp.InitiateTrade=nil;
+		tD_Temp.Countdown=-1;		
 	else
 		mobileSnacksVerbose(1,"Gonna deactivate some events");
 		mobileSnacks:UnregisterEvent("TRADE_CLOSED")
@@ -58,7 +58,7 @@ end
 
 function mobileSnacksOnEvent(event)
 	if (event == "VARIABLES_LOADED") then
-		mobileSnacksVerbose(0,mS_Loc.logon.welcome);
+		mobileSnacksVerbose(0,tD_Loc.logon.welcome);
 		mobileSnacks_OnVariablesLoaded()			-- found in mobileSnacks_initialize
 	end
 	if (event == "PLAYER_TARGET_CHANGED") then
@@ -67,82 +67,82 @@ function mobileSnacksOnEvent(event)
 		end
 	end
 		
-	if (event == "TRADE_SHOW" and (not mS_Temp.isEnabled) and mS_CharDatas.ClientInfos and UnitName("NPC")~=nil) then
+	if (event == "TRADE_SHOW" and (not tD_Temp.isEnabled) and tD_CharDatas.ClientInfos and UnitName("NPC")~=nil) then
 		local targetClass, targetEnglishClass = UnitClass("NPC");
 		local guildName2, guildRankName2, guildRankIndex2 = GetGuildInfo("NPC");		
 		local guildName3 = "";
 		if (guildName2~=nil) then guildName3 = "<"..guildName2.."> ";	end		
-		DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.Opposite.." "..UnitName("NPC").." "..guildName3.." -  "..targetClass.." Level "..UnitLevel("NPC"),1,1,0);
+		DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.Opposite.." "..UnitName("NPC").." "..guildName3.." -  "..targetClass.." Level "..UnitLevel("NPC"),1,1,0);
 	end
 	
 	
-	if (not mS_Temp.isEnabled) then
+	if (not tD_Temp.isEnabled) then
 		return
 	end
 	
-	if ((event=="UI_ERROR_MESSAGE" or event=="UI_INFO_MESSAGE") and mS_Temp.Target.Name and arg1) then
-		if (strfind(arg1,mS_Loc.UImessages.cancelled)~=nil or strfind(arg1,mS_Loc.UImessages.failed)~=nil) then
+	if ((event=="UI_ERROR_MESSAGE" or event=="UI_INFO_MESSAGE") and tD_Temp.Target.Name and arg1) then
+		if (strfind(arg1,tD_Loc.UImessages.cancelled)~=nil or strfind(arg1,tD_Loc.UImessages.failed)~=nil) then
 			mobileSnacksVerbose(2,arg1);
-			mS_Temp.Target.Name=nil;
+			tD_Temp.Target.Name=nil;
 		end
-		if (strfind(arg1,mS_Loc.UImessages.complete)~=nil) then
+		if (strfind(arg1,tD_Loc.UImessages.complete)~=nil) then
 			mobileSnacksVerbose(2,arg1);
-			mobileSnacksVerbose(1,"Gonna Registrate the Player "..mS_Temp.Target.Name);
-			mobileSnacksAddClient(mS_Temp.Target.Name);
+			mobileSnacksVerbose(1,"Gonna Registrate the Player "..tD_Temp.Target.Name);
+			mobileSnacksAddClient(tD_Temp.Target.Name);
 		end
 	end
 
 
-	if (event == "TRADE_SHOW" and mS_Temp.isEnabled and mS_Temp.InitiateTrade==nil) then
+	if (event == "TRADE_SHOW" and tD_Temp.isEnabled and tD_Temp.InitiateTrade==nil) then
 		mobileSnacks_GetBlockedItems_ForOwnUsage();			-- found in SLAVE_FRAME
-		if (CursorHasItem()) then   PutItemInBackpack()  end	-- if the player's got an item on the cursor, mS's not running correctly
-		if (mS_CharDatas.SoundCheck) then PlaySound("LEVELUPSOUND") end
-		mS_Temp.Target = {};
+		if (CursorHasItem()) then   PutItemInBackpack()  end	-- if the player's got an item on the cursor, tD's not running correctly
+		if (tD_CharDatas.SoundCheck) then PlaySound("LEVELUPSOUND") end
+		tD_Temp.Target = {};
 		if (UnitName("NPC")==nil) then 
-			mS_Temp.Target.Name="map-bug";
-			mS_Temp.Target.Name="60";
-			mS_Temp.Target.Class, mS_Temp.Target.EnglishClass = "BUG", "BUG"
+			tD_Temp.Target.Name="map-bug";
+			tD_Temp.Target.Name="60";
+			tD_Temp.Target.Class, tD_Temp.Target.EnglishClass = "BUG", "BUG"
 		else
 			if (UnitAffectingCombat("Player")==nil) then TargetUnit("NPC") end	-- target player, if you're not in combat
-			mS_Temp.Target.Name 	= UnitName("NPC");
-			mS_Temp.Target.Level	= UnitLevel("NPC");
-			mS_Temp.Target.Class, mS_Temp.Target.EnglishClass = UnitClass("NPC");
+			tD_Temp.Target.Name 	= UnitName("NPC");
+			tD_Temp.Target.Level	= UnitLevel("NPC");
+			tD_Temp.Target.Class, tD_Temp.Target.EnglishClass = UnitClass("NPC");
 		end
 		
-		if (not mobileSnacksTradeControlChecker(mS_Temp.Target)) then
-			mS_Temp.Target.Name=nil;
+		if (not mobileSnacksTradeControlChecker(tD_Temp.Target)) then
+			tD_Temp.Target.Name=nil;
 			CloseTrade();
 		else
 			local itemsToTrade = mobileSnacksCompileProfile();
 			if (itemsToTrade) then
 				if (itemsToTrade==0) then		-- no items to trade - mobileSnacks should be inactive
-					mobileSnacksVerbose(0,mS_Loc.noItemsToTrade);
-					mS_Temp.Target.Name=nil;
+					mobileSnacksVerbose(0,tD_Loc.noItemsToTrade);
+					tD_Temp.Target.Name=nil;
 				else
-					mS_Temp.timeSlice = 0
-					mS_Temp.tradeState = "populate"
-					mS_Temp.tradeData = {}
-					mS_Temp.tradeData.slotID = 1
-					mS_Temp.tradeData.numAttempts = 0
-					mS_Temp.tradeData.containerLocation = nil
+					tD_Temp.timeSlice = 0
+					tD_Temp.tradeState = "populate"
+					tD_Temp.tradeData = {}
+					tD_Temp.tradeData.slotID = 1
+					tD_Temp.tradeData.numAttempts = 0
+					tD_Temp.tradeData.containerLocation = nil
 				end
 			end
 		end
 	end
 	if (event == "TRADE_ACCEPT_UPDATE") then
 		mobileSnacksVerbose(1,"TRADE_ACCEPT_UPDATE: Player="..arg1.." - Target="..arg2);
-		if (arg1==0 and arg2==1 and mS_CharDatas.AutoAccept) then 
+		if (arg1==0 and arg2==1 and tD_CharDatas.AutoAccept) then 
 			mobileSnacksAccept()
 		end
-		if (arg1==1 and arg2==0 and mS_CharDatas.TimelimitCheck) then
+		if (arg1==1 and arg2==0 and tD_CharDatas.TimelimitCheck) then
 			mobileSnacksStartTimelimiter()
 		end
 	end
 	if (event == "TRADE_CLOSED") then
-		mS_Temp.tradeState = nil
-		mS_Temp.tradeData = nil
-		mS_Temp.InitiateTrade=nil;
-		mS_Temp.Countdown=-1;
+		tD_Temp.tradeState = nil
+		tD_Temp.tradeData = nil
+		tD_Temp.InitiateTrade=nil;
+		tD_Temp.Countdown=-1;
 		mobileSnacksVerbose(1,"Trade Closed")
 
 		--if (UnitIsPlayer("target")) then TargetLastEnemy() end
@@ -155,9 +155,9 @@ function mobileSnacksAddClient(name)
 	
 	local i=0
 	local index=nil;
-	while (mS_Temp.RegUser[i]~=nil) do
-		mobileSnacksVerbose(3,"Registred Player at index "..i.." is: "..mS_Temp.RegUser[i].name);
-		if (mS_Temp.RegUser[i].name == name) then
+	while (tD_Temp.RegUser[i]~=nil) do
+		mobileSnacksVerbose(3,"Registred Player at index "..i.." is: "..tD_Temp.RegUser[i].name);
+		if (tD_Temp.RegUser[i].name == name) then
 			mobileSnacksVerbose(2,name.." found in the List at position "..i);
 			index=i;
 		end
@@ -166,11 +166,11 @@ function mobileSnacksAddClient(name)
 	
 	if (index==nil) then
 		mobileSnacksVerbose(2,name.." was unregistred!  New Registration-Index is: "..i);
-		mS_Temp.RegUser[i]= {
+		tD_Temp.RegUser[i]= {
 			["name"] = name,  	["trades"] = 1
 		}
 	else
-		mS_Temp.RegUser[index].trades = mS_Temp.RegUser[index].trades+1;
+		tD_Temp.RegUser[index].trades = tD_Temp.RegUser[index].trades+1;
 	end
 end
 
@@ -185,14 +185,14 @@ function mobileSnacksClick(slotID)
 
 	if ( itemName ) then
 		ClickTradeButton(slotID)
-		local i=mS_CharDatas.ActualProfile;		
-		mS_CharDatas.profile[mS_CharDatas.ActualRack][i][slotID] = {}
-		mS_CharDatas.profile[mS_CharDatas.ActualRack][i][slotID].itemLink = itemLink
-		mS_CharDatas.profile[mS_CharDatas.ActualRack][i][slotID].itemName = itemName
-		mS_CharDatas.profile[mS_CharDatas.ActualRack][i][slotID].itemTexture = itemTexture
-		mS_CharDatas.profile[mS_CharDatas.ActualRack][i][slotID].itemCount = itemCount
+		local i=tD_CharDatas.ActualProfile;		
+		tD_CharDatas.profile[tD_CharDatas.ActualRack][i][slotID] = {}
+		tD_CharDatas.profile[tD_CharDatas.ActualRack][i][slotID].itemLink = itemLink
+		tD_CharDatas.profile[tD_CharDatas.ActualRack][i][slotID].itemName = itemName
+		tD_CharDatas.profile[tD_CharDatas.ActualRack][i][slotID].itemTexture = itemTexture
+		tD_CharDatas.profile[tD_CharDatas.ActualRack][i][slotID].itemCount = itemCount
 	else
-		mS_CharDatas.profile[mS_CharDatas.ActualRack][mS_CharDatas.ActualProfile][slotID]=nil
+		tD_CharDatas.profile[tD_CharDatas.ActualRack][tD_CharDatas.ActualProfile][slotID]=nil
 	end
 	mobileSnacksVerbose(2, "Recieved Item on Slot "..slotID);
 	mobileSnacksUpdate()
@@ -200,7 +200,7 @@ end
 
 
 function mobileSnacksUpdate()
-	local ActPro=mS_CharDatas.ActualProfile;
+	local ActPro=tD_CharDatas.ActualProfile;
 
 	MoneyInputFrame_ClearFocus(mobileSnacksMoneyFrame)
 	if (mobileSnacksProfileDDframe) then mobileSnacksProfileDDframe:Hide(); end
@@ -212,11 +212,11 @@ function mobileSnacksUpdate()
 		local buttonText = getglobal("mobileSnacksItem"..slotID.."Name")
 		local itemButton = getglobal("mobileSnacksItem"..slotID.."ItemButton")
 		
-		if ( mS_CharDatas.profile and mS_CharDatas.profile[mS_CharDatas.ActualRack] and 
-			 mS_CharDatas.profile[mS_CharDatas.ActualRack][ActPro] and
-		     mS_CharDatas.profile[mS_CharDatas.ActualRack][ActPro][slotID] and 
-			 mS_CharDatas.profile[mS_CharDatas.ActualRack][ActPro][slotID].itemName ) then
-			local temp = mS_CharDatas.profile[mS_CharDatas.ActualRack][ActPro][slotID];
+		if ( tD_CharDatas.profile and tD_CharDatas.profile[tD_CharDatas.ActualRack] and 
+			 tD_CharDatas.profile[tD_CharDatas.ActualRack][ActPro] and
+		     tD_CharDatas.profile[tD_CharDatas.ActualRack][ActPro][slotID] and 
+			 tD_CharDatas.profile[tD_CharDatas.ActualRack][ActPro][slotID].itemName ) then
+			local temp = tD_CharDatas.profile[tD_CharDatas.ActualRack][ActPro][slotID];
 			mobileSnacksVerbose(3,"mobileSnacksUpdate: slotID '"..slotID.."' is used")
 			buttonText:SetText(temp.itemName)
 			SetItemButtonTexture(itemButton, temp.itemTexture)
@@ -229,7 +229,7 @@ function mobileSnacksUpdate()
 		end
 	end
 	
-	if (mS_Temp.isVisible) then	mobileSnacks:Show()  
+	if (tD_Temp.isVisible) then	mobileSnacks:Show()  
 	else
 		if (mobileSnacksTradeControl) then
 			mobileSnacks:Hide()	
@@ -242,25 +242,25 @@ function mobileSnacksUpdate()
 		end
 	end
 	
-	if (mS_Temp.isEnabled) then	
-		mobileSnacksState:SetText(mS_Loc.buttons.enabled)
+	if (tD_Temp.isEnabled) then	
+		mobileSnacksState:SetText(tD_Loc.buttons.enabled)
 		mobileSnacksState:LockHighlight();
 	else	
-		mobileSnacksState:SetText(mS_Loc.buttons.disabled)
+		mobileSnacksState:SetText(tD_Loc.buttons.disabled)
 		mobileSnacksState:UnlockHighlight();
 	end
 		
-	if (mS_CharDatas.broadcastSlice) then
-		if (mS_CharDatas.broadcastSlice < 0) then
-			mS_CharDatas.broadcastSlice = 0
-		elseif (mS_CharDatas.broadcastSlice > mobileSnacks_MaxBroadcastLength*60) then
-			mS_CharDatas.broadcastSlice = mobileSnacks_MaxBroadcastLength*60
+	if (tD_CharDatas.broadcastSlice) then
+		if (tD_CharDatas.broadcastSlice < 0) then
+			tD_CharDatas.broadcastSlice = 0
+		elseif (tD_CharDatas.broadcastSlice > mobileSnacks_MaxBroadcastLength*60) then
+			tD_CharDatas.broadcastSlice = mobileSnacks_MaxBroadcastLength*60
 		end
 	else
-		mS_CharDatas.broadcastSlice = math.floor(mobileSnacks_MaxBroadcastLength/2)
+		tD_CharDatas.broadcastSlice = math.floor(mobileSnacks_MaxBroadcastLength/2)
 	end
 	
-	if (mS_CharDatas.AutoBroadcast) then
+	if (tD_CharDatas.AutoBroadcast) then
 		mobileSnacksSettingsBroadcastTimer:Show();
 		mobileSnacksSettingsBroadcastCheck:SetChecked(1);
 	else
@@ -268,9 +268,9 @@ function mobileSnacksUpdate()
 		mobileSnacksSettingsBroadcastCheck:SetChecked(0);
 	end
 	
-	local tmp = mS_CharDatas.ActualProfile;
-	if (mS_CharDatas.profile and mS_CharDatas.profile[mS_CharDatas.ActualRack] and tmp and mS_CharDatas.profile[mS_CharDatas.ActualRack][tmp].Charge) then
-		MoneyInputFrame_SetCopper(mobileSnacksMoneyFrame, mS_CharDatas.profile[mS_CharDatas.ActualRack][tmp].Charge)
+	local tmp = tD_CharDatas.ActualProfile;
+	if (tD_CharDatas.profile and tD_CharDatas.profile[tD_CharDatas.ActualRack] and tmp and tD_CharDatas.profile[tD_CharDatas.ActualRack][tmp].Charge) then
+		MoneyInputFrame_SetCopper(mobileSnacksMoneyFrame, tD_CharDatas.profile[tD_CharDatas.ActualRack][tmp].Charge)
 	end
 	if (tmp==14) then
 		mobileSnacksMoneyLbL:Hide();		mobileSnacksMoneyFrame:Hide();
@@ -280,11 +280,11 @@ function mobileSnacksUpdate()
 	
 	
 	local s = 1
-	if (mS_CharDatas.ActualRack) then
-		s = mobileSnacksRackColor[mS_CharDatas.ActualRack]
+	if (tD_CharDatas.ActualRack) then
+		s = mobileSnacksRackColor[tD_CharDatas.ActualRack]
 	end
 	local r,g,b = 0.8,0.8,0.8;
-	if (mS_Temp.isEnabled) then
+	if (tD_Temp.isEnabled) then
 		r=s.r; g=s.g; b=s.b;
 	end
 			
@@ -301,59 +301,59 @@ function mobileSnacks_ResetFrames()
 	mobileSnacksMessages:SetPoint("CENTER", "UIParent", "CENTER", 0, 0)
 	mobileSnacksOSD:ClearAllPoints()
 	mobileSnacksOSD:SetPoint("LEFT", "UIParent", "LEFT", 15, 0)
-	mobileSnacksVerbose(0,mS_Loc.resetframes)
+	mobileSnacksVerbose(0,tD_Loc.resetframes)
 end
 
 
 
 SLASH_TRADE_DISPENSER1 = "/mobileSnacks"
-SLASH_TRADE_DISPENSER2 = "/ms"
+SLASH_TRADE_DISPENSER2 = "/td"
 SlashCmdList["TRADE_DISPENSER"] = function(msg)	
 	mobileSnacks_SlashCommand(msg)
 end
 
 
 function mobileSnacks_SlashCommand(msg)
-	if (not msg) then mobileSnacks_Print(mS_Loc.help) 
+	if (not msg) then mobileSnacks_Print(tD_Loc.help) 
 	else
 		local command=string.lower(msg);
 		if (command=="config") then
-			mS_Temp.isVisible = not mS_Temp.isVisible;
+			tD_Temp.isVisible = not tD_Temp.isVisible;
 			mobileSnacksMessages:Hide();
 			mobileSnacksUpdate();
 			mobileSnacksOSD_OnUpdate();
 		elseif (command=="toggle") then
-			mS_Temp.isEnabled = not mS_Temp.isEnabled;
-			if (mS_Temp.isEnabled) then
-				DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.activated)
+			tD_Temp.isEnabled = not tD_Temp.isEnabled;
+			if (tD_Temp.isEnabled) then
+				DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.activated)
 			else
-				DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.deactivated)
+				DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.deactivated)
 			end
 			mobileSnacks_Eventhandler();
 			mobileSnacksUpdate();
 			mobileSnacksOSD_OnUpdate();
 		elseif (command=="broadcast") then
-			if (mS_Temp.isEnabled) then
+			if (tD_Temp.isEnabled) then
 				mobileSnacksBroadcastItems()
 			else
-				DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.OSD.notenabled)
+				DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.OSD.notenabled)
 			end
 		elseif (command=="osd") then
-			mS_CharDatas.OSD.isEnabled = not mS_CharDatas.OSD.isEnabled;
+			tD_CharDatas.OSD.isEnabled = not tD_CharDatas.OSD.isEnabled;
 			mobileSnacksUpdate();
 			mobileSnacksSettings_OnUpdate();
 			mobileSnacksOSD_OnUpdate();
-		elseif (command=="about") then mobileSnacks_Print(mS_Loc.about)
+		elseif (command=="about") then mobileSnacks_Print(tD_Loc.about)
 		elseif (command=="resetpos") then mobileSnacks_ResetFrames()
 		elseif (string.sub(command, 1,7)=="verbose") then
 			local temp=tonumber(string.sub(command, 8,10));
 			if (not temp) then
-				mobileSnacksVerbose(0, mS_Loc.verbose.isset..mS_GlobalDatas.Verbose);
+				mobileSnacksVerbose(0, tD_Loc.verbose.isset..tD_GlobalDatas.Verbose);
 			else 
-				mS_GlobalDatas.Verbose=temp;
-				mobileSnacksVerbose(0,mS_Loc.verbose.setto..mS_GlobalDatas.Verbose);
+				tD_GlobalDatas.Verbose=temp;
+				mobileSnacksVerbose(0,tD_Loc.verbose.setto..tD_GlobalDatas.Verbose);
 			end
-		else 	mobileSnacks_Print(mS_Loc.help);
+		else 	mobileSnacks_Print(tD_Loc.help);
 		end		-- no correct command was found
 	end
 end

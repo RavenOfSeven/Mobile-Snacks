@@ -1,5 +1,5 @@
 <Ui>	
-	<EditBox name="mobileSnacksWhisperBoxTemplate" inherits="UIEditBoxTemplate" letters="256" historyLines="0" autoFocus="false" virtual="true">
+	<EditBox name="tradeDispenserWhisperBoxTemplate" inherits="UIEditBoxTemplate" letters="256" historyLines="0" autoFocus="false" virtual="true">
 		<Size> <AbsDimension x="526" y="16"/> </Size>
 		<Layers>
 			<Layer level="BACKGROUND">
@@ -63,7 +63,7 @@
 	</EditBox>	
 	
 	
-	<Frame name="mobileSnacksMessages" parent="UIParent" hidden="true"  enableMouse="true" movable="true">		<!-- SHOWs some BUTTONS on the screen  -->
+	<Frame name="tradeDispenserMessages" parent="UIParent" hidden="true"  enableMouse="true" movable="true">		<!-- SHOWs some BUTTONS on the screen  -->
 		<Size>	<AbsDimension x="720" y="350"/>	</Size>
 		<Anchors>
 			<Anchor point="CENTER">
@@ -78,77 +78,77 @@
 			<EdgeSize>	<AbsValue val="32"/>  </EdgeSize>
 		</Backdrop>
 		<Frames>
-			<EditBox name="$parentWhisperText1" id="1" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText1" id="1" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
 						<Offset><AbsDimension x="160" y="-15"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText2" id="2" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText2" id="2" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText1" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>	
-			<EditBox name="$parentWhisperText3" id="3" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText3" id="3" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText2" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText4" id="4" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText4" id="4" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText3" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText5" id="5" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText5" id="5" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText4" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText6" id="6" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText6" id="6" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText5" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText7" id="7" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText7" id="7" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText6" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText8" id="8" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText8" id="8" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText7" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText9" id="9" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText9" id="9" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText8" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>	
-			<EditBox name="$parentWhisperText10" id="10" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText10" id="10" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText9" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
 					</Anchor>
 				</Anchors>
 			</EditBox>
-			<EditBox name="$parentWhisperText11" id="11" inherits="mobileSnacksWhisperBoxTemplate">
+			<EditBox name="$parentWhisperText11" id="11" inherits="tradeDispenserWhisperBoxTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentWhisperText10" relativePoint="BOTTOMLEFT">
 						<Offset><AbsDimension x="0" y="-10"/></Offset>
@@ -173,10 +173,10 @@
 						this:SetText(tD_Loc.buttons.hide);
 					</OnLoad>
 					<OnClick>
-					    mobileSnacksPlaySound(this)
-						mobileSnacksMessages:Hide();
+					    tradeDispenserPlaySound(this)
+						tradeDispenserMessages:Hide();
 						tD_Temp.isVisible = true;
-						mobileSnacksUpdate();						
+						tradeDispenserUpdate();						
 					</OnClick>
 				</Scripts>
 			</Button>	
@@ -197,10 +197,10 @@
 						this:SetText(tD_Loc.buttons.reset);
 					</OnLoad>
 					<OnClick>
-					    mobileSnacksPlaySound(this)
+					    tradeDispenserPlaySound(this)
 						local i;
 						for i=1,11 do
-							getglobal("mobileSnacksMessagesWhisperText"..i):SetText(tD_Loc.whisper[i].default);
+							getglobal("tradeDispenserMessagesWhisperText"..i):SetText(tD_Loc.whisper[i].default);
 						end					
 					</OnClick>
 				</Scripts>

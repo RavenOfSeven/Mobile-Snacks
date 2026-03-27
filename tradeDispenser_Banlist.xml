@@ -1,7 +1,7 @@
 <Ui>	
-	<Script file="mobileSnacks_Banlist.lua"/>
+	<Script file="tradeDispenser_Banlist.lua"/>
 
-	<Frame name="mobileSnacksBanlist" hidden="true" parent="mobileSnacksTradeControl" enableMouse="true">
+	<Frame name="tradeDispenserBanlist" hidden="true" parent="tradeDispenserTradeControl" enableMouse="true">
 		<Size>	<AbsDimension x="182" y="346"/>	</Size>
 		<Anchors>
 			<Anchor point="TOPLEFT"  relativeTo="$parent" relativePoint="TOPRIGHT">
@@ -69,7 +69,7 @@
 				</Backdrop>			
 				<Layers>
 					<Layer level="Artwork">		
-						<FontString name="mobileSnacksBanlistScrollText" inherits="GameFontNormal" text="dummy" justifyH="LEFT">
+						<FontString name="tradeDispenserBanlistScrollText" inherits="GameFontNormal" text="dummy" justifyH="LEFT">
 							<Anchors>
 								<Anchor point="TOPLEFT">
 									<Offset><AbsDimension x="10" y="5"/></Offset>
@@ -84,8 +84,8 @@
 						this:SetBackdropColor(0, 0, 0, 1)
 					</OnLoad>
 					<OnMouseWheel>
-						mobileSnacksBanlistScrollBar:SetValue(mobileSnacksBanlistScrollBar:GetValue()-arg1);
-						mobileSnacks_Banlist_Scroll()
+						tradeDispenserBanlistScrollBar:SetValue(tradeDispenserBanlistScrollBar:GetValue()-arg1);
+						tradeDispenser_Banlist_Scroll()
 					</OnMouseWheel>
 				</Scripts>
 			</Frame>
@@ -107,7 +107,7 @@
 						this:SetOrientation("VERTICAL");
 					</OnLoad>
 					<OnValueChanged>
-						mobileSnacks_Banlist_Scroll()
+						tradeDispenser_Banlist_Scroll()
 					</OnValueChanged>
 				</Scripts>
 			</Slider>	
@@ -126,8 +126,8 @@
 						this:SetText(tD_Loc.Banlist.Import);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
-						mobileSnacks_Banlist_Import()
+						tradeDispenserPlaySound(this)
+						tradeDispenser_Banlist_Import()
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -146,9 +146,9 @@
 						this:SetText(tD_Loc.Banlist.Add);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						local name = getglobal(this:GetParent():GetName().."Name"):GetText();
-						mobileSnacks_Banlist_Add(name)
+						tradeDispenser_Banlist_Add(name)
 					</OnClick>
 				</Scripts>
 			</Button>	
@@ -167,9 +167,9 @@
 						this:SetText(tD_Loc.Banlist.Remove);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						local name = getglobal(this:GetParent():GetName().."Name"):GetText();
-						mobileSnacks_Banlist_Remove(name)
+						tradeDispenser_Banlist_Remove(name)
 					</OnClick>
 				</Scripts>
 			</Button>	
@@ -225,12 +225,12 @@
 					<OnEnterPressed>
 						this:ClearFocus()
 						if (this:GetText() and strlen(this:GetText())>=1) then
-							if (tD_Temp.BanListStatus=="add") then mobileSnacks_Banlist_Add(this:GetText()) 
-							elseif (tD_Temp.BanListStatus=="remove") then mobileSnacks_Banlist_Remove(this:GetText()) end
+							if (tD_Temp.BanListStatus=="add") then tradeDispenser_Banlist_Add(this:GetText()) 
+							elseif (tD_Temp.BanListStatus=="remove") then tradeDispenser_Banlist_Remove(this:GetText()) end
 						end
 					</OnEnterPressed>
 					<OnTextChanged>
-						mobileSnacks_Banlist_Edit(this)
+						tradeDispenser_Banlist_Edit(this)
 					</OnTextChanged>
 					<OnEditFocusGained>
 					</OnEditFocusGained>
@@ -244,11 +244,11 @@
 				this:SetBackdropColor(0, 0, 0.2, 1)
 			</OnLoad>
 			<OnShow>
-				mobileSnacks:RegisterEvent("PLAYER_TARGET_CHANGED")
-				mobileSnacks_Banlist_OnShow()
+				tradeDispenser:RegisterEvent("PLAYER_TARGET_CHANGED")
+				tradeDispenser_Banlist_OnShow()
 			</OnShow>
 			<OnHide>
-				mobileSnacks:UnregisterEvent("PLAYER_TARGET_CHANGED")
+				tradeDispenser:UnregisterEvent("PLAYER_TARGET_CHANGED")
 			</OnHide>
 			<OnMouseDown> this:GetParent():GetParent():StartMoving();  </OnMouseDown>
 			<OnMouseUp>  this:GetParent():GetParent():StopMovingOrSizing(); </OnMouseUp>

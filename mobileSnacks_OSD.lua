@@ -8,62 +8,62 @@ end
 
 function mobileSnacks_OSD_buttons()
 	local GFX = "Interface\\AddOns\\mobileSnacks\\artwork\\";		-- path to artwork, used for the buttons of the OSD
-	if (mS_Temp.isEnabled) then
-		mobileSnacksOSDActivateBtn:SetNormalTexture(GFX.."OSD_msToggle_Active_1")
-		mobileSnacksOSDActivateBtn:SetPushedTexture(GFX.."OSD_msToggle_Active_2")
+	if (tD_Temp.isEnabled) then
+		mobileSnacksOSDActivateBtn:SetNormalTexture(GFX.."OSD_tdToggle_Active_1")
+		mobileSnacksOSDActivateBtn:SetPushedTexture(GFX.."OSD_tdToggle_Active_2")
 		
-		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_msConfig_Normal_1")
-		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_msConfig_Normal_2")		
+		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_tdConfig_Normal_1")
+		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_tdConfig_Normal_2")		
 				
-		if (mS_CharDatas.AutoBroadcast) then
-			mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_msBroadcast_Active_1")
-			mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_msBroadcast_Active_2")
+		if (tD_CharDatas.AutoBroadcast) then
+			mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_tdBroadcast_Active_1")
+			mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_tdBroadcast_Active_2")
 		else
-			mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_msBroadcast_Normal_1")
-			mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_msBroadcast_Normal_2")
+			mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_tdBroadcast_Normal_1")
+			mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_tdBroadcast_Normal_2")
 		end
 	else
-		mobileSnacksOSDActivateBtn:SetNormalTexture(GFX.."OSD_msToggle_Inactive_1")
-		mobileSnacksOSDActivateBtn:SetPushedTexture(GFX.."OSD_msToggle_Inactive_2")
-		mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_msBroadcast_Inactive_1")
-		mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_msBroadcast_Inactive_2")
-		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_msConfig_Inactive_1")
-		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_msConfig_Inactive_2")
+		mobileSnacksOSDActivateBtn:SetNormalTexture(GFX.."OSD_tdToggle_Inactive_1")
+		mobileSnacksOSDActivateBtn:SetPushedTexture(GFX.."OSD_tdToggle_Inactive_2")
+		mobileSnacksOSDBroadcastBtn:SetNormalTexture(GFX.."OSD_tdBroadcast_Inactive_1")
+		mobileSnacksOSDBroadcastBtn:SetPushedTexture(GFX.."OSD_tdBroadcast_Inactive_2")
+		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_tdConfig_Inactive_1")
+		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_tdConfig_Inactive_2")
 	end
 
-	if (mS_Temp.isVisible) then
-		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_msConfig_Active_1")
-		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_msConfig_Active_2")
+	if (tD_Temp.isVisible) then
+		mobileSnacksOSDConfigBtn:SetNormalTexture(GFX.."OSD_tdConfig_Active_1")
+		mobileSnacksOSDConfigBtn:SetPushedTexture(GFX.."OSD_tdConfig_Active_2")
 	end	
 end
 
 
 
 function mobileSnacksOSD_OnUpdate()
-	if (not mS_CharDatas.OSD) then return end
+	if (not tD_CharDatas.OSD) then return end
 	mobileSnacksVerbose(2,"OSD_OnUpdate")
-	if (not mS_CharDatas.OSD.isEnabled) then
+	if (not tD_CharDatas.OSD.isEnabled) then
 		mobileSnacksOSD:Hide();
 		return true;
 	end
 	
 	mobileSnacksOSD:Show();
 	
-	if (mS_CharDatas.OSD.border) then
+	if (tD_CharDatas.OSD.border) then
 		mobileSnacksOSD:SetBackdropBorderColor(1, 1, 1, 1);
 	else 
 		mobileSnacksOSD:SetBackdropBorderColor(0,0,0,0);
 	end
 	
-	local col = mS_CharDatas.OSD;
+	local col = tD_CharDatas.OSD;
 	mobileSnacksOSD:SetBackdropColor(col.r, col.g, col.b, col.alpha);
 	mobileSnacks_OSD_buttons();
 	
 	local s=1;
-	if (mS_CharDatas.OSD.scale) then
-		s = mS_CharDatas.OSD.scale;
+	if (tD_CharDatas.OSD.scale) then
+		s = tD_CharDatas.OSD.scale;
 	end
-	if (mS_CharDatas.OSD.horiz) then
+	if (tD_CharDatas.OSD.horiz) then
 		mobileSnacksOSD:SetWidth(28+3*32*s);
 		mobileSnacksOSD:SetHeight(32*s+14);
 

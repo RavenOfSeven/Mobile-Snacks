@@ -1,5 +1,5 @@
 ﻿<Ui>
-	<Script file="mobileSnacks_Settings.lua"/>
+	<Script file="tradeDispenser_Settings.lua"/>
 	
 	
 	<!-- ####################################  MAIN DROPDOWN-CLASS: Label, titlefield, DropDownButton ####################  -->
@@ -12,9 +12,9 @@
 			</OnLoad>
 			<OnClick>
 				tD_CharDatas.ChannelID=this:GetID();
-				mobileSnacks_ChannelUpdate();
+				tradeDispenser_ChannelUpdate();
 				this:GetParent():Hide();
-				mobileSnacksPlaySound(this)
+				tradeDispenserPlaySound(this)
 			</OnClick>						
 		</Scripts>
 	</Button>
@@ -90,7 +90,7 @@
 						this:SetBackdropColor(0,0,0, 0);
 					</OnLoad>
 					<OnShow>
-						if (tD_CharDatas.ChannelID) then mobileSnacks_ChannelUpdate() end;
+						if (tD_CharDatas.ChannelID) then tradeDispenser_ChannelUpdate() end;
 					</OnShow>
 				</Scripts>
 			</Frame>
@@ -159,7 +159,7 @@
 						local i=0;
 						for i=1,5 do 
 							local zielobj = getglobal(this:GetName().."Sub"..(i));
-							local col = mobileSnacksChannelColors[i];
+							local col = tradeDispenserChannelColors[i];
 							zielobj:SetTextColor(col.r,col.g,col.b);
 							zielobj:SetText(col.text);
 							zielobj:Show();
@@ -245,7 +245,7 @@
 			</OnTextChanged>
 			<OnEditFocusGained>
 				tD_CharDatas.OnBroadcastText=this;
-				mobileSnacksVerbose(1,"Focused Random-Text "..this:GetID());
+				tradeDispenserVerbose(1,"Focused Random-Text "..this:GetID());
 			</OnEditFocusGained>
 		</Scripts>
 	</EditBox>
@@ -256,7 +256,7 @@
 	
 	
 	
-	<Frame name="mobileSnacksSettings" hidden="true" parent="mobileSnacks" enableMouse="true">
+	<Frame name="tradeDispenserSettings" hidden="true" parent="tradeDispenser" enableMouse="true">
 		<Size>	<AbsDimension x="182" y="346"/>	</Size>
 		<Anchors>
 			<Anchor point="BOTTOMRIGHT"  relativeTo="$parent" relativePoint="BOTTOMLEFT">
@@ -344,14 +344,14 @@
 						f:SetText(tD_Loc.OSD.OSDtitle);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						tD_CharDatas.OSD.isEnabled = not tD_CharDatas.OSD.isEnabled;
-						mobileSnacksSettings_OnUpdate();
-						mobileSnacksOSD_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
+						tradeDispenserOSD_OnUpdate();
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",200,50);
-						mobileSnacksDrawTooltip(tD_Loc.settings.osdtooltip)			
+						tradeDispenserDrawTooltip(tD_Loc.settings.osdtooltip)			
 					</OnEnter>
 					<OnLeave>		GameTooltip:Hide();		</OnLeave>
 				</Scripts>
@@ -380,10 +380,10 @@
 						getglobal(this:GetName().."LbLTitle"):SetText(tD_Loc.settings.lock);						
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						tD_CharDatas.OSD.locked = not tD_CharDatas.OSD.locked;
-						mobileSnacksSettings_OnUpdate();
-						mobileSnacksOSD_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
+						tradeDispenserOSD_OnUpdate();
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -419,8 +419,8 @@
 					</OnLoad>
 					<OnValueChanged>
 						if (tD_CharDatas.OSD) then tD_CharDatas.OSD.scale = floor(this:GetValue()*100)/100 end
-						mobileSnacksSettings_OnUpdate();
-						mobileSnacksOSD_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
+						tradeDispenserOSD_OnUpdate();
 					</OnValueChanged>
 				</Scripts>
 			</Slider>	
@@ -474,8 +474,8 @@
 						getglobal(this:GetName() .. "NormalTexture"):SetVertexColor(col.r, col.g, col.b);
 					</OnShow>
 					<OnClick>
-					    mobileSnacksPlaySound(this)
-						mobileSnacksSettings_OnColorChange(this:GetParent());
+					    tradeDispenserPlaySound(this)
+						tradeDispenserSettings_OnColorChange(this:GetParent());
 					</OnClick>
 				</Scripts>
 				<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch"/>
@@ -505,9 +505,9 @@
 						getglobal(this:GetName().."LbLTitle"):SetText(tD_Loc.settings.border);
 					</OnShow>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						tD_CharDatas.OSD.border = not tD_CharDatas.OSD.border;
-						mobileSnacksOSD_OnUpdate();
+						tradeDispenserOSD_OnUpdate();
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -536,9 +536,9 @@
 						getglobal(this:GetName().."LbLTitle"):SetText(tD_Loc.settings.horiz);
 					</OnShow>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						tD_CharDatas.OSD.horiz = not tD_CharDatas.OSD.horiz;
-						mobileSnacksOSD_OnUpdate();
+						tradeDispenserOSD_OnUpdate();
 					</OnClick>
 				</Scripts>
 			</CheckButton>			
@@ -601,17 +601,17 @@
 						getglobal(this:GetName().."LbL"):SetText(tD_Loc.settings.autobroadcast);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						local f=getglobal(this:GetParent():GetName().."BroadcastTimer");
 						if ( this:GetChecked() ) then	f:Show()	else		f:Hide()	end
 						tD_CharDatas.AutoBroadcast= not tD_CharDatas.AutoBroadcast;
-						mobileSnacksSettings_OnUpdate();
-						mobileSnacksUpdate();
-						mobileSnacks_OSD_buttons()
+						tradeDispenserSettings_OnUpdate();
+						tradeDispenserUpdate();
+						tradeDispenser_OSD_buttons()
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",200,50);
-						mobileSnacksDrawTooltip(tD_Loc.settings.broadcasttooltip)				
+						tradeDispenserDrawTooltip(tD_Loc.settings.broadcasttooltip)				
 					</OnEnter>
 					<OnLeave>		GameTooltip:Hide();		</OnLeave>					
 				</Scripts>
@@ -638,23 +638,23 @@
 					<OnLoad>
 						local n=this:GetName();
 						getglobal(n.."Text"):SetText("");
-						getglobal(n.."High"):SetText(mobileSnacks_MaxBroadcastLength.." min");
+						getglobal(n.."High"):SetText(tradeDispenser_MaxBroadcastLength.." min");
 						getglobal(n.."Low"):SetText("1 min");
 						getglobal(n.."High"):SetTextColor(1,0.9,0);
 						getglobal(n.."Low"):SetTextColor(1,0.9,0);
 						getglobal(n.."Lbl"):SetTextColor(1,1,1);
-						this:SetMinMaxValues(1, mobileSnacks_MaxBroadcastLength);
+						this:SetMinMaxValues(1, tradeDispenser_MaxBroadcastLength);
 						this:SetValueStep(1);
-						this:SetValue(math.floor(mobileSnacks_MaxBroadcastLength/2));
+						this:SetValue(math.floor(tradeDispenser_MaxBroadcastLength/2));
 					</OnLoad>
 					<OnShow>
-						mobileSnacksSettings_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
 					</OnShow>
 					<OnValueChanged>
 						tD_CharDatas.broadcastSlice = math.floor(this:GetValue())*60;
 						tD_Temp.broadcastSlice=10;
-						mobileSnacksSettings_OnUpdate();
-						mobileSnacksUpdate();
+						tradeDispenserSettings_OnUpdate();
+						tradeDispenserUpdate();
 					</OnValueChanged>
 				</Scripts>
 			</Slider>
@@ -682,13 +682,13 @@
 						getglobal(this:GetName().."LbL"):SetText(tD_Loc.settings.DisplayStock);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						tD_CharDatas.DisplayStockCheck = not tD_CharDatas.DisplayStockCheck;
-						mobileSnacksSettings_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
 					</OnClick>
 					<!--<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",200,50);
-						mobileSnacksDrawTooltip(tD_Loc.settings.TimerTooltip)				
+						tradeDispenserDrawTooltip(tD_Loc.settings.TimerTooltip)				
 					</OnEnter>
 					<OnLeave>		GameTooltip:Hide();		</OnLeave>				-->	
 				</Scripts>
@@ -717,13 +717,13 @@
 						getglobal(this:GetName().."LbL"):SetText(tD_Loc.settings.PlaySounds);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						tD_CharDatas.SoundCheck = not tD_CharDatas.SoundCheck;
-						mobileSnacksSettings_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
 					</OnClick>
 					<!--<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",200,50);
-						mobileSnacksDrawTooltip(tD_Loc.settings.TimerTooltip)				
+						tradeDispenserDrawTooltip(tD_Loc.settings.TimerTooltip)				
 					</OnEnter>
 					<OnLeave>		GameTooltip:Hide();		</OnLeave>				-->	
 				</Scripts>
@@ -752,17 +752,17 @@
 						getglobal(this:GetName().."LbL"):SetText(tD_Loc.settings.Timelimit);
 					</OnLoad>
 					<OnClick>
-						mobileSnacksPlaySound(this)
+						tradeDispenserPlaySound(this)
 						local f=getglobal(this:GetParent():GetName().."TimelimitSlider");
 						if ( this:GetChecked() ) then	f:Show()	else		f:Hide()	end
 						tD_CharDatas.TimelimitCheck = not tD_CharDatas.TimelimitCheck;
-						mobileSnacksSettings_OnUpdate();
-						<!--mobileSnacksUpdate();
-						mobileSnacks_OSD_buttons()-->
+						tradeDispenserSettings_OnUpdate();
+						<!--tradeDispenserUpdate();
+						tradeDispenser_OSD_buttons()-->
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",200,50);
-						mobileSnacksDrawTooltip(tD_Loc.settings.TimerTooltip)				
+						tradeDispenserDrawTooltip(tD_Loc.settings.TimerTooltip)				
 					</OnEnter>
 					<OnLeave>		GameTooltip:Hide();		</OnLeave>					
 				</Scripts>
@@ -801,11 +801,11 @@
 						this:SetValue(30);
 					</OnLoad>
 					<OnShow>
-						mobileSnacksSettings_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
 					</OnShow>
 					<OnValueChanged>
 						tD_CharDatas.Timelimit = math.floor(this:GetValue());
-						mobileSnacksSettings_OnUpdate();
+						tradeDispenserSettings_OnUpdate();
 					</OnValueChanged>
 				</Scripts>
 			</Slider>
@@ -834,8 +834,8 @@
 					<OnValueChanged>
 						getglobal(this:GetName().."Text"):SetText(tD_Loc.settings.randomtext.." "..this:GetValue());
 						tD_CharDatas.Random=this:GetValue();
-						mobileSnacks_EditBoxUpdate();
-						if (mobileSnacksBanlist) then mobileSnacks_Banlist_Update() end
+						tradeDispenser_EditBoxUpdate();
+						if (tradeDispenserBanlist) then tradeDispenser_Banlist_Update() end
 					</OnValueChanged>
 				</Scripts>
 			</Slider>
@@ -931,7 +931,7 @@
 				this:SetBackdropColor(0, 0, 0.2, 1);
 			</OnLoad>	
 			<OnShow>
-				mobileSnacks_EditBoxUpdate();
+				tradeDispenser_EditBoxUpdate();
 			</OnShow>
 			<OnMouseDown> this:GetParent():StartMoving();  </OnMouseDown>
 			<OnMouseUp>  this:GetParent():StopMovingOrSizing(); </OnMouseUp>

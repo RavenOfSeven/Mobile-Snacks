@@ -1,61 +1,61 @@
 ﻿-- this is the Version of TradeDispenser - shown in the messages of the game
-if (not mobileSnacks_Version) then 	mobileSnacks_Version = "0.96" 	end
+if (not tradeDispenser_Version) then 	tradeDispenser_Version = "0.96" 	end
 -- The Version of the saved datas... 	only edit, if the architecture got changed. 
 if (not configDataVersion) then 		configDataVersion = "0.80"  		end
 
 
 
-function mobileSnacks_GetEnglish()
-	mobileSnacks_ProgName = "mobileSnacks";
-	-- mobileSnacks_Version is defined in mobileSnacks_Initialize.lua
+function tradeDispenser_GetEnglish()
+	tradeDispenser_ProgName = "tradeDispenser";
+	-- tradeDispenser_Version is defined in tradeDispenser_Initialize.lua
 
 	tD_Loc = {
 		["logon"]			= {
 			["changed"]		= "Data version has changed, resetting configuration",
-			["welcome"] 	= " Version "..mobileSnacks_Version.." - initialized",
+			["welcome"] 	= " Version "..tradeDispenser_Version.." - initialized",
 		},	
-		["configtitle"]		= mobileSnacks_ProgName.." V"..mobileSnacks_Version,
+		["configtitle"]		= tradeDispenser_ProgName.." V"..tradeDispenser_Version,
 		["configItems"]		= "Insert Money and Items",
 		
 		["about"]		= {	-- open end. could have more than 5 lines
-			[1] = "|cFF7E9CE5About the "..mobileSnacks_ProgName,
-			[2] = "|cFFFFFFFF   Version:   |cFF45E849"..mobileSnacks_Version,
+			[1] = "|cFF7E9CE5About the "..tradeDispenser_ProgName,
+			[2] = "|cFFFFFFFF   Version:   |cFF45E849"..tradeDispenser_Version,
 			[3] = "|cFFFFFFFF   Author:     |cFF45E849Kaboom  @ Arthas (EU)",
 			[4] = "|cFFFFFFFF   Core:       |cFF45E849Shag    @ Arthas (EU)",
 			[5] = "|cFFFFFFFF   More:       |cFF45E849Please read the ReadMe",
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Prefix:",
-			[2] = "|cFFFFFFFF  /td or /mobileSnacks       |cFF45E849Shows the Help-Text",
+			[2] = "|cFFFFFFFF  /td or /tradeDispenser       |cFF45E849Shows the Help-Text",
 			[3] = "|cFF7E9CE5Options (use Prefix + Option)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Toggles the ConfigFrame",
-			[5] = "|cFFFFFFFF  toggle         |cFF45E849Activates/Deactivates "..mobileSnacks_ProgName,
+			[5] = "|cFFFFFFFF  toggle         |cFF45E849Activates/Deactivates "..tradeDispenser_ProgName,
 			[6] = "|cFFFFFFFF  broadcast   |cFF45E849Broadcasts your Trade",
 			[7] = "|cFFFFFFFF  OSD           |cFF45E849Toggles the OSD (shortcut-Buttons)",
 			[8]	= "|cFFFFFFFF  verbose X   |cFF45E849Sets the VerboseLevel (DebugInfo) to level X. (0=off)",
 			[9] = "|cFFFFFFFF  resetpos      |cFF45E849resets the position of all tD-Frames",
-			[10] = "|cFFFFFFFF  about          |cFF45E849Shows more informations about "..mobileSnacks_ProgName,
+			[10] = "|cFFFFFFFF  about          |cFF45E849Shows more informations about "..tradeDispenser_ProgName,
 		},
 		["whisper"]		= {		-- default messages - can be edited ingame
 			[1] = {
 				["short"]	= "Something's wrong",
-				["default"]	= mobileSnacks_ProgName..": Something is wrong with my inventory (probably item-lag), I can't deliver items. Please try again",
+				["default"]	= tradeDispenser_ProgName..": Something is wrong with my inventory (probably item-lag), I can't deliver items. Please try again",
 			},
 			[2]	= {
 				["short"]	= "Spam: Out of items",
-				["default"]	= mobileSnacks_ProgName..": I'm out of items, please don't trade with me anymore",
+				["default"]	= tradeDispenser_ProgName..": I'm out of items, please don't trade with me anymore",
 			},
 			[3] = {
 				["short"]	= "Stack not complete",
-				["default"]	= mobileSnacks_ProgName..": I'm sorry that the last stack isn't complete, but I'm out of items. Please accept the trade",
+				["default"]	= tradeDispenser_ProgName..": I'm sorry that the last stack isn't complete, but I'm out of items. Please accept the trade",
 			},
 			[4]	= {
 				["short"]	= "no more items",
-				["default"]	= mobileSnacks_ProgName..": That's all, I don't have more",
+				["default"]	= tradeDispenser_ProgName..": That's all, I don't have more",
 			},
 			[5] = {
 				["short"]	= "i need money",
-				["default"]	= mobileSnacks_ProgName..": I'll sell you these items for ", --  ...  2g 30s 00c
+				["default"]	= tradeDispenser_ProgName..": I'll sell you these items for ", --  ...  2g 30s 00c
 			},
 			[6] = {
 				["short"]	= "LowLevel-Message",
@@ -83,7 +83,7 @@ function mobileSnacks_GetEnglish()
 			},
 		},
 		["Broadcast"] 				= {
-			[1] 					= mobileSnacks_ProgName.." enabled! Trade me and grab yourself some items!",
+			[1] 					= tradeDispenser_ProgName.." enabled! Trade me and grab yourself some items!",
 			[2]						= "edit this line to write a new broadcast-message",
 			[3]						= "Note: you can insert items with Shift+Click",
 			[4]						= "Add more messages and own the raid",	
@@ -92,7 +92,7 @@ function mobileSnacks_GetEnglish()
 		["Opposite"]				= "Your client is:",
 		["rack"]					= "Rack #",
 		["RackTitle"]				= "Active Rack",
-		["resetframes"]				= "Frame-Reset of "..mobileSnacks_ProgName..": DONE";
+		["resetframes"]				= "Frame-Reset of "..tradeDispenser_ProgName..": DONE";
 		["buttons"]			= {
 			["tradecontrol"] 		= "TradeControl",
 			["settings"]			= "Settings",
@@ -144,7 +144,7 @@ function mobileSnacks_GetEnglish()
 			["broadcasttooltip"]	= {
 				[0] = "Toggle Automatic Broadcast",
 				[1] = "Could only broadcast, if",
-				[2] = mobileSnacks_ProgName.." is running",
+				[2] = tradeDispenser_ProgName.." is running",
 			},
 			["lock"]		= "Locked",
 			["scale"]		= "Scale:",
@@ -165,7 +165,7 @@ function mobileSnacks_GetEnglish()
 			["TimerTooltip"] = {
 				[0] = "This function will activate a timer",
 				[1] = "for limiting the trade-duration",
-				[2] = "before "..mobileSnacks_ProgName.." cancels",
+				[2] = "before "..tradeDispenser_ProgName.." cancels",
 				[3] = "the trade the client will get a warning.",
 				[4] = "Note: This will only work if YOU already",
 				[5] = "have accepted the trade."
@@ -173,7 +173,7 @@ function mobileSnacks_GetEnglish()
 		},
 		["OSD"]				= {
 			["OSDtitle"]	= "OSD",
-			["notenabled"]	= mobileSnacks_ProgName.." is not enabled",
+			["notenabled"]	= tradeDispenser_ProgName.." is not enabled",
 			["broadcasttip"]	= {
 				["title"] 		= "Broadcast your Trade",
 				["channel"]		= "Spamed channel: ",	-- here follows the localised channel-name
@@ -181,9 +181,9 @@ function mobileSnacks_GetEnglish()
 				["right"]		= "RightClick: Toggle AutoBroadcast",
 			},
 			["actbutton"] 	= {
-				["activate"]	= "Activate "..mobileSnacks_ProgName,
-				["deactivate"]	= "Deactivate "..mobileSnacks_ProgName,
-				["left"]	= "LeftClick:  toggle "..mobileSnacks_ProgName,
+				["activate"]	= "Activate "..tradeDispenser_ProgName,
+				["deactivate"]	= "Deactivate "..tradeDispenser_ProgName,
+				["left"]	= "LeftClick:  toggle "..tradeDispenser_ProgName,
 				["right"]	= "RightClick: Reset List",
 				["noright"]	= "RightClick: Reset Disabled",
 			},
@@ -237,14 +237,14 @@ function mobileSnacks_GetEnglish()
 			["failed"]		= "Trade failed",
 		},
 		["KeyBindings"]		= {
-			["header"]		= mobileSnacks_ProgName,
-			[1]				= "Toggle mobileSnacks",
+			["header"]		= tradeDispenser_ProgName,
+			[1]				= "Toggle tradeDispenser",
 			[2]				= "Toggle ConfigFrame",
 			[3]				= "Toggle OSD",
 			[4]				= "Insta-Broadcast",
 		},
-		["activated"] 		= mobileSnacks_ProgName.." activated",
-		["deactivated"] 	= mobileSnacks_ProgName.." deactivated",
+		["activated"] 		= tradeDispenser_ProgName.." activated",
+		["deactivated"] 	= tradeDispenser_ProgName.." deactivated",
 		["verbose"]		= {
 			["isset"]	= "Verbose-Level is: ",
 			["setto"]	= "Changed Verbose-Level to ",
@@ -254,55 +254,55 @@ function mobileSnacks_GetEnglish()
 	};
 end
 
-function mobileSnacks_GetGerman()
-	mobileSnacks_ProgName = "mobileSnacks";
-	-- mobileSnacks_Version is defined in mobileSnacks_Initialize.lua
+function tradeDispenser_GetGerman()
+	tradeDispenser_ProgName = "tradeDispenser";
+	-- tradeDispenser_Version is defined in tradeDispenser_Initialize.lua
 	tD_Loc = {
 		["logon"]			= {
 			["changed"]		= "Speicher-System nicht aktuell, Configurationen werden zur\195\188ckgesetzt",
-			["welcome"] 	= "Version "..mobileSnacks_Version.." initialisiert",
+			["welcome"] 	= "Version "..tradeDispenser_Version.." initialisiert",
 		},	
-		["configtitle"]		= mobileSnacks_ProgName.." V"..mobileSnacks_Version,
+		["configtitle"]		= tradeDispenser_ProgName.." V"..tradeDispenser_Version,
 		["configItems"]		= "Geld und Items einfügen",
 		["about"]		= {	-- open end. could have more than 5 lines
-			[1] = "|cFF7E9CE5Informationen zu "..mobileSnacks_ProgName,
-			[2] = "|cFFFFFFFF  Version: |cFF45E849"..mobileSnacks_Version,
+			[1] = "|cFF7E9CE5Informationen zu "..tradeDispenser_ProgName,
+			[2] = "|cFFFFFFFF  Version: |cFF45E849"..tradeDispenser_Version,
 			[3] = "|cFFFFFFFF  Author:  |cFF45E849Kaboom  @ Arthas (EU)",
 			[4] = "|cFFFFFFFF  Kern:    |cFF45E849Shag    @ Arthas (EU)",
 			[5] = "|cFFFFFFFF  Mehr:    |cFF45E849Bitte lies die LiesMich.txt",
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Prefix:",
-			[2] = "|cFFFFFFFF  /td oder /mobileSnacks       |cFF45E849Zeigt diese Hilfestellung",
+			[2] = "|cFFFFFFFF  /td oder /tradeDispenser       |cFF45E849Zeigt diese Hilfestellung",
 			[3] = "|cFF7E9CE5Optionen (Benutzung: Prefix + Option)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Schalter f\195\188r das ConfigFrame",
-			[5] = "|cFFFFFFFF  toggle         |cFF45E849Aktiviert/Deaktiviert "..mobileSnacks_ProgName,
+			[5] = "|cFFFFFFFF  toggle         |cFF45E849Aktiviert/Deaktiviert "..tradeDispenser_ProgName,
 			[6] = "|cFFFFFFFF  broadcast   |cFF45E849Teilt deine Handelsabsichten mit",
 			[7] = "|cFFFFFFFF  OSD           |cFF45E849Schalter für das OSD (Shortcut-Buttons)",
 			[8]	= "|cFFFFFFFF  verbose X   |cFF45E849Zeigt Debug-Informationen. (Level X: 0=aus, 3=ALLE)",
 			[9] = "|cFFFFFFFF  resetpos      |cFF45E849setzt alle tD-Fenster zurück",
-			[10] = "|cFFFFFFFF  about          |cFF45E849Zeigt mehr Infos zu "..mobileSnacks_ProgName,
+			[10] = "|cFFFFFFFF  about          |cFF45E849Zeigt mehr Infos zu "..tradeDispenser_ProgName,
 		},
 		["whisper"]		= {		-- default messages - could be edited ingame
 			[1] = {
 				["short"]	= "irgendwas ist falsch",
-				["default"]	= mobileSnacks_ProgName..": Irgendwas lief falsch im Invenar (vielleicht Item-Lag). Ich kann keine Items liefern, bitte versuch es nochmal!",
+				["default"]	= tradeDispenser_ProgName..": Irgendwas lief falsch im Invenar (vielleicht Item-Lag). Ich kann keine Items liefern, bitte versuch es nochmal!",
 			},
 			[2]	= {
 				["short"]	= "Keine Items mehr (Spam)",
-				["default"]	= mobileSnacks_ProgName..": Ich habe keine weiteren Items, bitte handelt nicht mehr mit mir.",
+				["default"]	= tradeDispenser_ProgName..": Ich habe keine weiteren Items, bitte handelt nicht mehr mit mir.",
 			},
 			[3] = {
 				["short"]	= "Stack nicht komplett",
-				["default"]	= mobileSnacks_ProgName..": Sorry, dass der letzte Stack nicht komplett ist. Leider habe ich nicht mehr genug im Inventar.",
+				["default"]	= tradeDispenser_ProgName..": Sorry, dass der letzte Stack nicht komplett ist. Leider habe ich nicht mehr genug im Inventar.",
 			},
 			[4]	= {
 				["short"]	= "Keine Items mehr",
-				["default"]	= mobileSnacks_ProgName..": Keine weiteren Items an Lager!",
+				["default"]	= tradeDispenser_ProgName..": Keine weiteren Items an Lager!",
 			},
 			[5] = {
 				["short"]	= "Verlange Geld!",
-				["default"]	=  mobileSnacks_ProgName..": Für diese Items hätte ich gerne ",
+				["default"]	=  tradeDispenser_ProgName..": Für diese Items hätte ich gerne ",
 			},
 			[6] = {
 				["short"]	= "Level zu niedrig",
@@ -330,7 +330,7 @@ function mobileSnacks_GetGerman()
 			},
 		},
 		["Broadcast"] 				= {
-			[1] 					= mobileSnacks_ProgName.." aktiviert! Handelt mich an, dann kriegs ihr was",
+			[1] 					= tradeDispenser_ProgName.." aktiviert! Handelt mich an, dann kriegs ihr was",
 			[2]						= "Editiere diese Zeile, um einen weiteren Zufallstext zu erstellen",
 			[3]						= "Hinweis: Man kann Items via Shift+Klick einfügen",
 			[4]						= "Schreib noch mehr Texte und owne den Raid",	
@@ -339,7 +339,7 @@ function mobileSnacks_GetGerman()
 		["Opposite"]				= "Dein Kunde ist:",
 		["rack"]					= "Bündel #",
 		["RackTitle"]				= "Aktives Bündel",	
-		["resetframes"]				= "Alle Fenster von "..mobileSnacks_ProgName.." wurden zurückgesetzt";
+		["resetframes"]				= "Alle Fenster von "..tradeDispenser_ProgName.." wurden zurückgesetzt";
 		["buttons"]			= {
 			["tradecontrol"] 		= "TradeControl",
 			["settings"]			= "Einstellungen",
@@ -391,7 +391,7 @@ function mobileSnacks_GetGerman()
 			["broadcasttooltip"]	= {
 				[0] = "Aktiviert Auto-Broadcast",
 				[1] = "Funktioniert aber nur, wenn",
-				[2] = mobileSnacks_ProgName.." aktiviert ist",
+				[2] = tradeDispenser_ProgName.." aktiviert ist",
 			},
 			["lock"]		= "fixiert",
 			["scale"]		= "Grösse:",
@@ -420,7 +420,7 @@ function mobileSnacks_GetGerman()
 		},
 		["OSD"]				= {
 			["OSDtitle"]	= "OSD",
-			["notenabled"]	= mobileSnacks_ProgName.." ist nicht aktiv",
+			["notenabled"]	= tradeDispenser_ProgName.." ist nicht aktiv",
 			["broadcasttip"]	= {
 				["title"] 		= "Den Handel mitteilen",
 				["channel"]		= "Gespamter Kanal: ",	-- here follows the localised channel-name
@@ -428,9 +428,9 @@ function mobileSnacks_GetGerman()
 				["right"]		= "RechtKlick: Auto-Broadcast",
 			},
 			["actbutton"] 	= {
-				["activate"]	= "Activiere "..mobileSnacks_ProgName,
-				["deactivate"]	= "Deactiviere "..mobileSnacks_ProgName,
-				["left"]	= "LinksKlick: Schalter für "..mobileSnacks_ProgName,
+				["activate"]	= "Activiere "..tradeDispenser_ProgName,
+				["deactivate"]	= "Deactiviere "..tradeDispenser_ProgName,
+				["left"]	= "LinksKlick: Schalter für "..tradeDispenser_ProgName,
 				["right"]	= "RechtsKlick: Liste löschen",
 				["noright"]	= "RechtsKlick: Liste löschen (inaktiv)",
 			},
@@ -485,14 +485,14 @@ function mobileSnacks_GetGerman()
 			["failed"]		= "Handel fehlgeschlagen",
 		},
 		["KeyBindings"]		= {
-			["header"]		= mobileSnacks_ProgName,
+			["header"]		= tradeDispenser_ProgName,
 			[1]				= "Schalter für tD",
 			[2]				= "Zeige Config-Frame",
 			[3]				= "Zeige OSD",
 			[4]				= "Sofort-Broadcast",
 		},		
-		["activated"] 		= mobileSnacks_ProgName.." aktiviert",
-		["deactivated"] 	= mobileSnacks_ProgName.." deaktiviert",
+		["activated"] 		= tradeDispenser_ProgName.." aktiviert",
+		["deactivated"] 	= tradeDispenser_ProgName.." deaktiviert",
 		["verbose"]		= {
 			["isset"]	= "Verbose-Level zur Zeit: ",
 			["setto"]	= "Verbose-Level ist jetzt: ",
@@ -502,18 +502,18 @@ function mobileSnacks_GetGerman()
 	}
 end
 
-function mobileSnacks_GetChinese()
-	mobileSnacks_ProgName = "自动售货机";
+function tradeDispenser_GetChinese()
+	tradeDispenser_ProgName = "自动售货机";
 	tD_Loc = {
 		["logon"]			= {
 			["changed"]		= "数据版本改变，重置配置文件",
-			["welcome"] 	= " 版本 "..mobileSnacks_Version.." - 初始化完毕",
+			["welcome"] 	= " 版本 "..tradeDispenser_Version.." - 初始化完毕",
 		},
-		["configtitle"]		= mobileSnacks_ProgName.." V"..mobileSnacks_Version,
+		["configtitle"]		= tradeDispenser_ProgName.." V"..tradeDispenser_Version,
 		["configItems"]		= "设置金钱及物品",
 		["about"]		= {	-- open end. could have more than 5 lines
-			[1] = "关于"..mobileSnacks_ProgName,
-			[2] = "   版本:   "..mobileSnacks_Version,
+			[1] = "关于"..tradeDispenser_ProgName,
+			[2] = "   版本:   "..tradeDispenser_Version,
 			[3] = "   作者:     Kaboom  @ Arthas (EU)",
 			[4] = "   作者:     Shag    @ Arthas (EU)",
 			[5] = "   修改:     Mickey",
@@ -521,36 +521,36 @@ function mobileSnacks_GetChinese()
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "前缀:",
-			[2] = "  /td 或 /mobileSnacks    显示帮助",
+			[2] = "  /td 或 /tradeDispenser    显示帮助",
 			[3] = "设置命令 (使用 前缀 + 以下命令)",
 			[4] = "  config        打开配置界面",
-			[5] = "  toggle        启用/禁用"..mobileSnacks_ProgName,
+			[5] = "  toggle        启用/禁用"..tradeDispenser_ProgName,
 			[6] = "  broadcast   广播交易信息",
 			[7] = "  OSD          开启快捷窗口 (图标按钮)",
 			[8]	= "  verbose X    设置 VerboseLevel(Debug信息)为level X. (0=关闭)",
 			[9] = "  resetpos    moves all frames of tD to their default position",
-			[10] = "  about        关于"..mobileSnacks_ProgName,
+			[10] = "  about        关于"..tradeDispenser_ProgName,
 		},
 		["whisper"]		= {
 			[1] = {
 				["short"]	= "出 错",
-				["default"]	= mobileSnacks_ProgName..": 出了点小问题(可能是物品延迟)，没放上物品.请再试一次。",
+				["default"]	= tradeDispenser_ProgName..": 出了点小问题(可能是物品延迟)，没放上物品.请再试一次。",
 			},
 			[2]	= {
 				["short"]	= "暂时缺货",
-				["default"]	= mobileSnacks_ProgName..": 物品用尽，请暂时不要交易我...",
+				["default"]	= tradeDispenser_ProgName..": 物品用尽，请暂时不要交易我...",
 			},
 			[3] = {
 				["short"]	= "数量不足1组",
-				["default"]	= mobileSnacks_ProgName..": 很抱歉只剩下这点了。请确认交易。",
+				["default"]	= tradeDispenser_ProgName..": 很抱歉只剩下这点了。请确认交易。",
 			},
 			[4]	= {
 				["short"]	= "数量不足",
-				["default"]	= mobileSnacks_ProgName..": OK，就是这些了，请确认交易。",
+				["default"]	= tradeDispenser_ProgName..": OK，就是这些了，请确认交易。",
 			},
 			[5] = {
 				["short"]	= "售 价",
-				["default"]	= mobileSnacks_ProgName..": 您需要为这些东西支付 ", --  ...  2g 30s 00c
+				["default"]	= tradeDispenser_ProgName..": 您需要为这些东西支付 ", --  ...  2g 30s 00c
 			},
 			[6] = {
 				["short"]	= "等级低",
@@ -578,7 +578,7 @@ function mobileSnacks_GetChinese()
 			},
 		},
 		["Broadcast"] 				= {
-			[1] 					= mobileSnacks_ProgName.." 开始营业了! 交易我来换取你想要的东西!",
+			[1] 					= tradeDispenser_ProgName.." 开始营业了! 交易我来换取你想要的东西!",
 			[2]						= "编辑一条新的广播.",
 			[3]						= "提示: Shift+点击 可以在广播中加入物品链接",
 			[4]						= "添加更多广播",	
@@ -587,7 +587,7 @@ function mobileSnacks_GetChinese()
 		["Opposite"]				= "你的顾客是：",
 		["rack"]					= "货架 #",
 		["RackTitle"]				= "已激活",		
-		["resetframes"]				= "重置 "..mobileSnacks_ProgName..": 完成";
+		["resetframes"]				= "重置 "..tradeDispenser_ProgName..": 完成";
 		["buttons"]			= {
 			["tradecontrol"] 		= "交易控制",
 			["settings"]			= "设置",
@@ -639,7 +639,7 @@ function mobileSnacks_GetChinese()
 			["broadcasttooltip"]	= {
 				[0] = "开启自动广播",
 				[1] = "只能在启用了",
-				[2] = mobileSnacks_ProgName.."时广播",
+				[2] = tradeDispenser_ProgName.."时广播",
 			},
 			["lock"]		= "锁定",
 			["scale"]		= "缩放:",
@@ -658,7 +658,7 @@ function mobileSnacks_GetChinese()
 			["TimerTooltip"] = {
 				[0] = "这个选项将激活一个计时器",
 				[1] = "如果设定时间内未完成交易,",
-				[2] = "将会在 "..mobileSnacks_ProgName.." 取消",
+				[2] = "将会在 "..tradeDispenser_ProgName.." 取消",
 				[3] = "交易前发出警告.",
 				[4] = "注意: 这个功能只能在你已经接受",
 				[5] = "交易后生效."
@@ -666,7 +666,7 @@ function mobileSnacks_GetChinese()
 		},
 		["OSD"]				= {
 			["OSDtitle"]	= "显示",
-			["notenabled"]	= mobileSnacks_ProgName.."未启用",
+			["notenabled"]	= tradeDispenser_ProgName.."未启用",
 			["broadcasttip"]	= {
 				["title"] 		= "广播你的交易信息",
 				["channel"]		= "广播频道: ",	-- here follows the localised channel-name
@@ -674,9 +674,9 @@ function mobileSnacks_GetChinese()
 				["right"]		= "右键: 开关自动广播",
 			},
 			["actbutton"] 	= {
-				["activate"]	= "启用 "..mobileSnacks_ProgName,
-				["deactivate"]	= "禁用 "..mobileSnacks_ProgName,
-				["left"]	= "左键：开关 "..mobileSnacks_ProgName,
+				["activate"]	= "启用 "..tradeDispenser_ProgName,
+				["deactivate"]	= "禁用 "..tradeDispenser_ProgName,
+				["left"]	= "左键：开关 "..tradeDispenser_ProgName,
 				["right"]	= "右键: 清空交易记录",
 				["noright"]	= "右键: 禁止清空",
 			},
@@ -730,14 +730,14 @@ function mobileSnacks_GetChinese()
 			["failed"]		= "交易失败！",
 		},
 		["KeyBindings"]		= {
-			["header"]		= mobileSnacks_ProgName,
+			["header"]		= tradeDispenser_ProgName,
 			[1]				= "启用/关闭自动售货机",
 			[2]				= "显示/隐藏设置窗口",
 			[3]				= "显示/隐藏快捷窗口",
 			[4]				= "立刻广播",
 		},	
-		["activated"] 		= mobileSnacks_ProgName.." 已启用",
-		["deactivated"] 	= mobileSnacks_ProgName.." 已禁用",
+		["activated"] 		= tradeDispenser_ProgName.." 已启用",
+		["deactivated"] 	= tradeDispenser_ProgName.." 已禁用",
 		["verbose"]		= {
 			["isset"]	= "Verbose-Level is: ",
 			["setto"]	= "Changed Verbose-Level to ",
@@ -747,18 +747,18 @@ function mobileSnacks_GetChinese()
 	}
 end
 
-function mobileSnacks_GetFrench()
-	mobileSnacks_ProgName = "mobileSnacks";
+function tradeDispenser_GetFrench()
+	tradeDispenser_ProgName = "tradeDispenser";
 	tD_Loc = {
 		["logon"]			= {
 			["changed"]		= "La version a changé. Remise à zéro de la configuration.",
-			["welcome"] 	= " Version "..mobileSnacks_Version.." - initialisée",
+			["welcome"] 	= " Version "..tradeDispenser_Version.." - initialisée",
 		},	
-		["configtitle"]		= mobileSnacks_ProgName.." V"..mobileSnacks_Version,
+		["configtitle"]		= tradeDispenser_ProgName.." V"..tradeDispenser_Version,
 		["configItems"]		= "Insérez le Prix et les Objets",
 		["about"]		= {	-- open end. could have more than 5 lines	
-			[1] = "|cFF7E9CE5About the "..mobileSnacks_ProgName,
-			[2] = "|cFFFFFFFF   Version:   |cFF45E849"..mobileSnacks_Version,
+			[1] = "|cFF7E9CE5About the "..tradeDispenser_ProgName,
+			[2] = "|cFFFFFFFF   Version:   |cFF45E849"..tradeDispenser_Version,
 			[3] = "|cFFFFFFFF   Auteur:   	 |cFF45E849Kaboom    @ Arthas (EU)",
 			[4] = "|cFFFFFFFF   coeur:         |cFF45E849Shag      @ Arthas (EU)",
 			[5] = "|cFFFFFFFF   Traduction:   |cFF45E849Balzebeth @ Conseil des Ombres (EU)",
@@ -766,36 +766,36 @@ function mobileSnacks_GetFrench()
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Préfixe:",
-			[2] = "|cFFFFFFFF  /td ou /mobileSnacks       |cFF45E849Montre le texte d'aide",
+			[2] = "|cFFFFFFFF  /td ou /tradeDispenser       |cFF45E849Montre le texte d'aide",
 			[3] = "|cFF7E9CE5Options (utilisation: Préfixe + Option)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Montre/Cache la Fenêtre de Configuration",
-			[5] = "|cFFFFFFFF  toggle         |cFF45E849Active/Désactive "..mobileSnacks_ProgName,
+			[5] = "|cFFFFFFFF  toggle         |cFF45E849Active/Désactive "..tradeDispenser_ProgName,
 			[6] = "|cFFFFFFFF  broadcast   |cFF45E849Diffuser votre annonce",
 			[7] = "|cFFFFFFFF  OSD           |cFF45E849Montrer/Cacher l'OSD (Boutons de Raccourcis)",
 			[8] = "|cFFFFFFFF  verbose X   |cFF45E849Niveau d'informations affiché par Debuginfo (0=désactivé)",
 			[9] = "|cFFFFFFFF  resetpos      |cFF45E849Remise à zéro de la position de toutes les fenêtres",
-			[10] = "|cFFFFFFFF  about          |cFF45E849Montre plus d'informations à propos de "..mobileSnacks_ProgName,
+			[10] = "|cFFFFFFFF  about          |cFF45E849Montre plus d'informations à propos de "..tradeDispenser_ProgName,
 		},
 		["whisper"]		= {		-- default messages - can be edited ingame
 			[1] = {
 				["short"]	= "Problème",
-				["default"]	= mobileSnacks_ProgName..": Quelque chose ne fonctionne pas correctement avec mon inventaire (certainement du lag objet). Je ne peux échanger d'objets. Essaye à nouveau.",
+				["default"]	= tradeDispenser_ProgName..": Quelque chose ne fonctionne pas correctement avec mon inventaire (certainement du lag objet). Je ne peux échanger d'objets. Essaye à nouveau.",
 			},
 			[2]	= {
 				["short"]	= "Plus d'objets",
-				["default"]	= mobileSnacks_ProgName..": Je n'ai plus d'objets. Merci de ne plus faire d'échanges avec moi.",
+				["default"]	= tradeDispenser_ProgName..": Je n'ai plus d'objets. Merci de ne plus faire d'échanges avec moi.",
 			},
 			[3] = {
 				["short"]	= "Pile non complète",
-				["default"]	= mobileSnacks_ProgName..": Désolé mais la dernière pile d'objets n'est pas complète. Néanmoins, accepte l'échange STP.",
+				["default"]	= tradeDispenser_ProgName..": Désolé mais la dernière pile d'objets n'est pas complète. Néanmoins, accepte l'échange STP.",
 			},
 			[4]	= {
 				["short"]	= "Pas d'autres objets",
-				["default"]	= mobileSnacks_ProgName..": C'est tout ce que j'ai !",
+				["default"]	= tradeDispenser_ProgName..": C'est tout ce que j'ai !",
 			},
 			[5] = {
 				["short"]	= "J'ai besoin d'argent",
-				["default"]	= mobileSnacks_ProgName..": Je vends ces objets pour ",
+				["default"]	= tradeDispenser_ProgName..": Je vends ces objets pour ",
 			},
 			[6] = {
 				["short"]	= "Trop bas niveau",
@@ -823,7 +823,7 @@ function mobileSnacks_GetFrench()
 			},
 		},
 		["Broadcast"] 				= {
-			[1] 					= mobileSnacks_ProgName.." activé! Ouvrez une fenêtre d'échange avec moi et recevez vos objets!",
+			[1] 					= tradeDispenser_ProgName.." activé! Ouvrez une fenêtre d'échange avec moi et recevez vos objets!",
 			[2]						= "éditez cette ligne pour définir votre annonce",
 			[3]						= "Note: vous pouvez insérer des objets avec MAJ+click",
 			[4]						= "Ajoutez d'autres messages",	
@@ -832,7 +832,7 @@ function mobileSnacks_GetFrench()
 		["Opposite"]				= "Votre client est:",
 		["rack"]					= "Casier #",
 		["RackTitle"]				= "Casier Actif",
-		["resetframes"]				= "RAZ des fenêtre de "..mobileSnacks_ProgName..": faite";
+		["resetframes"]				= "RAZ des fenêtre de "..tradeDispenser_ProgName..": faite";
 		["buttons"]			= {
 			["tradecontrol"] 		= "Contrôle",
 			["settings"]			= "Paramètres",
@@ -884,7 +884,7 @@ function mobileSnacks_GetFrench()
 			["broadcasttooltip"]	= {
 				[0] = "Activer/Désactiver l'Annonce",
 				[1] = "N'annonce que si",
-				[2] = mobileSnacks_ProgName.." est en marche",
+				[2] = tradeDispenser_ProgName.." est en marche",
 			},
 			["lock"]		= "Ancré",
 			["scale"]		= "Echelle:",
@@ -905,7 +905,7 @@ function mobileSnacks_GetFrench()
 			["TimerTooltip"] = {
 				[0] = "Cette fonction active un chronomètre",
 				[1] = "pour limiter la durée d'un échange",
-				[2] = "avant que "..mobileSnacks_ProgName.." ne l'annule.",
+				[2] = "avant que "..tradeDispenser_ProgName.." ne l'annule.",
 				[3] = "Le client recevra un avertissement.",
 				[4] = "Note: Ne fonctionne que si VOUS",
 				[5] = "avez déjà accepté l'échange."
@@ -913,7 +913,7 @@ function mobileSnacks_GetFrench()
 		},
 		["OSD"]				= {
 			["OSDtitle"]	= "OSD",
-			["notenabled"]	= mobileSnacks_ProgName.." is not enabled",
+			["notenabled"]	= tradeDispenser_ProgName.." is not enabled",
 			["broadcasttip"]	= {
 				["title"] 		= "Annoncer vos échanges",
 				["channel"]		= "Canal de l'annonce: ",	-- here follows the localised channel-name
@@ -921,9 +921,9 @@ function mobileSnacks_GetFrench()
 				["right"]		= "Clic Droit: Activer/Désactiver l'annonce automatique",
 			},
 			["actbutton"] 	= {
-				["activate"]	= "Activer "..mobileSnacks_ProgName,
-				["deactivate"]	= "Désactiver "..mobileSnacks_ProgName,
-				["left"]	= "Clic Gauche:  Activer/Désactiver "..mobileSnacks_ProgName,
+				["activate"]	= "Activer "..tradeDispenser_ProgName,
+				["deactivate"]	= "Désactiver "..tradeDispenser_ProgName,
+				["left"]	= "Clic Gauche:  Activer/Désactiver "..tradeDispenser_ProgName,
 				["right"]	= "Clic Droit: RAZ de la liste des clients enregistrés",
 				["noright"]	= "Clic Droit: RAZ Désactivée",
 			},
@@ -977,14 +977,14 @@ function mobileSnacks_GetFrench()
 			["failed"]		= "Echange échoué",
 		},
 		["KeyBindings"]		= {
-			["header"]		= mobileSnacks_ProgName,
-			[1]				= "Activer/Désactiver mobileSnacks",
+			["header"]		= tradeDispenser_ProgName,
+			[1]				= "Activer/Désactiver tradeDispenser",
 			[2]				= "Montrer/Cacher fenêtre de configuration",
 			[3]				= "Montrer/Cacher OSD",
 			[4]				= "Annonce instantannée",
 		},
-		["activated"] 		= mobileSnacks_ProgName.." activé",
-		["deactivated"] 	= mobileSnacks_ProgName.." désactivé",
+		["activated"] 		= tradeDispenser_ProgName.." activé",
+		["deactivated"] 	= tradeDispenser_ProgName.." désactivé",
 		["verbose"]		= {
 			["isset"]	= "Niveau d'informations affiché: ",
 			["setto"]	= "Changer le niveau d'information affiché ",
@@ -994,57 +994,57 @@ function mobileSnacks_GetFrench()
 	};
 end
 
-function mobileSnacks_GetRussian()
-	mobileSnacks_ProgName = "mobileSnacks";
-	-- mobileSnacks_Version is defined in mobileSnacks_Initialize.lua
+function tradeDispenser_GetRussian()
+	tradeDispenser_ProgName = "tradeDispenser";
+	-- tradeDispenser_Version is defined in tradeDispenser_Initialize.lua
 
 	tD_Loc = {
 		["logon"]			= {
 			["changed"]		= "Версия данных изменена, восстановление настоек",
-			["welcome"] 	= "Версия "..mobileSnacks_Version.." инициализирована",
+			["welcome"] 	= "Версия "..tradeDispenser_Version.." инициализирована",
 		},	
-		["configtitle"]		= mobileSnacks_ProgName.." вер."..mobileSnacks_Version,
+		["configtitle"]		= tradeDispenser_ProgName.." вер."..tradeDispenser_Version,
 		["configItems"]		= "Вставьте деньги и предметы",
 
 		["about"]		= {	-- open end. could have more than 5 lines
-			[1] = "|cFF7E9CE5О "..mobileSnacks_ProgName,
-			[2] = "|cFFFFFFFF  Версия: |cFF45E849"..mobileSnacks_Version,
+			[1] = "|cFF7E9CE5О "..tradeDispenser_ProgName,
+			[2] = "|cFFFFFFFF  Версия: |cFF45E849"..tradeDispenser_Version,
 			[3] = "|cFFFFFFFF  Автор:  |cFF45E849Kaboom  @ Arthas (EU)",
 			[4] = "|cFFFFFFFF  Ядро:    |cFF45E849Shag    @ Arthas (EU)",
 			[5] = "|cFFFFFFFF  Больше:    |cFF45E849Пожалуйста прочтите ReadMe",
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Префикс:",
-			[2] = "|cFFFFFFFF  /td или /mobileSnacks       |cFF45E849Показывает Помощь",
+			[2] = "|cFFFFFFFF  /td или /tradeDispenser       |cFF45E849Показывает Помощь",
 			[3] = "|cFF7E9CE5Опции (Используйте: Префикс + Опции)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Переключает окно опций",
-			[5] = "|cFFFFFFFF  toggle         |cFF45E849Активирует/Деактивирует "..mobileSnacks_ProgName,
+			[5] = "|cFFFFFFFF  toggle         |cFF45E849Активирует/Деактивирует "..tradeDispenser_ProgName,
 			[6] = "|cFFFFFFFF  broadcast   |cFF45E849Вещает обмен",
 			[7] = "|cFFFFFFFF  OSD           |cFF45E849Переключает ЭМ (Горячие кнопки)",
 			[8]	= "|cFFFFFFFF  verbose X   |cFF45E849Показывает информацию отладки. (Уровень X: 0=выкл, 3=ВСЕ)",
-			[9] = "|cFFFFFFFF  resetpos      |cFF45E849Восстанавливает все окна mobileSnacks",
-			[10] = "|cFFFFFFFF  about          |cFF45E849Показывает больше информации о "..mobileSnacks_ProgName,
+			[9] = "|cFFFFFFFF  resetpos      |cFF45E849Восстанавливает все окна tradeDispenser",
+			[10] = "|cFFFFFFFF  about          |cFF45E849Показывает больше информации о "..tradeDispenser_ProgName,
 		},
 		["whisper"]		= {		-- default messages - could be edited ingame
 			[1] = {
 				["short"]	= "что-то не так",
-				["default"]	= mobileSnacks_ProgName..": Что-то пошло не так в инвентаре (может лаг). Не могу передать предметы. Попробуй еще раз!",
+				["default"]	= tradeDispenser_ProgName..": Что-то пошло не так в инвентаре (может лаг). Не могу передать предметы. Попробуй еще раз!",
 			},
 			[2]	= {
 				["short"]	= "Спам: Предметов не осталось",
-				["default"]	= mobileSnacks_ProgName..": У меня закончились предметы, пожалуйста не надо предлагать мне обмен.",
+				["default"]	= tradeDispenser_ProgName..": У меня закончились предметы, пожалуйста не надо предлагать мне обмен.",
 			},
 			[3] = {
 				["short"]	= "Связка не полная",
-				["default"]	= mobileSnacks_ProgName..": Извини, что последняя связка не полная. К сожалению в инвентаре у меня больше нет.",
+				["default"]	= tradeDispenser_ProgName..": Извини, что последняя связка не полная. К сожалению в инвентаре у меня больше нет.",
 			},
 			[4]	= {
 				["short"]	= "Предметов больше нет",
-				["default"]	= mobileSnacks_ProgName..": Предметы закончились!",
+				["default"]	= tradeDispenser_ProgName..": Предметы закончились!",
 			},
 			[5] = {
 				["short"]	= "Требую денег!",
-				["default"]	=  mobileSnacks_ProgName..": За эти предметы я бы взял ",
+				["default"]	=  tradeDispenser_ProgName..": За эти предметы я бы взял ",
 			},
 			[6] = {
 				["short"]	= "Уровень слишком мал",
@@ -1072,7 +1072,7 @@ function mobileSnacks_GetRussian()
 			},
 		},
 		["Broadcast"] 				= {
-			[1] 					= mobileSnacks_ProgName.." активирован! Кидайте обмен, и получите предметы.",
+			[1] 					= tradeDispenser_ProgName.." активирован! Кидайте обмен, и получите предметы.",
 			[2]						= "Измените эту строку, чтобы создать новое сообщение вещания",
 			[3]						= "Примечание: Предметы можно вставить через Шифт-Клик",
 			[4]						= "Добавьте больше сообщений",	
@@ -1081,7 +1081,7 @@ function mobileSnacks_GetRussian()
 		["Opposite"]				= "Твой клиент:",
 		["rack"]					= "Полка #",
 		["RackTitle"]				= "Активная полка",	
-		["resetframes"]				= "Все окна "..mobileSnacks_ProgName.." были возвращены";
+		["resetframes"]				= "Все окна "..tradeDispenser_ProgName.." были возвращены";
 		["buttons"]			= {
 			["tradecontrol"] 		= "Упр-ие обменом",
 			["settings"]			= "Настройки",
@@ -1133,7 +1133,7 @@ function mobileSnacks_GetRussian()
 			["broadcasttooltip"]	= {
 				[0] = "Активирует Автовещание",
 				[1] = "Работает только тогда, когда",
-				[2] =  mobileSnacks_ProgName.." активирован",
+				[2] =  tradeDispenser_ProgName.." активирован",
 			},
 			["lock"]		= "Закрепить",
 			["scale"]		= "Масштаб:",
@@ -1154,7 +1154,7 @@ function mobileSnacks_GetRussian()
 			["TimerTooltip"] = {
 				[0] = "Эта функция запустит таймер,",
 				[1] = "для ограничения продолжительности обмена",
-				[2] = "до того как "..mobileSnacks_ProgName.." отменяет сделку,",
+				[2] = "до того как "..tradeDispenser_ProgName.." отменяет сделку,",
 				[3] = "на которую клиент получит предупреждение.",
 				[4] = "Заметка: Это будет работать, только если ВЫ уже",
 				[5] = "приняли обмен."
@@ -1162,7 +1162,7 @@ function mobileSnacks_GetRussian()
 		},
 		["OSD"]				= {
 			["OSDtitle"]	= "ЭМ",
-			["notenabled"]	= mobileSnacks_ProgName.." не включен",
+			["notenabled"]	= tradeDispenser_ProgName.." не включен",
 			["broadcasttip"]	= {
 				["title"] 		= "Вещание обмена",
 				["channel"]		= "Канал сообщения: ",	-- here follows the localised channel-name
@@ -1170,9 +1170,9 @@ function mobileSnacks_GetRussian()
 				["right"]		= "Правый клик: Переключает Автоматическое вещание",
 			},
 			["actbutton"] 	= {
-				["activate"]	= "Активировать "..mobileSnacks_ProgName,
-				["deactivate"]	= "Деактивировать "..mobileSnacks_ProgName,
-				["left"]	= "Левый клик: Переключить "..mobileSnacks_ProgName,
+				["activate"]	= "Активировать "..tradeDispenser_ProgName,
+				["deactivate"]	= "Деактивировать "..tradeDispenser_ProgName,
+				["left"]	= "Левый клик: Переключить "..tradeDispenser_ProgName,
 				["right"]	= "Правый клик: Очистить список",
 				["noright"]	= "Правый клик: Запретить очистку",
 			},
@@ -1226,14 +1226,14 @@ function mobileSnacks_GetRussian()
 			["failed"]		= "Обмен не удался",
 		},
 		["KeyBindings"]		= {
-			["header"]		= mobileSnacks_ProgName,
-			[1]				= "Переключить mobileSnacks",
+			["header"]		= tradeDispenser_ProgName,
+			[1]				= "Переключить tradeDispenser",
 			[2]				= "Показать окно настроек",
 			[3]				= "Показать ЭМ",
 			[4]				= "Мгновенное вещание",
 		},		
-		["activated"] 		= mobileSnacks_ProgName.." активирован",
-		["deactivated"] 	= mobileSnacks_ProgName.." деактивирован",
+		["activated"] 		= tradeDispenser_ProgName.." активирован",
+		["deactivated"] 	= tradeDispenser_ProgName.." деактивирован",
 		["verbose"]		= {
 			["isset"]	= "Verbose уровень сейчас: ",
 			["setto"]	= "Verbose уровень изменен на: ",

@@ -1,4 +1,4 @@
-TradeDispenser	Version 0.98
+TradeDispenser	Version 0.96
 -------------------------------------------------------
 Author:		Silas M.	aka 	Kaboom @ Arthas (EU)
 Core: 		Tom C.  	aka 	Shag @ Arthas (EU)
@@ -62,8 +62,6 @@ Symbole:
 	* 	Andere Änderungen
 	
 	
-Version 0.98	
-	
 Version 0.96
 ------------
 	+	GUI-Option um die sounds von TradeDispenser zu deaktivieren
@@ -73,7 +71,7 @@ Version 0.96
 	
 Version 0.95
 ------------
-	+	Sound ertönt, sobald man bei aktivem mS angehandelt wird.
+	+	Sound ertönt, sobald man bei aktivem tD angehandelt wird.
 	*	Es gibt einen Fehler in WOW: sobald man angehandelt wird, kann man (unter anderem) via UnitName("NPC") 
 		informationen über das gegenüber erhalten. Leider versagt diese Funktion, sobald die Map geöffnet ist.
 		Nun wurden ein paar routinen eingebaut, um diesen Fehler abzufangen.
@@ -96,7 +94,7 @@ Version 0.91-0.92
 -----------------
 	o	Auto-Accept funktioniert nun wieder.
 	o	Localisations-fehler behoben
-	+	neuer slash-befehl: resetpos - setzt die fenster von mS auf ihre ursprungsposition zurück.
+	+	neuer slash-befehl: resetpos - setzt die fenster von tD auf ihre ursprungsposition zurück.
 	*	andere kleine Änderungen vorgenommen.
 	
 	
@@ -155,7 +153,7 @@ Version 0.75
 		Dabei kann man auch die Ignoreliste importieren lassen.
 	+	Countdown für offene Handel eingefügt
 	*	Habe versucht, den Memory-Verbrauch und die Ladezeit zu verringern:
-	*	Events werden nur noch dann aktiviert, wenn sie verwendet werden (zB wenn mS aktiviert ist)
+	*	Events werden nur noch dann aktiviert, wenn sie verwendet werden (zB wenn tD aktiviert ist)
 	*	Einige Daten werden nun wieder "global", sprich charakter-unabhängig, gespeicert. (zB Whispers)
 	o	Die Farben der OSD-Buttons wurden etwas angepasst
 	
@@ -208,7 +206,7 @@ Version 0.50
 Version 0.46
 ------------
 	o	Das neue ItemLink-Feature war verbuggt!
-	>	Kaboom hat die entwicklung von mS vollständig übernommen.
+	>	Kaboom hat die entwicklung von tD vollständig übernommen.
 	
 	
 Version 0.45		(Von Kaboom)
@@ -298,7 +296,7 @@ Version 0.10		(von Kaboom)
 	
 Version 0.0.0.7		(von Shag)
 ---------------
-	o	weiter Fehler behoben (mS arbeitet auch, wenn ConfigFenster versteckt ist)
+	o	weiter Fehler behoben (tD arbeitet auch, wenn ConfigFenster versteckt ist)
 	o	"Geld-Eingabe-Fenster" korrigiert
 
 	
