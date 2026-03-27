@@ -58,7 +58,7 @@
 						this:SetBackdropBorderColor(1, 1, 1,1);
 						this:SetBackdropColor(0.2, 0, 0, 1);
 						local f=mobileSnacksTradeControlTitleBkgLbL;
-						f:SetText(tD_Loc.control.title);
+						f:SetText(mS_Loc.control.title);
 						f:SetTextColor(1,1,1);
 					</OnLoad>
 				</Scripts>
@@ -84,10 +84,10 @@
 				</Layers>				
 				<Scripts>
 					<OnLoad>
-						mobileSnacksTradeControlRaidLbL:SetText(tD_Loc.control.notraid);
+						mobileSnacksTradeControlRaidLbL:SetText(mS_Loc.control.notraid);
 					</OnLoad>
 					<OnClick>
-						tD_CharDatas.Raid = not tD_CharDatas.Raid;
+						mS_CharDatas.Raid = not mS_CharDatas.Raid;
 						mobileSnacksPlaySound(this)
 						if ( this:GetChecked() ) then
 							mobileSnacksTradeControlGuild:Show();
@@ -97,7 +97,7 @@
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",0,50);
-						mobileSnacksDrawTooltip(tD_Loc.control.notinraid)	
+						mobileSnacksDrawTooltip(mS_Loc.control.notinraid)	
 					</OnEnter>
 					<OnLeave>	GameTooltip:Hide();	</OnLeave>						
 				</Scripts>
@@ -123,15 +123,15 @@
 				</Layers>				
 				<Scripts>
 					<OnLoad>
-						mobileSnacksTradeControlGuildLbL:SetText(tD_Loc.control.acceptguild);
+						mobileSnacksTradeControlGuildLbL:SetText(mS_Loc.control.acceptguild);
 					</OnLoad>
 					<OnClick>
-						tD_CharDatas.Guild = not tD_CharDatas.Guild;
+						mS_CharDatas.Guild = not mS_CharDatas.Guild;
 						mobileSnacksPlaySound(this)
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(this:GetParent(),"ANCHOR_TOPRIGHT",0,50);
-						mobileSnacksDrawTooltip(tD_Loc.control.accguild)	
+						mobileSnacksDrawTooltip(mS_Loc.control.accguild)	
 					</OnEnter>
 					<OnLeave>	GameTooltip:Hide();	</OnLeave>						
 				</Scripts>
@@ -158,15 +158,15 @@
 				</Layers>
 				<Scripts>
 					<OnLoad>
-						mobileSnacksTradeControlAcceptLbL:SetText(tD_Loc.control.autoaccept);
+						mobileSnacksTradeControlAcceptLbL:SetText(mS_Loc.control.autoaccept);
 					</OnLoad>				
 					<OnShow>
-						if (tD_CharDatas.AutoAccept) then 
+						if (mS_CharDatas.AutoAccept) then 
 							this:SetChecked(1);
 						end
 					</OnShow>
 					<OnClick>
-						tD_CharDatas.AutoAccept = not tD_CharDatas.AutoAccept;
+						mS_CharDatas.AutoAccept = not mS_CharDatas.AutoAccept;
 						mobileSnacksPlaySound(this)
 					</OnClick>
 				</Scripts>
@@ -192,11 +192,11 @@
 				</Layers>
 				<Scripts>
 					<OnShow>
-						this:SetChecked(tD_CharDatas.ClientInfos);
-						mobileSnacksTradeControlInfosLbL:SetText(tD_Loc.control.ClientInfos);
+						this:SetChecked(mS_CharDatas.ClientInfos);
+						mobileSnacksTradeControlInfosLbL:SetText(mS_Loc.control.ClientInfos);
 					</OnShow>
 					<OnClick>
-						tD_CharDatas.ClientInfos = not tD_CharDatas.ClientInfos;
+						mS_CharDatas.ClientInfos = not mS_CharDatas.ClientInfos;
 						mobileSnacksPlaySound(this)
 					</OnClick>
 				</Scripts>
@@ -244,8 +244,8 @@
 								this:SetValue(55);
 							</OnLoad>
 							<OnValueChanged>
-								tD_CharDatas.LevelValue = this:GetValue();
-								mobileSnacksTradeControlLevelLbL:SetText(tD_Loc.control.level..this:GetValue());
+								mS_CharDatas.LevelValue = this:GetValue();
+								mobileSnacksTradeControlLevelLbL:SetText(mS_Loc.control.level..this:GetValue());
 							</OnValueChanged>
 						</Scripts>
 					</Slider>	
@@ -253,11 +253,11 @@
 				<Scripts>
 					<OnLoad>
 						local f=mobileSnacksTradeControlLevelLbL;
-						f:SetText(tD_Loc.control.leveltext);
+						f:SetText(mS_Loc.control.leveltext);
 						f:SetTextColor(1,1,1);						
 					</OnLoad>
 					<OnClick>
-						tD_CharDatas.LevelCheck = not tD_CharDatas.LevelCheck;
+						mS_CharDatas.LevelCheck = not mS_CharDatas.LevelCheck;
 						mobileSnacksPlaySound(this)
 						local f=mobileSnacksTradeControlLevelMin;
 						if ( this:GetChecked() ) then		f:Show();	else	f:Hide();	end
@@ -276,7 +276,7 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						this:SetText(tD_Loc.buttons.banlist);
+						this:SetText(mS_Loc.buttons.banlist);
 					</OnLoad>
 					<OnClick>
 						mobileSnacksPlaySound(this)
@@ -300,7 +300,7 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						tD_CharDatas.BanlistActive= not tD_CharDatas.BanlistActive;
+						mS_CharDatas.BanlistActive= not mS_CharDatas.BanlistActive;
 						mobileSnacksPlaySound(this)
 						local f=mobileSnacksTradeControlBanlistBtn;
 						if ( this:GetChecked() ) then
@@ -345,7 +345,7 @@
 						</Anchors>
 						<Scripts>
 							<OnLoad>
-								mobileSnacksTradeControlRegisterMaxTradesText:SetText(tD_Loc.control.maxtrades.." 1");
+								mobileSnacksTradeControlRegisterMaxTradesText:SetText(mS_Loc.control.maxtrades.." 1");
 								mobileSnacksTradeControlRegisterMaxTradesHigh:SetText("5");
 								mobileSnacksTradeControlRegisterMaxTradesLow:SetText("1");
 								this:SetMinMaxValues(1,5);
@@ -353,8 +353,8 @@
 								this:SetValue(1);
 							</OnLoad>
 							<OnValueChanged>
-								tD_CharDatas.RegisterValue = this:GetValue();
-								mobileSnacksTradeControlRegisterMaxTradesText:SetText(tD_Loc.control.maxtrades..this:GetValue());
+								mS_CharDatas.RegisterValue = this:GetValue();
+								mobileSnacksTradeControlRegisterMaxTradesText:SetText(mS_Loc.control.maxtrades..this:GetValue());
 							</OnValueChanged>
 						</Scripts>
 					</Slider>	
@@ -369,7 +369,7 @@
 						</Anchors>
 						<Scripts>
 							<OnLoad>
-								this:SetText(tD_Loc.buttons.reset);
+								this:SetText(mS_Loc.buttons.reset);
 							</OnLoad>
 							<OnClick>
 								mobileSnacksPlaySound(this)
@@ -381,11 +381,11 @@
 				<Scripts>
 					<OnLoad>
 						local f=mobileSnacksTradeControlRegisterLbL;
-						f:SetText(tD_Loc.control.register);
+						f:SetText(mS_Loc.control.register);
 						f:SetTextColor(1,1,1);
 					</OnLoad>
 					<OnClick>
-						tD_CharDatas.RegisterCheck = not tD_CharDatas.RegisterCheck;
+						mS_CharDatas.RegisterCheck = not mS_CharDatas.RegisterCheck;
 						mobileSnacksPlaySound(this)
 						mobileSnacks_TradeControl_Update();
 					</OnClick>
@@ -396,7 +396,7 @@
 			<OnLoad>
 				this:SetBackdropBorderColor(1, 1, 1,1);
 				this:SetBackdropColor(0, 0, 0.2, 1);
-				mobileSnacksTradeControlLbL:SetText(tD_Loc.control.ignore);
+				mobileSnacksTradeControlLbL:SetText(mS_Loc.control.ignore);
 				mobileSnacksTradeControlLbL:SetTextColor(1,1,1);
 			</OnLoad>
 			<OnMouseDown> this:GetParent():StartMoving();  </OnMouseDown>

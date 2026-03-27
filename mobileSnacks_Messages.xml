@@ -41,9 +41,9 @@
 		<Scripts>
 			<OnShow>
 				this:ClearFocus();
-				getglobal(this:GetName().."LbL"):SetText(tD_Loc.whisper[this:GetID()].short..":");
-				if (tD_GlobalDatas.whisper) then
-					this:SetText(tD_GlobalDatas.whisper[this:GetID()]);
+				getglobal(this:GetName().."LbL"):SetText(mS_Loc.whisper[this:GetID()].short..":");
+				if (mS_GlobalDatas.whisper) then
+					this:SetText(mS_GlobalDatas.whisper[this:GetID()]);
 				else
 					this:SetText("Config-Datas not loaded - please refresh this Frame");
 				end
@@ -57,7 +57,7 @@
 				this:ClearFocus();
 			</OnEnterPressed>
 			<OnTextChanged>
-				tD_GlobalDatas.whisper[this:GetID()]=this:GetText();
+				mS_GlobalDatas.whisper[this:GetID()]=this:GetText();
 			</OnTextChanged>
 		</Scripts>
 	</EditBox>	
@@ -170,12 +170,12 @@
 				</Anchors>			
 				<Scripts>
 					<OnLoad>
-						this:SetText(tD_Loc.buttons.hide);
+						this:SetText(mS_Loc.buttons.hide);
 					</OnLoad>
 					<OnClick>
 					    mobileSnacksPlaySound(this)
 						mobileSnacksMessages:Hide();
-						tD_Temp.isVisible = true;
+						mS_Temp.isVisible = true;
 						mobileSnacksUpdate();						
 					</OnClick>
 				</Scripts>
@@ -194,13 +194,13 @@
 				</Anchors>			
 				<Scripts>
 					<OnLoad>
-						this:SetText(tD_Loc.buttons.reset);
+						this:SetText(mS_Loc.buttons.reset);
 					</OnLoad>
 					<OnClick>
 					    mobileSnacksPlaySound(this)
 						local i;
 						for i=1,11 do
-							getglobal("mobileSnacksMessagesWhisperText"..i):SetText(tD_Loc.whisper[i].default);
+							getglobal("mobileSnacksMessagesWhisperText"..i):SetText(mS_Loc.whisper[i].default);
 						end					
 					</OnClick>
 				</Scripts>

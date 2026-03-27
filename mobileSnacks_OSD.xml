@@ -32,7 +32,7 @@
 					<OnClick>
 						mobileSnacksPlaySound(this)
 						if (arg1=="LeftButton") then
-							tD_Temp.isEnabled = not tD_Temp.isEnabled;
+							mS_Temp.isEnabled = not mS_Temp.isEnabled;
 							mobileSnacks_Eventhandler()
 							mobileSnacksUpdate();
 							mobileSnacksOSD_OnUpdate();
@@ -42,16 +42,16 @@
 					</OnClick>
 					<OnEnter>
 						mobileSnacksSetTooltipPosition(this:GetParent(),0,0);
-						if (tD_Temp.isEnabled) then
-							GameTooltip:AddLine("|cFFFFFFFF"..tD_Loc.OSD.actbutton.deactivate);
+						if (mS_Temp.isEnabled) then
+							GameTooltip:AddLine("|cFFFFFFFF"..mS_Loc.OSD.actbutton.deactivate);
 						else
-							GameTooltip:AddLine("|cFFFFFFFF"..tD_Loc.OSD.actbutton.activate);
+							GameTooltip:AddLine("|cFFFFFFFF"..mS_Loc.OSD.actbutton.activate);
 						end
-						GameTooltip:AddLine(tD_Loc.OSD.actbutton.left);
-						if (tD_CharDatas.RegisterCheck) then
-							GameTooltip:AddLine(tD_Loc.OSD.actbutton.right)
+						GameTooltip:AddLine(mS_Loc.OSD.actbutton.left);
+						if (mS_CharDatas.RegisterCheck) then
+							GameTooltip:AddLine(mS_Loc.OSD.actbutton.right)
 						else 
-							GameTooltip:AddLine(tD_Loc.OSD.actbutton.noright)
+							GameTooltip:AddLine(mS_Loc.OSD.actbutton.noright)
 						end
 						GameTooltip:Show();				
 					</OnEnter>
@@ -69,11 +69,11 @@
 					</OnLoad>
 					<OnClick>
 						mobileSnacksPlaySound(this)
-						if (not tD_Temp.isEnabled) then
-							DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.OSD.notenabled);
+						if (not mS_Temp.isEnabled) then
+							DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.OSD.notenabled);
 						else
 							if (arg1=="RightButton") then
-								tD_CharDatas.AutoBroadcast = not tD_CharDatas.AutoBroadcast;
+								mS_CharDatas.AutoBroadcast = not mS_CharDatas.AutoBroadcast;
 								mobileSnacksUpdate();
 								mobileSnacks.broadcastSlice=0.2;
 								mobileSnacksOSD_OnUpdate();
@@ -86,10 +86,10 @@
 						local temp, mobileSnacksChannel = mobileSnacksGetChannel();
 
 						mobileSnacksSetTooltipPosition(this:GetParent(),0,0);
-						GameTooltip:AddLine("|cFFFFFFFF"..tD_Loc.OSD.broadcasttip.title);						
-						GameTooltip:AddLine(tD_Loc.OSD.broadcasttip.channel..mobileSnacksChannel);
-						GameTooltip:AddLine(tD_Loc.OSD.broadcasttip.left);
-						GameTooltip:AddLine(tD_Loc.OSD.broadcasttip.right);
+						GameTooltip:AddLine("|cFFFFFFFF"..mS_Loc.OSD.broadcasttip.title);						
+						GameTooltip:AddLine(mS_Loc.OSD.broadcasttip.channel..mobileSnacksChannel);
+						GameTooltip:AddLine(mS_Loc.OSD.broadcasttip.left);
+						GameTooltip:AddLine(mS_Loc.OSD.broadcasttip.right);
 						GameTooltip:Show();	
 					</OnEnter>
 					<OnLeave>	GameTooltip:Hide();	</OnLeave>						
@@ -119,7 +119,7 @@
 							mobileSnacksTradeControlBtn:LockHighlight();
 						end												
 						mobileSnacksMessages:Hide();
-						tD_Temp.isVisible = not tD_Temp.isVisible;
+						mS_Temp.isVisible = not mS_Temp.isVisible;
 						mobileSnacksUpdate();
 						mobileSnacks_EditBoxUpdate();
 						mobileSnacksSettings_OnUpdate();
@@ -127,13 +127,13 @@
 					</OnClick>
 					<OnEnter>
 						mobileSnacksSetTooltipPosition(this:GetParent(),0,0);						
-						if (tD_Temp.isVisible) then
-							GameTooltip:AddLine("|cFFFFFFFF"..tD_Loc.OSD.configbtn.hide)
+						if (mS_Temp.isVisible) then
+							GameTooltip:AddLine("|cFFFFFFFF"..mS_Loc.OSD.configbtn.hide)
 						else
-							GameTooltip:AddLine("|cFFFFFFFF"..tD_Loc.OSD.configbtn.show)
+							GameTooltip:AddLine("|cFFFFFFFF"..mS_Loc.OSD.configbtn.show)
 						end
-						GameTooltip:AddLine(tD_Loc.OSD.configbtn.left)
-						GameTooltip:AddLine(tD_Loc.OSD.configbtn.right)
+						GameTooltip:AddLine(mS_Loc.OSD.configbtn.left)
+						GameTooltip:AddLine(mS_Loc.OSD.configbtn.right)
 						GameTooltip:Show()	
 					</OnEnter>	
 					<OnLeave>	GameTooltip:Hide()	</OnLeave>		
@@ -142,9 +142,9 @@
 		</Frames>
 		<Scripts>
 			<OnLoad>	  this:Raise();  this:Raise();  this:Raise();  </OnLoad>
-			<OnMouseDown> if (not tD_CharDatas.OSD.locked) then this:StartMoving()         end </OnMouseDown>
-			<OnMouseUp>   if (not tD_CharDatas.OSD.locked) then this:StopMovingOrSizing()  end</OnMouseUp>
-			<OnDragStop>  if (not tD_CharDatas.OSD.locked) then this:StopMovingOrSizing()  end</OnDragStop>		
+			<OnMouseDown> if (not mS_CharDatas.OSD.locked) then this:StartMoving()         end </OnMouseDown>
+			<OnMouseUp>   if (not mS_CharDatas.OSD.locked) then this:StopMovingOrSizing()  end</OnMouseUp>
+			<OnDragStop>  if (not mS_CharDatas.OSD.locked) then this:StopMovingOrSizing()  end</OnDragStop>		
 		</Scripts>
 	</Frame>
 </Ui>

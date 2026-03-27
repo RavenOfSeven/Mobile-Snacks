@@ -70,7 +70,7 @@ Version 0.96
 Version 0.95
 ------------
 	* 	TOC-Version updated to patch 1.12
-	+	Built-in a sound, which is played as soon as you get traded.  (only, if tD's enabled)
+	+	Built-in a sound, which is played as soon as you get traded.  (only, if mS's enabled)
 	*	There's a bug in WoW: as soon as you get traded, you can collect some informations about the opposites client
 		with the command UnitName("NPC"). But this Function wont work, as soon as the Map is open.
 		i have implemented some routines to catch the bugs. (but its not a bugfix :(  )
@@ -99,7 +99,7 @@ Version 0.91-0.92
 Version 0.90
 ------------
 	*	Updated TOC-version to be patch 1.11-ready
-	+ 	If a trade's started by clicking on "trade", tD will not put items into the tradeframe. (inactive)
+	+ 	If a trade's started by clicking on "trade", mS will not put items into the tradeframe. (inactive)
 		but: this function does not work on dropping items on a player.
 	
 	
@@ -150,7 +150,7 @@ Version 0.75
 	+	New Feature: Banlist. You can ban players by name. (Ignorelist could be imported too)
 	+	Countdown for open (unaccepted) trades
 	*	tried to reduce the used memory and loading-time:
-	*	events are only activated, if needed (e.g. if tD's running)
+	*	events are only activated, if needed (e.g. if mS's running)
 	*	some datas are now stored as "global" for all chars. (e.g. whispering messages or banlist)
 	*	modified the colors of the OSD-buttons.
 	
@@ -164,8 +164,8 @@ Version 0.65-0.70
 	
 Version 0.60 & 0.61
 -------------------
-	*	Made a full rewrite of the code, and edited the way tD's saves its variables,
-		the initialization of tD and some other handlings...
+	*	Made a full rewrite of the code, and edited the way mS's saves its variables,
+		the initialization of mS and some other handlings...
 	o	bug fixed, if somebody trades you and goes out of range
 	
 	
@@ -194,7 +194,7 @@ Version 0.51
 	
 Version 0.50
 ------------
-	+	tD will remove people with a full inventory from the trade-list, so they could trade you again
+	+	mS will remove people with a full inventory from the trade-list, so they could trade you again
 		Thx to "Swiftstab" for giving the idea to solve this problem
 	+ 	the OSD's position could be locked
 

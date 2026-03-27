@@ -1,13 +1,13 @@
 ## Interface: 11200
 ## Title: mobileSnacks V0.98
-## Notes: |cFF7E9CE5Automaticly dispenses specified items to anyone who wants to trades with you                                                           |cFF45E849Use /tD or /mobileSnacks
-## Notes-deDE: |cFF7E9CE5Handelt automatisch verschiedene vorher definierte Items, sobald man angehandelt wird.                                            |cFF45E849Benutze /mobileSnacks & /tD
-## Notes-ruRU: |cFF7E9CE5јвтоматически раздает указанные предметы тем, кто производит с ¬ами обмен.		 			                                       |cFF45E849»спользуйте /mobileSnacks или /tD
-## Notes-frFR: |cFF7E9CE5Distribue automatiquement les objets spécifiés а quiconque initie une transaction avec vous                                       |cFF45E849Utilisation /tD ou /mobileSnacks
+## Notes: |cFF7E9CE5Automaticly dispenses specified items to anyone who wants to trades with you                                                           |cFF45E849Use /mS or /mobileSnacks
+## Notes-deDE: |cFF7E9CE5Handelt automatisch verschiedene vorher definierte Items, sobald man angehandelt wird.                                            |cFF45E849Benutze /mobileSnacks & /mS
+## Notes-ruRU: |cFF7E9CE5јвтоматически раздает указанные предметы тем, кто производит с ¬ами обмен.		 			                                       |cFF45E849»спользуйте /mobileSnacks или /mS
+## Notes-frFR: |cFF7E9CE5Distribue automatiquement les objets spécifiés а quiconque initie une transaction avec vous                                       |cFF45E849Utilisation /mS ou /mobileSnacks
 ## DefaultState: enabled
 ## Author: Kaboom@Arthas(EU)
-## SavedVariables: tD_GlobalDatas, tD_Datas
-## SavedVariablesPerCharacter: tD_CharDatas
+## SavedVariables: mS_GlobalDatas, mS_Datas
+## SavedVariablesPerCharacter: mS_CharDatas
 mobileSnacks_Localisation.lua
 mobileSnacks_Functions.lua
 mobileSnacks_Initialize.lua

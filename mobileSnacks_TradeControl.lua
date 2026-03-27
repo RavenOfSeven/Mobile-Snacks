@@ -1,6 +1,6 @@
 function mobileSnacks_ResetRegistratedChars()
-	--tD_CharDatas.RegisterChars={}; 
-	tD_Temp.RegUser = { 
+	--mS_CharDatas.RegisterChars={}; 
+	mS_Temp.RegUser = { 
 		[0] = { ["name"]="empty",  ["trades"]=0 } 
 	};	
 	mobileSnacksVerbose(0," TradeList resetted");	
@@ -8,15 +8,15 @@ end
 
 
 function mobileSnacks_TradeControl_Update()
-	mobileSnacksTradeControlRaid:SetChecked(tD_CharDatas.Raid)
-	mobileSnacksTradeControlGuild:SetChecked(tD_CharDatas.Guild)
-	mobileSnacksTradeControlLevel:SetChecked(tD_CharDatas.LevelCheck)
-	mobileSnacksTradeControlAccept:SetChecked(tD_CharDatas.AutoAccept)
-	mobileSnacksTradeControlLevelMin:SetValue(tD_CharDatas.LevelValue)
-	mobileSnacksTradeControlRegister:SetChecked(tD_CharDatas.RegisterCheck)
-	mobileSnacksTradeControlRegisterMaxTrades:SetValue(tD_CharDatas.RegisterValue)
+	mobileSnacksTradeControlRaid:SetChecked(mS_CharDatas.Raid)
+	mobileSnacksTradeControlGuild:SetChecked(mS_CharDatas.Guild)
+	mobileSnacksTradeControlLevel:SetChecked(mS_CharDatas.LevelCheck)
+	mobileSnacksTradeControlAccept:SetChecked(mS_CharDatas.AutoAccept)
+	mobileSnacksTradeControlLevelMin:SetValue(mS_CharDatas.LevelValue)
+	mobileSnacksTradeControlRegister:SetChecked(mS_CharDatas.RegisterCheck)
+	mobileSnacksTradeControlRegisterMaxTrades:SetValue(mS_CharDatas.RegisterValue)
 	
-	if (tD_CharDatas.BanlistActive) then
+	if (mS_CharDatas.BanlistActive) then
 		mobileSnacksTradeControlBans:SetChecked(1)
 		mobileSnacksTradeControlBanlistBtn:Enable()
 	else
@@ -24,7 +24,7 @@ function mobileSnacks_TradeControl_Update()
 		mobileSnacksTradeControlBanlistBtn:Disable()
 	end
 	
-	if ( tD_CharDatas.LevelCheck ) then
+	if ( mS_CharDatas.LevelCheck ) then
 		mobileSnacksTradeControlLevelMin:Show()
 	else
 		mobileSnacksTradeControlLevelMin:Hide()
@@ -36,7 +36,7 @@ function mobileSnacks_TradeControl_Update()
 		mobileSnacksTradeControlGuild:Hide()
 	end
 	
-	if ( tD_CharDatas.RegisterCheck ) then
+	if ( mS_CharDatas.RegisterCheck ) then
 		mobileSnacksTradeControlRegister:SetChecked(1)
 		mobileSnacksTradeControlRegisterMaxTrades:Show()
 		mobileSnacksTradeControlRegisterReset:Show()

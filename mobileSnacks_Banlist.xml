@@ -48,7 +48,7 @@
 						this:SetWidth(this:GetParent():GetWidth());
 						this:SetBackdropBorderColor(1, 1, 1,1);
 						this:SetBackdropColor(0.2, 0, 0, 1);
-						getglobal(this:GetName().."LbL"):SetText(tD_Loc.Banlist.Title);
+						getglobal(this:GetName().."LbL"):SetText(mS_Loc.Banlist.Title);
 						getglobal(this:GetName().."LbL"):SetTextColor(1,1,1);
 					</OnLoad>
 				</Scripts>
@@ -123,7 +123,7 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						this:SetText(tD_Loc.Banlist.Import);
+						this:SetText(mS_Loc.Banlist.Import);
 					</OnLoad>
 					<OnClick>
 						mobileSnacksPlaySound(this)
@@ -143,7 +143,7 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						this:SetText(tD_Loc.Banlist.Add);
+						this:SetText(mS_Loc.Banlist.Add);
 					</OnLoad>
 					<OnClick>
 						mobileSnacksPlaySound(this)
@@ -164,7 +164,7 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						this:SetText(tD_Loc.Banlist.Remove);
+						this:SetText(mS_Loc.Banlist.Remove);
 					</OnLoad>
 					<OnClick>
 						mobileSnacksPlaySound(this)
@@ -225,8 +225,8 @@
 					<OnEnterPressed>
 						this:ClearFocus()
 						if (this:GetText() and strlen(this:GetText())>=1) then
-							if (tD_Temp.BanListStatus=="add") then mobileSnacks_Banlist_Add(this:GetText()) 
-							elseif (tD_Temp.BanListStatus=="remove") then mobileSnacks_Banlist_Remove(this:GetText()) end
+							if (mS_Temp.BanListStatus=="add") then mobileSnacks_Banlist_Add(this:GetText()) 
+							elseif (mS_Temp.BanListStatus=="remove") then mobileSnacks_Banlist_Remove(this:GetText()) end
 						end
 					</OnEnterPressed>
 					<OnTextChanged>

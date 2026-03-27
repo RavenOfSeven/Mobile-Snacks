@@ -1,17 +1,17 @@
 <Bindings>
 	<Binding name="TRADEDISPENSER1" header="TRADEDISPENSER">
-		tD_Temp.isEnabled = not tD_Temp.isEnabled
-		if (tD_Temp.isEnabled) then
-			DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.activated)
+		mS_Temp.isEnabled = not mS_Temp.isEnabled
+		if (mS_Temp.isEnabled) then
+			DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.activated)
 		else
-			DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.deactivated)
+			DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.deactivated)
 		end
 		mobileSnacksUpdate()
 		mobileSnacksOSD_OnUpdate()
 	</Binding>
 
 	<Binding name="TRADEDISPENSER2">
-		tD_Temp.isVisible = not tD_Temp.isVisible
+		mS_Temp.isVisible = not mS_Temp.isVisible
 		mobileSnacksSettings:Show()
 		mobileSnacksSettingsBtn:LockHighlight()
 		mobileSnacksTradeControl:Show()
@@ -22,17 +22,17 @@
 	</Binding>
 	
 	<Binding name="TRADEDISPENSER3">
-		tD_CharDatas.OSD.isEnabled = not tD_CharDatas.OSD.isEnabled
+		mS_CharDatas.OSD.isEnabled = not mS_CharDatas.OSD.isEnabled
 		mobileSnacksUpdate()
 		mobileSnacksSettings_OnUpdate()
 		mobileSnacksOSD_OnUpdate()
 	</Binding>
 	
 	<Binding name="TRADEDISPENSER4">	
-		if (tD_Temp.isEnabled) then
+		if (mS_Temp.isEnabled) then
 			mobileSnacksBroadcastItems()
 		else
-			DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.OSD.notenabled)
+			DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.OSD.notenabled)
 		end
 	</Binding>
 </Bindings>

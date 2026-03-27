@@ -13,7 +13,7 @@ end
 
 function mobileSnacksVerbose(level, text)
 	local temp=0;
-	if (tD_GlobalDatas.Verbose) then	temp = tD_GlobalDatas.Verbose	end
+	if (mS_GlobalDatas.Verbose) then	temp = mS_GlobalDatas.Verbose	end
     if (temp>=level) then
 		DEFAULT_CHAT_FRAME:AddMessage(mobileSnacks_ProgName..": "..text)
 	end
@@ -23,7 +23,7 @@ end
 function mobileSnacksMessage(channel, message)
 	channel = strupper(channel)
 	if (channel=="WHISPER") then
-		SendChatMessage(message, "WHISPER", tD_Loc[UnitFactionGroup("player")], tD_Temp.Target.Name)
+		SendChatMessage(message, "WHISPER", mS_Loc[UnitFactionGroup("player")], mS_Temp.Target.Name)
 	elseif (channel=="RAID" or channel=="PARTY" or channel=="GUILD" or channel=="YELL" or channel=="SAY") then
 		SendChatMessage(message, channel);
 	else
@@ -74,20 +74,20 @@ end
 local OldInitiateTrade = InitiateTrade;
 function InitiateTrade(UnitID)
 	mobileSnacksVerbose(1,"Trade Started - triggered by hooked Function: InitiateTrade");
-	tD_Temp.InitiateTrade=true;
+	mS_Temp.InitiateTrade=true;
 	OldInitiateTrade(UnitID)
 end
 
 local OldBeginTrade = BeginTrade;
 function BeginTrade()
 	mobileSnacksVerbose(1,"Trade Started - triggered by hooked Function: BeginTrade");
-	tD_Temp.InitiateTrade=true;
+	mS_Temp.InitiateTrade=true;
 	OldBeginTrade()
 end
 
 
 function mobileSnacksUpdateMoney()
-	tD_CharDatas.profile[tD_CharDatas.ActualRack][tD_CharDatas.ActualProfile].Charge = MoneyInputFrame_GetCopper(mobileSnacksMoneyFrame)
+	mS_CharDatas.profile[mS_CharDatas.ActualRack][mS_CharDatas.ActualProfile].Charge = MoneyInputFrame_GetCopper(mobileSnacksMoneyFrame)
 end
 
 
@@ -100,7 +100,7 @@ end
 
 
 
-function tD_isBlocked(a,b,c,d)
+function mS_isBlocked(a,b,c,d)
 	local i,j=1,1;
 	for i=1, table.getn(c) do
 		if (a==c[i]) then
@@ -116,12 +116,12 @@ end
 
 -- this function searches for an Item/Stack of items...   and returns the IDs, if it could be found
 function mobileSnacksCompile(slotID)
-	if (tD_Temp.Slot[slotID].itemLink == nil) then
+	if (mS_Temp.Slot[slotID].itemLink == nil) then
 		return "deadlink",nil
 	end
 	
-	local configItemLink = tD_Temp.Slot[slotID].itemLink
-	local configItemCount = tD_Temp.Slot[slotID].itemCount
+	local configItemLink = mS_Temp.Slot[slotID].itemLink
+	local configItemCount = mS_Temp.Slot[slotID].itemCount
 	
 	if (configItemLink) then mobileSnacksVerbose(1,"mobileSnacksCompile: looking for: "..configItemLink) end
 	mobileSnacksVerbose(2,"mobileSnacksCompile: first round")
@@ -131,7 +131,7 @@ function mobileSnacksCompile(slotID)
 		mobileSnacksVerbose(3,"mobileSnacksCompile: "..GetContainerNumSlots(cID).." slots in bag "..cID)
 		if (GetContainerNumSlots(cID) > 0) then
 			for sID=1,GetContainerNumSlots(cID) do
-				if (not tD_isBlocked(cID, sID, tD_Temp.BlockedIDs[1], tD_Temp.BlockedIDs[2])) then
+				if (not mS_isBlocked(cID, sID, mS_Temp.BlockedIDs[1], mS_Temp.BlockedIDs[2])) then
 					local itemLink = GetContainerItemLink(cID, sID)
 					local _, itemCount, itemLocked = GetContainerItemInfo(cID, sID)
 
@@ -161,7 +161,7 @@ function mobileSnacksCompile(slotID)
 	local stackFound = false
 	for cID=0,4 do
 		for sID=1,GetContainerNumSlots(cID) do
-			if ((cID ~= _cID or sID ~= _sID) and not tD_isBlocked(cID, sID, tD_Temp.BlockedIDs[1], tD_Temp.BlockedIDs[2])) then
+			if ((cID ~= _cID or sID ~= _sID) and not mS_isBlocked(cID, sID, mS_Temp.BlockedIDs[1], mS_Temp.BlockedIDs[2])) then
 				local itemLink = GetContainerItemLink(cID, sID)
 				local _, itemCount, itemLocked = GetContainerItemInfo(cID, sID)
 			
@@ -228,13 +228,13 @@ function mobileSnacksTradeControlChecker(mobileSnacksClient)
 		 mobileSnacksClient.Guild = "IsMember";
 	else mobileSnacksClient.Guild = "NotMember"; end
 	
-	if (mobileSnacksClient.Raid=="IsMember" or mobileSnacksClient.Guild=="IsMember") then tD_Temp.isInsider=true; end
+	if (mobileSnacksClient.Raid=="IsMember" or mobileSnacksClient.Guild=="IsMember") then mS_Temp.isInsider=true; end
 	
-	if (tD_CharDatas.ClientInfos) then
+	if (mS_CharDatas.ClientInfos) then
 		local guildName3 = "";
 		if (guildName2~=nil) then guildName3 = "<"..guildName2.."> ";	end
 		if (not mobileSnacksClient.Class) then targetClass="" end
-		DEFAULT_CHAT_FRAME:AddMessage(tD_Loc.Opposite.." "..mobileSnacksClient.Name.." "..guildName3.." -  "..mobileSnacksClient.Class.." Level "..mobileSnacksClient.Level,1,1,0);
+		DEFAULT_CHAT_FRAME:AddMessage(mS_Loc.Opposite.." "..mobileSnacksClient.Name.." "..guildName3.." -  "..mobileSnacksClient.Class.." Level "..mobileSnacksClient.Level,1,1,0);
 	else
 		mobileSnacksVerbose(1,"Clients Name = "..mobileSnacksClient.Name);
 		mobileSnacksVerbose(1,"Clients Level = "..mobileSnacksClient.Level);
@@ -243,36 +243,36 @@ function mobileSnacksTradeControlChecker(mobileSnacksClient)
 		mobileSnacksVerbose(1,"your Guild = "..mobileSnacksClient.Guild);
 	end
 	
-	if (tD_CharDatas.Raid and mobileSnacksClient.Raid=="NotMember") then 
-		if (tD_CharDatas.Guild) then
+	if (mS_CharDatas.Raid and mobileSnacksClient.Raid=="NotMember") then 
+		if (mS_CharDatas.Guild) then
 			if (mobileSnacksClient.Guild=="NotMember") then
-				mobileSnacksMessage("WHISPER",tD_GlobalDatas.whisper[8])
+				mobileSnacksMessage("WHISPER",mS_GlobalDatas.whisper[8])
 				return false;
 			end
 		else
-			mobileSnacksMessage("WHISPER",tD_GlobalDatas.whisper[8])
+			mobileSnacksMessage("WHISPER",mS_GlobalDatas.whisper[8])
 			return false;
 		end
 	end
 	
-	if (tD_CharDatas.LevelCheck and mobileSnacksClient.Level<tD_CharDatas.LevelValue) then 
-		mobileSnacksMessage("WHISPER",tD_GlobalDatas.whisper[6])
+	if (mS_CharDatas.LevelCheck and mobileSnacksClient.Level<mS_CharDatas.LevelValue) then 
+		mobileSnacksMessage("WHISPER",mS_GlobalDatas.whisper[6])
 		return false; 
 	end
 	
 	mobileSnacksClient.Class=mobileSnacksClient.EnglishClass;
 
 	local trades=mobileSnacksClientTrades(mobileSnacksClient.Name);
-	if (trades>=1 and trades+1>tD_CharDatas.RegisterValue) then 
-		mobileSnacksMessage("WHISPER",tD_GlobalDatas.whisper[9])
+	if (trades>=1 and trades+1>mS_CharDatas.RegisterValue) then 
+		mobileSnacksMessage("WHISPER",mS_GlobalDatas.whisper[9])
 		return false
 	end
 	
-	if (tD_CharDatas.BanlistActive and tD_GlobalDatas.Bannlist and table.getn(tD_GlobalDatas.Bannlist)>0) then
+	if (mS_CharDatas.BanlistActive and mS_GlobalDatas.Bannlist and table.getn(mS_GlobalDatas.Bannlist)>0) then
 		local found=false;
-		table.foreach(tD_GlobalDatas.Bannlist, function(k,v) if (strlower(v)==strlower(mobileSnacksClient.Name)) then	found=true;	end; end)
+		table.foreach(mS_GlobalDatas.Bannlist, function(k,v) if (strlower(v)==strlower(mobileSnacksClient.Name)) then	found=true;	end; end)
 		if (found) then
-			mobileSnacksMessage("WHISPER",tD_GlobalDatas.whisper[10])
+			mobileSnacksMessage("WHISPER",mS_GlobalDatas.whisper[10])
 			return false;
 		end
 	end
@@ -283,13 +283,13 @@ end
 
 
 function mobileSnacksClientTrades(name)
-	if (not tD_CharDatas.RegisterCheck) then return 0  end
+	if (not mS_CharDatas.RegisterCheck) then return 0  end
 	if (name == "map-bug" ) then return 0  end
 	local i=0
 	local index=nil;
-	while (tD_Temp.RegUser[i]~=nil) do
-		if (tD_Temp.RegUser[i].name == name) then
-			mobileSnacksVerbose(2,"Registred Player found at index "..i.." is: "..tD_Temp.RegUser[i].name);
+	while (mS_Temp.RegUser[i]~=nil) do
+		if (mS_Temp.RegUser[i].name == name) then
+			mobileSnacksVerbose(2,"Registred Player found at index "..i.." is: "..mS_Temp.RegUser[i].name);
 			index=i;
 		end
 		i=i+1;
@@ -299,8 +299,8 @@ function mobileSnacksClientTrades(name)
 		mobileSnacksVerbose(1,name.." not registrated!");
 		return 0
 	else	
-		mobileSnacksVerbose(1,name.." found with "..tD_Temp.RegUser[index].trades.." trades");	
-		return tD_Temp.RegUser[index].trades
+		mobileSnacksVerbose(1,name.." found with "..mS_Temp.RegUser[index].trades.." trades");	
+		return mS_Temp.RegUser[index].trades
 	end
 end
 
@@ -309,29 +309,29 @@ end
 
 function mobileSnacksAccept()
 	mobileSnacksVerbose(1,"mobileSnacksAccept: Triggered")
-	if (tD_Temp.tradeCharge and tD_Temp.tradeCharge > 0) then
+	if (mS_Temp.tradeCharge and mS_Temp.tradeCharge > 0) then
 		local recipientMoney = GetTargetTradeMoney()
-		if (recipientMoney >= tD_Temp.tradeCharge) then
-			tD_Temp.tradeState = nil
+		if (recipientMoney >= mS_Temp.tradeCharge) then
+			mS_Temp.tradeState = nil
 			AcceptTrade()
 			
-			if (tD_Temp.tradeData) then
-				tD_Temp.tradeData = nil
-				tD_Temp.isEnabled = false
+			if (mS_Temp.tradeData) then
+				mS_Temp.tradeData = nil
+				mS_Temp.isEnabled = false
 				mobileSnacksUpdate()
 				mobileSnacks_OSD_buttons()
 			end
 		else
-			local gold, silver, copper = mobileSnacksSplitMoney(tD_Temp.tradeCharge)
-			mobileSnacksMessage("WHISPER",tD_GlobalDatas.whisper[5].." "..gold.."g "..silver.."s "..copper.."c")
+			local gold, silver, copper = mobileSnacksSplitMoney(mS_Temp.tradeCharge)
+			mobileSnacksMessage("WHISPER",mS_GlobalDatas.whisper[5].." "..gold.."g "..silver.."s "..copper.."c")
 		end
 	else
-		tD_Temp.tradeState = nil
+		mS_Temp.tradeState = nil
 		AcceptTrade()
 		
-		if (tD_Temp.tradeData) then
-			tD_Temp.tradeData = nil
-			tD_Temp.isEnabled = false
+		if (mS_Temp.tradeData) then
+			mS_Temp.tradeData = nil
+			mS_Temp.isEnabled = false
 			mobileSnacksUpdate()
 			mobileSnacks_OSD_buttons()
 		end
@@ -363,10 +363,10 @@ end
 
 
 function mobileSnacksCompileProfile()
-	if (not tD_Temp.Target.Name) then return false end
+	if (not mS_Temp.Target.Name) then return false end
 	local actualID=1;
 	local i;
-	tD_Temp.tradeCharge = 0;
+	mS_Temp.tradeCharge = 0;
 	local getprofile = {
 		["WARRIOR"] = {	[1]=2, [2]=11},
 		["ROGUE"]	= { [1]=3, [2]=11},
@@ -378,49 +378,49 @@ function mobileSnacksCompileProfile()
 		["PALADIN"] = { [1]=9, [2]=13},
 		["SHAMAN"]  = { [1]=10, [2]=13}
 	};
-	tD_Temp.Slot={
+	mS_Temp.Slot={
 		[1]={}, [2]={}, [3]={}, [4]={}, [5]={}, [6]={} 
 	};
 
-	tD_Temp.Target.EnglishClass = strupper(tD_Temp.Target.EnglishClass);
-	mobileSnacksVerbose(1,"Compile the TradeProfiles: All Classes + "..tD_Temp.Target.EnglishClass.." + "..tD_Loc.profile[ getprofile[tD_Temp.Target.EnglishClass][2] ]);
+	mS_Temp.Target.EnglishClass = strupper(mS_Temp.Target.EnglishClass);
+	mobileSnacksVerbose(1,"Compile the TradeProfiles: All Classes + "..mS_Temp.Target.EnglishClass.." + "..mS_Loc.profile[ getprofile[mS_Temp.Target.EnglishClass][2] ]);
 	
-	tD_Temp.tradeCharge = tD_CharDatas.profile[tD_CharDatas.ActualRack][1].Charge;	
+	mS_Temp.tradeCharge = mS_CharDatas.profile[mS_CharDatas.ActualRack][1].Charge;	
 	for slotID=1,6 do
-		if (tD_CharDatas.profile[tD_CharDatas.ActualRack][1][slotID] and tD_CharDatas.profile[tD_CharDatas.ActualRack][1][slotID].itemName) then
-			tD_Temp.Slot[actualID] = tD_CharDatas.profile[tD_CharDatas.ActualRack][1][slotID];
+		if (mS_CharDatas.profile[mS_CharDatas.ActualRack][1][slotID] and mS_CharDatas.profile[mS_CharDatas.ActualRack][1][slotID].itemName) then
+			mS_Temp.Slot[actualID] = mS_CharDatas.profile[mS_CharDatas.ActualRack][1][slotID];
 			actualID=actualID+1;
 		end
 	end
 	
-	local act=getprofile[tD_Temp.Target.EnglishClass][1];
+	local act=getprofile[mS_Temp.Target.EnglishClass][1];
 	mobileSnacksVerbose(2, "looking in Profile "..act.." for items")
-	tD_Temp.tradeCharge = tD_Temp.tradeCharge + tD_CharDatas.profile[tD_CharDatas.ActualRack][act].Charge;
+	mS_Temp.tradeCharge = mS_Temp.tradeCharge + mS_CharDatas.profile[mS_CharDatas.ActualRack][act].Charge;
 	for slotID=1,6 do
 		if (actualID<=6) then	
-			local profile = tD_CharDatas.profile[tD_CharDatas.ActualRack][act][slotID]
+			local profile = mS_CharDatas.profile[mS_CharDatas.ActualRack][act][slotID]
 			if ( profile and profile.itemName) then
-				tD_Temp.Slot[actualID] = profile;
+				mS_Temp.Slot[actualID] = profile;
 				actualID=actualID+1;
 			end
 		end
 	end
 	
-	local act=getprofile[tD_Temp.Target.EnglishClass][2];
+	local act=getprofile[mS_Temp.Target.EnglishClass][2];
 	mobileSnacksVerbose(2, "looking in Profile "..act.." for items")
 	
-	tD_Temp.tradeCharge = tD_Temp.tradeCharge + tD_CharDatas.profile[tD_CharDatas.ActualRack][act].Charge;
+	mS_Temp.tradeCharge = mS_Temp.tradeCharge + mS_CharDatas.profile[mS_CharDatas.ActualRack][act].Charge;
 	for slotID=1,6 do
 		if (actualID<=6) then
-			local profile = tD_CharDatas.profile[tD_CharDatas.ActualRack][act][slotID];
+			local profile = mS_CharDatas.profile[mS_CharDatas.ActualRack][act][slotID];
 			if (profile and profile.itemName) then
-				tD_Temp.Slot[actualID] = profile;
+				mS_Temp.Slot[actualID] = profile;
 				actualID=actualID+1;
 			end
 		end
 	end	
 	
-	if (tD_CharDatas.Free4Guild and tD_Temp.isInsider) then tD_Temp.tradeCharge=0 end;
+	if (mS_CharDatas.Free4Guild and mS_Temp.isInsider) then mS_Temp.tradeCharge=0 end;
 	actualID=actualID-1;
 	mobileSnacksVerbose(1,"Found "..actualID.." items to trade");
 	return actualID;

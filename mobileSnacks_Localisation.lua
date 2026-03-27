@@ -9,7 +9,7 @@ function mobileSnacks_GetEnglish()
 	mobileSnacks_ProgName = "mobileSnacks";
 	-- mobileSnacks_Version is defined in mobileSnacks_Initialize.lua
 
-	tD_Loc = {
+	mS_Loc = {
 		["logon"]			= {
 			["changed"]		= "Data version has changed, resetting configuration",
 			["welcome"] 	= " Version "..mobileSnacks_Version.." - initialized",
@@ -33,7 +33,7 @@ function mobileSnacks_GetEnglish()
 			[6] = "|cFFFFFFFF  broadcast   |cFF45E849Broadcasts your Trade",
 			[7] = "|cFFFFFFFF  OSD           |cFF45E849Toggles the OSD (shortcut-Buttons)",
 			[8]	= "|cFFFFFFFF  verbose X   |cFF45E849Sets the VerboseLevel (DebugInfo) to level X. (0=off)",
-			[9] = "|cFFFFFFFF  resetpos      |cFF45E849resets the position of all tD-Frames",
+			[9] = "|cFFFFFFFF  resetpos      |cFF45E849resets the position of all mS-Frames",
 			[10] = "|cFFFFFFFF  about          |cFF45E849Shows more informations about "..mobileSnacks_ProgName,
 		},
 		["whisper"]		= {		-- default messages - can be edited ingame
@@ -257,7 +257,7 @@ end
 function mobileSnacks_GetGerman()
 	mobileSnacks_ProgName = "mobileSnacks";
 	-- mobileSnacks_Version is defined in mobileSnacks_Initialize.lua
-	tD_Loc = {
+	mS_Loc = {
 		["logon"]			= {
 			["changed"]		= "Speicher-System nicht aktuell, Configurationen werden zur\195\188ckgesetzt",
 			["welcome"] 	= "Version "..mobileSnacks_Version.." initialisiert",
@@ -280,7 +280,7 @@ function mobileSnacks_GetGerman()
 			[6] = "|cFFFFFFFF  broadcast   |cFF45E849Teilt deine Handelsabsichten mit",
 			[7] = "|cFFFFFFFF  OSD           |cFF45E849Schalter für das OSD (Shortcut-Buttons)",
 			[8]	= "|cFFFFFFFF  verbose X   |cFF45E849Zeigt Debug-Informationen. (Level X: 0=aus, 3=ALLE)",
-			[9] = "|cFFFFFFFF  resetpos      |cFF45E849setzt alle tD-Fenster zurück",
+			[9] = "|cFFFFFFFF  resetpos      |cFF45E849setzt alle mS-Fenster zurück",
 			[10] = "|cFFFFFFFF  about          |cFF45E849Zeigt mehr Infos zu "..mobileSnacks_ProgName,
 		},
 		["whisper"]		= {		-- default messages - could be edited ingame
@@ -486,7 +486,7 @@ function mobileSnacks_GetGerman()
 		},
 		["KeyBindings"]		= {
 			["header"]		= mobileSnacks_ProgName,
-			[1]				= "Schalter für tD",
+			[1]				= "Schalter für mS",
 			[2]				= "Zeige Config-Frame",
 			[3]				= "Zeige OSD",
 			[4]				= "Sofort-Broadcast",
@@ -504,7 +504,7 @@ end
 
 function mobileSnacks_GetChinese()
 	mobileSnacks_ProgName = "自动售货机";
-	tD_Loc = {
+	mS_Loc = {
 		["logon"]			= {
 			["changed"]		= "数据版本改变，重置配置文件",
 			["welcome"] 	= " 版本 "..mobileSnacks_Version.." - 初始化完毕",
@@ -528,7 +528,7 @@ function mobileSnacks_GetChinese()
 			[6] = "  broadcast   广播交易信息",
 			[7] = "  OSD          开启快捷窗口 (图标按钮)",
 			[8]	= "  verbose X    设置 VerboseLevel(Debug信息)为level X. (0=关闭)",
-			[9] = "  resetpos    moves all frames of tD to their default position",
+			[9] = "  resetpos    moves all frames of mS to their default position",
 			[10] = "  about        关于"..mobileSnacks_ProgName,
 		},
 		["whisper"]		= {
@@ -749,7 +749,7 @@ end
 
 function mobileSnacks_GetFrench()
 	mobileSnacks_ProgName = "mobileSnacks";
-	tD_Loc = {
+	mS_Loc = {
 		["logon"]			= {
 			["changed"]		= "La version a changé. Remise à zéro de la configuration.",
 			["welcome"] 	= " Version "..mobileSnacks_Version.." - initialisée",
@@ -998,7 +998,7 @@ function mobileSnacks_GetRussian()
 	mobileSnacks_ProgName = "mobileSnacks";
 	-- mobileSnacks_Version is defined in mobileSnacks_Initialize.lua
 
-	tD_Loc = {
+	mS_Loc = {
 		["logon"]			= {
 			["changed"]		= "Версия данных изменена, восстановление настоек",
 			["welcome"] 	= "Версия "..mobileSnacks_Version.." инициализирована",

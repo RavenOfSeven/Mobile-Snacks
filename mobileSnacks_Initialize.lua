@@ -1,9 +1,9 @@
 -- these are used for KeyBindings:
-BINDING_HEADER_TRADEDISPENSER=tD_Loc.KeyBindings.header;
-BINDING_NAME_TRADEDISPENSER1=tD_Loc.KeyBindings[1];
-BINDING_NAME_TRADEDISPENSER2=tD_Loc.KeyBindings[2];
-BINDING_NAME_TRADEDISPENSER3=tD_Loc.KeyBindings[3];
-BINDING_NAME_TRADEDISPENSER4=tD_Loc.KeyBindings[4];
+BINDING_HEADER_TRADEDISPENSER=mS_Loc.KeyBindings.header;
+BINDING_NAME_TRADEDISPENSER1=mS_Loc.KeyBindings[1];
+BINDING_NAME_TRADEDISPENSER2=mS_Loc.KeyBindings[2];
+BINDING_NAME_TRADEDISPENSER3=mS_Loc.KeyBindings[3];
+BINDING_NAME_TRADEDISPENSER4=mS_Loc.KeyBindings[4];
 
 
 -- these blocks are used to initialize mobileSnacks. 
@@ -46,11 +46,11 @@ end
 
 if (not mobileSnacksChannelColors) then 
 	mobileSnacksChannelColors = {
-		[1] = {		["r"] = 1,  	["g"] = 1,		["b"]=1,		["text"]=tD_Loc.channel.say	},
-		[2] = {		["r"] = 1,  	["g"] = 0,		["b"]=0,		["text"]=tD_Loc.channel.yell	},
-		[3] = {		["r"] = 1,  	["g"] = 0.5,	["b"]=0,		["text"]=tD_Loc.channel.raid	},
-		[4] = {		["r"] = 0.4, 	["g"] = 0.4,	["b"]=1,		["text"]=tD_Loc.channel.party	},
-		[5] = {		["r"] = 0.1,  	["g"] = 1,		["b"]=0.1,		["text"]=tD_Loc.channel.guild	},
+		[1] = {		["r"] = 1,  	["g"] = 1,		["b"]=1,		["text"]=mS_Loc.channel.say	},
+		[2] = {		["r"] = 1,  	["g"] = 0,		["b"]=0,		["text"]=mS_Loc.channel.yell	},
+		[3] = {		["r"] = 1,  	["g"] = 0.5,	["b"]=0,		["text"]=mS_Loc.channel.raid	},
+		[4] = {		["r"] = 0.4, 	["g"] = 0.4,	["b"]=1,		["text"]=mS_Loc.channel.party	},
+		[5] = {		["r"] = 0.1,  	["g"] = 1,		["b"]=0.1,		["text"]=mS_Loc.channel.guild	},
 	}
 end
 
@@ -59,52 +59,52 @@ mobileSnacks_IsBurningCrusade = false;
 
 
 
-if (not tD_Temp) then
-	tD_Temp = {}		-- this datafield is used to store all the temporary datas - they should be erased after relog / logout / reloadui
-	tD_Temp.Slot = {
+if (not mS_Temp) then
+	mS_Temp = {}		-- this datafield is used to store all the temporary datas - they should be erased after relog / logout / reloadui
+	mS_Temp.Slot = {
 		[1]=nil, [2]=nil, [3]=nil, [4]=nil, [5]=nil, [6]=nil
 	}
-	tD_Temp.Scroll = {	}
-	tD_Temp.Scroll.start = 1;
-	tD_Temp.RegUser = { 
+	mS_Temp.Scroll = {	}
+	mS_Temp.Scroll.start = 1;
+	mS_Temp.RegUser = { 
 		[0] = { ["name"]="empty",  ["trades"]=0 }  
 	};			
 end
 
 
-if (not tD_GlobalDatas) then 
-	tD_GlobalDatas = {}		-- defines an empty datafield
-	tD_CharDatas = {}
-	tD_CharDatas.OSD={}	
+if (not mS_GlobalDatas) then 
+	mS_GlobalDatas = {}		-- defines an empty datafield
+	mS_CharDatas = {}
+	mS_CharDatas.OSD={}	
 end
 
 
 
 function mobileSnacks_OnVariablesLoaded()
-	local tD_Name=UnitName("player").." of "..GetRealmName();
-	if (tD_Datas~=nil) then
-		if (tD_Datas[tD_Name]~=nil) then
-			tD_CharDatas = tD_Datas[tD_Name];
-			tD_Datas[tD_Name]=nil;
+	local mS_Name=UnitName("player").." of "..GetRealmName();
+	if (mS_Datas~=nil) then
+		if (mS_Datas[mS_Name]~=nil) then
+			mS_CharDatas = mS_Datas[mS_Name];
+			mS_Datas[mS_Name]=nil;
 		end
-		if (tD_Datas.Verbose~=nil) then 
-			tD_GlobalDatas.Verbose = tD_Datas.Verbose;
-			tD_Datas.Verbose=nil;
+		if (mS_Datas.Verbose~=nil) then 
+			mS_GlobalDatas.Verbose = mS_Datas.Verbose;
+			mS_Datas.Verbose=nil;
 		end
-		if (tD_Datas.Bannlist~=nil) then 
-			tD_GlobalDatas.Bannlist = tD_Datas.Bannlist;
-			tD_Datas.Bannlist=nil;
+		if (mS_Datas.Bannlist~=nil) then 
+			mS_GlobalDatas.Bannlist = mS_Datas.Bannlist;
+			mS_Datas.Bannlist=nil;
 		end
-		if (tD_Datas.whisper~=nil) then 
-			tD_GlobalDatas.whisper = tD_Datas.whisper;
-			tD_Datas.whisper=nil;
+		if (mS_Datas.whisper~=nil) then 
+			mS_GlobalDatas.whisper = mS_Datas.whisper;
+			mS_Datas.whisper=nil;
 		end
 	end
-	if (tD_GlobalDatas.dataVersion ~= configDataVersion) then tD_GlobalDatas.dataVersion=configDataVersion; end
-	if (not tD_GlobalDatas.Verbose) then tD_GlobalDatas.Verbose=0 end
-	if (not tD_GlobalDatas.Bannlist) then tD_GlobalDatas.Bannlist = { } end
+	if (mS_GlobalDatas.dataVersion ~= configDataVersion) then mS_GlobalDatas.dataVersion=configDataVersion; end
+	if (not mS_GlobalDatas.Verbose) then mS_GlobalDatas.Verbose=0 end
+	if (not mS_GlobalDatas.Bannlist) then mS_GlobalDatas.Bannlist = { } end
 	
-	if (tD_CharDatas.profile and tD_CharDatas.profile[1] and tD_CharDatas.profile[1]["Charge"]) then
+	if (mS_CharDatas.profile and mS_CharDatas.profile[1] and mS_CharDatas.profile[1]["Charge"]) then
 		local i, temp;
 		temp = {}
 		for i=1,13 do
@@ -113,36 +113,36 @@ function mobileSnacks_OnVariablesLoaded()
 				[1] = {}, [2] = {},  [3]= {},  [4]={}, [5]={}, [6]={}
 			}
 		end	
-		tD_CharDatas.profile = {
-			[1] = tD_CharDatas.profile,
+		mS_CharDatas.profile = {
+			[1] = mS_CharDatas.profile,
 			[2] = temp,
 			[3] = temp,
 		}
 	end
-	if (tD_CharDatas.profile and not tD_CharDatas.profile[1][13]) then
-		tD_CharDatas.profile[1][14] = {
+	if (mS_CharDatas.profile and not mS_CharDatas.profile[1][13]) then
+		mS_CharDatas.profile[1][14] = {
 				["Charge"] = 0,
 				[1] = {}, [2] = {},  [3]= {},  [4]={}, [5]={}, [6]={}
 			};
-		tD_CharDatas.profile[2][14]=tD_CharDatas.profile[1][14];
-		tD_CharDatas.profile[3][14]=tD_CharDatas.profile[1][14];
+		mS_CharDatas.profile[2][14]=mS_CharDatas.profile[1][14];
+		mS_CharDatas.profile[3][14]=mS_CharDatas.profile[1][14];
 		
 		local i=0;
 		for i=1,3 do
-			tD_CharDatas.profile[i][13]=tD_CharDatas.profile[i][12]
-			tD_CharDatas.profile[i][12]=tD_CharDatas.profile[i][11]
-			tD_CharDatas.profile[i][11]=tD_CharDatas.profile[i][10]
-			tD_CharDatas.profile[i][10]=tD_CharDatas.profile[i][9]
+			mS_CharDatas.profile[i][13]=mS_CharDatas.profile[i][12]
+			mS_CharDatas.profile[i][12]=mS_CharDatas.profile[i][11]
+			mS_CharDatas.profile[i][11]=mS_CharDatas.profile[i][10]
+			mS_CharDatas.profile[i][10]=mS_CharDatas.profile[i][9]
 		end
 	end
 	
 		
-	if (tD_CharDatas.OSD.g==nil) then
-		tD_CharDatas = {}			
+	if (mS_CharDatas.OSD.g==nil) then
+		mS_CharDatas = {}			
 		-- set DEFAULT settings
 		
-		tD_CharDatas.ChannelID=1;
-		tD_CharDatas.OSD = {
+		mS_CharDatas.ChannelID=1;
+		mS_CharDatas.OSD = {
 			["scale"]		= 1,
 			["alpha"]		= 1,
 			["r"]			= 0,
@@ -153,71 +153,71 @@ function mobileSnacks_OnVariablesLoaded()
 			["horiz"]		= false,
 			["locked"]		= false,
 		};
-		tD_CharDatas.TimelimitCheck=true;
-		tD_CharDatas.DisplayStockCheck=true;
-		tD_CharDatas.Timelimit = 20;
-		tD_CharDatas.BanlistActive=false;
-		tD_CharDatas.Raid=true;
-		tD_CharDatas.Guild=true;
-		tD_CharDatas.Free4Guild=true;
-		tD_CharDatas.AutoAccept=true;
-		tD_CharDatas.ClientInfos=true;
-		tD_CharDatas.LevelCheck=true;
-		tD_CharDatas.LevelValue=55;
-		tD_CharDatas.RegisterCheck=true;
-		tD_CharDatas.RegisterValue=1;
-		tD_CharDatas.broadcastSlice=math.floor(mobileSnacks_MaxBroadcastLength/2)*60;
-		tD_CharDatas.Random=1;
-		tD_CharDatas.ActualProfile=1;
-		tD_CharDatas.profile = {};
+		mS_CharDatas.TimelimitCheck=true;
+		mS_CharDatas.DisplayStockCheck=true;
+		mS_CharDatas.Timelimit = 20;
+		mS_CharDatas.BanlistActive=false;
+		mS_CharDatas.Raid=true;
+		mS_CharDatas.Guild=true;
+		mS_CharDatas.Free4Guild=true;
+		mS_CharDatas.AutoAccept=true;
+		mS_CharDatas.ClientInfos=true;
+		mS_CharDatas.LevelCheck=true;
+		mS_CharDatas.LevelValue=55;
+		mS_CharDatas.RegisterCheck=true;
+		mS_CharDatas.RegisterValue=1;
+		mS_CharDatas.broadcastSlice=math.floor(mobileSnacks_MaxBroadcastLength/2)*60;
+		mS_CharDatas.Random=1;
+		mS_CharDatas.ActualProfile=1;
+		mS_CharDatas.profile = {};
 		local i,j;
 		for j=1,3 do
-			tD_CharDatas.profile[j]={}
+			mS_CharDatas.profile[j]={}
 			for i=1,14 do
-				tD_CharDatas.profile[j][i] = {
+				mS_CharDatas.profile[j][i] = {
 					["Charge"] = 0,
 					[1] = {}, [2] = {},  [3]= {},  [4]={}, [5]={}, [6]={}
 				}
 			end			
 		end
 		
-		tD_CharDatas.RndText = {
-			[1] = tD_Loc.Broadcast[1],		[2] = tD_Loc.Broadcast[2],
-			[3] = tD_Loc.Broadcast[3],		[4] = tD_Loc.Broadcast[4],
-			[5] = tD_Loc.Broadcast[4],		[6] = tD_Loc.Broadcast[4],
-			[7] = tD_Loc.Broadcast[4],		[8] = tD_Loc.Broadcast[4],
+		mS_CharDatas.RndText = {
+			[1] = mS_Loc.Broadcast[1],		[2] = mS_Loc.Broadcast[2],
+			[3] = mS_Loc.Broadcast[3],		[4] = mS_Loc.Broadcast[4],
+			[5] = mS_Loc.Broadcast[4],		[6] = mS_Loc.Broadcast[4],
+			[7] = mS_Loc.Broadcast[4],		[8] = mS_Loc.Broadcast[4],
 		};
 	end
 	--for users with Version 0.60 - 0.70
-	if (not tD_CharDatas.TimelimitCheck or not tD_CharDatas.Timelimit) then
-		tD_CharDatas.TimelimitCheck=false;
-		tD_CharDatas.Timelimit = 25;
-		tD_CharDatas.BanlistActive=false;
+	if (not mS_CharDatas.TimelimitCheck or not mS_CharDatas.Timelimit) then
+		mS_CharDatas.TimelimitCheck=false;
+		mS_CharDatas.Timelimit = 25;
+		mS_CharDatas.BanlistActive=false;
 	end
-	if (not tD_CharDatas.ActualRack) then tD_CharDatas.ActualRack=1 end
+	if (not mS_CharDatas.ActualRack) then mS_CharDatas.ActualRack=1 end
 	
-	mobileSnacksSettingsOSDscale:SetValue(tD_CharDatas.OSD.scale);
-	mobileSnacksSettingsOSDCheck:SetChecked(tD_CharDatas.OSD.isEnabled);
-	mobileSnacksSettingsOSDborder:SetChecked(tD_CharDatas.OSD.border);
-	mobileSnacksSettingsOSDhoriz:SetChecked(tD_CharDatas.OSD.horiz);
-	mobileSnacksSettingsRandom:SetValue(tD_CharDatas.Random);
-	tD_CharDatas.OnBroadcastText=nil;
+	mobileSnacksSettingsOSDscale:SetValue(mS_CharDatas.OSD.scale);
+	mobileSnacksSettingsOSDCheck:SetChecked(mS_CharDatas.OSD.isEnabled);
+	mobileSnacksSettingsOSDborder:SetChecked(mS_CharDatas.OSD.border);
+	mobileSnacksSettingsOSDhoriz:SetChecked(mS_CharDatas.OSD.horiz);
+	mobileSnacksSettingsRandom:SetValue(mS_CharDatas.Random);
+	mS_CharDatas.OnBroadcastText=nil;
 	
-	tD_Temp.isEnabled = false;
+	mS_Temp.isEnabled = false;
 	mobileSnacksUpdate();
 	mobileSnacksSettings_OnUpdate();
 	mobileSnacksOSD_OnUpdate();
 	mobileSnacks_TradeControl_Update();
 	mobileSnacks_EditBoxUpdate();		
 
-	if (not tD_GlobalDatas.whisper) then
-		tD_GlobalDatas.whisper={};
+	if (not mS_GlobalDatas.whisper) then
+		mS_GlobalDatas.whisper={};
 		local i;
 		for i=1,11 do
-			tD_GlobalDatas.whisper[i]=tD_Loc.whisper[i].default;
+			mS_GlobalDatas.whisper[i]=mS_Loc.whisper[i].default;
 		end
 	end
-	if (tD_CharDatas.SoundCheck==nil) then tD_CharDatas.SoundCheck=true end
-	if (tD_CharDatas.DisplayStockCheck==nil) then tD_CharDatas.DisplayStockCheck=true end
+	if (mS_CharDatas.SoundCheck==nil) then mS_CharDatas.SoundCheck=true end
+	if (mS_CharDatas.DisplayStockCheck==nil) then mS_CharDatas.DisplayStockCheck=true end
 end
 	
