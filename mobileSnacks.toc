@@ -1,5 +1,5 @@
 ## Interface: 11200
-## Title: mobileSnacks V0.96
+## Title: mobileSnacks V0.98
 ## Notes: |cFF7E9CE5Automaticly dispenses specified items to anyone who wants to trades with you                                                           |cFF45E849Use /tD or /mobileSnacks
 ## Notes-deDE: |cFF7E9CE5Handelt automatisch verschiedene vorher definierte Items, sobald man angehandelt wird.                                            |cFF45E849Benutze /mobileSnacks & /tD
 ## Notes-ruRU: |cFF7E9CE5јвтоматически раздает указанные предметы тем, кто производит с ¬ами обмен.		 			                                       |cFF45E849»спользуйте /mobileSnacks или /tD

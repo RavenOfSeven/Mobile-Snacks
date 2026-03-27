@@ -1,5 +1,5 @@
 ﻿-- this is the Version of TradeDispenser - shown in the messages of the game
-if (not mobileSnacks_Version) then 	mobileSnacks_Version = "0.96" 	end
+if (not mobileSnacks_Version) then 	mobileSnacks_Version = "0.98" 	end
 -- The Version of the saved datas... 	only edit, if the architecture got changed. 
 if (not configDataVersion) then 		configDataVersion = "0.80"  		end
 

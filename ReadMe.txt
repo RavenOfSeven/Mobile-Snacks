@@ -58,7 +58,8 @@ Symbols:
 	>	ToDo  (Reported Bugs, Requested Functions etc)
 	o 	Bug Fixed
 	* 	Other Changes
-
+	
+Version 0.98
 	
 Version 0.96
 ------------

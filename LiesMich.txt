@@ -1,4 +1,4 @@
-TradeDispenser	Version 0.96
+TradeDispenser	Version 0.98
 -------------------------------------------------------
 Author:		Silas M.	aka 	Kaboom @ Arthas (EU)
 Core: 		Tom C.  	aka 	Shag @ Arthas (EU)
@@ -61,6 +61,8 @@ Symbole:
 	o 	Fehler behoben
 	* 	Andere Änderungen
 	
+	
+Version 0.98	
 	
 Version 0.96
 ------------
