@@ -26,7 +26,7 @@ function mobileSnacks_GetEnglish()
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Prefix:",
-			[2] = "|cFFFFFFFF  /td or /mobileSnacks       |cFF45E849Shows the Help-Text",
+			[2] = "|cFFFFFFFF  /ms or /mobileSnacks       |cFF45E849Shows the Help-Text",
 			[3] = "|cFF7E9CE5Options (use Prefix + Option)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Toggles the ConfigFrame",
 			[5] = "|cFFFFFFFF  toggle         |cFF45E849Activates/Deactivates "..mobileSnacks_ProgName,
@@ -273,7 +273,7 @@ function mobileSnacks_GetGerman()
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Prefix:",
-			[2] = "|cFFFFFFFF  /td oder /mobileSnacks       |cFF45E849Zeigt diese Hilfestellung",
+			[2] = "|cFFFFFFFF  /ms oder /mobileSnacks       |cFF45E849Zeigt diese Hilfestellung",
 			[3] = "|cFF7E9CE5Optionen (Benutzung: Prefix + Option)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Schalter f\195\188r das ConfigFrame",
 			[5] = "|cFFFFFFFF  toggle         |cFF45E849Aktiviert/Deaktiviert "..mobileSnacks_ProgName,
@@ -521,7 +521,7 @@ function mobileSnacks_GetChinese()
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "前缀:",
-			[2] = "  /td 或 /mobileSnacks    显示帮助",
+			[2] = "  /ms 或 /mobileSnacks    显示帮助",
 			[3] = "设置命令 (使用 前缀 + 以下命令)",
 			[4] = "  config        打开配置界面",
 			[5] = "  toggle        启用/禁用"..mobileSnacks_ProgName,
@@ -766,7 +766,7 @@ function mobileSnacks_GetFrench()
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Préfixe:",
-			[2] = "|cFFFFFFFF  /td ou /mobileSnacks       |cFF45E849Montre le texte d'aide",
+			[2] = "|cFFFFFFFF  /ms ou /mobileSnacks       |cFF45E849Montre le texte d'aide",
 			[3] = "|cFF7E9CE5Options (utilisation: Préfixe + Option)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Montre/Cache la Fenêtre de Configuration",
 			[5] = "|cFFFFFFFF  toggle         |cFF45E849Active/Désactive "..mobileSnacks_ProgName,
@@ -1015,7 +1015,7 @@ function mobileSnacks_GetRussian()
 		},
 		["help"]		= {	-- open end. could have more than 9 lines
 			[1] = "|cFF7E9CE5Префикс:",
-			[2] = "|cFFFFFFFF  /td или /mobileSnacks       |cFF45E849Показывает Помощь",
+			[2] = "|cFFFFFFFF  /ms или /mobileSnacks       |cFF45E849Показывает Помощь",
 			[3] = "|cFF7E9CE5Опции (Используйте: Префикс + Опции)",
 			[4] = "|cFFFFFFFF  config         |cFF45E849Переключает окно опций",
 			[5] = "|cFFFFFFFF  toggle         |cFF45E849Активирует/Деактивирует "..mobileSnacks_ProgName,

@@ -201,7 +201,7 @@ end
 function mobileSnacksTradeControlChecker(mobileSnacksClient)
 	if (mobileSnacksClient.Name==nil or mobileSnacksClient.Name=="map-bug") then
 		if (WorldMapFrame:IsVisible()) then 
-			mobileSnacksVerbose(0,td_Loc.MapBugMessage);
+			mobileSnacksVerbose(0,ms_Loc.MapBugMessage);
 			ToggleWorldMap(); 
 			mobileSnacksVerbose(1, " Map closed to avoid more bugs... ");
 		else

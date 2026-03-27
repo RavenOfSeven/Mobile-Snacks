@@ -307,7 +307,7 @@ end
 
 
 SLASH_TRADE_DISPENSER1 = "/mobileSnacks"
-SLASH_TRADE_DISPENSER2 = "/td"
+SLASH_TRADE_DISPENSER2 = "/ms"
 SlashCmdList["TRADE_DISPENSER"] = function(msg)	
 	mobileSnacks_SlashCommand(msg)
 end
